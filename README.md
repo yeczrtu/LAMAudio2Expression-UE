@@ -1,83 +1,65 @@
 # LAM Audio2Expression for Unreal Engine
 
-**音声からARKit 52種類の表情カーブを生成する、UE用ランタイムプラグインです。**
+[![Release](https://img.shields.io/github/v/release/yeczrtu/LAMAudio2Expression-UE?style=flat-square&color=6366f1)](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/latest)
+![Unreal Engine 5.8.2](https://img.shields.io/badge/Unreal_Engine-5.8.2-313131?style=flat-square&logo=unrealengine)
+![Windows x64](https://img.shields.io/badge/Windows-x64-0078d4?style=flat-square)
+[![Code License MIT](https://img.shields.io/badge/Code_License-MIT-22c55e?style=flat-square)](LICENSE)
 
-SoundWaveを解析し、音声再生に合わせてキャラクターの口や表情を動かします。Blueprintで解析・再生を制御し、専用のAnimGraphノードで表情を適用できます。推論はPC内で完結し、Pythonや外部サーバーは不要です。
+**音声から、ARKit 52種類の表情カーブを生成。** SoundWaveを解析し、音声に合わせてキャラクターの口や表情を動かすランタイムプラグインです。推論はPC内で完結し、Pythonや外部サーバーは不要です。
 
-**[デモ動画を見る](#デモ動画)** · **[Windowsデモを試す](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#ダウンロード)** · **[モデル入りプラグインをダウンロード](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip)**
+**[モデル入りZIPをダウンロード](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip)** · **[導入](#導入)** · **[Windowsデモ](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#ダウンロード)** · **[Blueprintの接続例](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/FACE_DEMO.md)**
 
 ## デモ動画
 
 https://github.com/user-attachments/assets/e93530a4-197d-4a56-860c-0890da1002e7
 
-1分24秒・音声あり。デモプロジェクトの日本語音声6件を順番に再生した様子です。このページ内で再生できます。
-
-動画・音声・デモ演出：CC BY-SA 4.0。キャラクター：hinzka / VRoid、音声：JVNV / litagin。[出典・利用条件](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VIDEO.md)
+日本語音声6件／1分24秒・音声あり。動画・音声・デモ演出：CC BY-SA 4.0。キャラクター：hinzka / VRoid、音声：JVNV / litagin。[出典・利用条件](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VIDEO.md)
 
 ## できること
 
-- **音声と表情の同期再生**：解析完了後に再生し、一時停止・再開・停止・シークをまとめて制御。
-- **AnimBPへの組み込み**：`Apply LAM ARKit Curves` ノードで52カーブを適用。カーブ名の変換、マスク、強さの調整に対応。
-- **会話システム向けの再生制御**：2D / 3D、サブミックス、音量、ミュート、フェード、再生開始・終了イベント。
-- **マイク・PCM入力**：ライブ推論間隔を約33〜1000 msに調整可能。実マイクの長時間運用は未検証です。
+- **音声と表情を同期** — Blueprintで解析・再生・一時停止・シーク。AnimGraphの1ノードで52カーブを適用。
+- **再生を細かく制御** — 2D / 3D、サブミックス、音量、ミュート、フェード、開始・終了イベント。
+- **マイク・PCMからライブ生成** — 推論間隔を約33〜1000 msに調整。実マイクの長時間運用は未検証です。
 
-## 動作環境
-
-| 項目 | 対応内容 |
+| 動作環境・入力 | 対応内容 |
 |---|---|
-| エンジン・OS | **UE 5.8.2 / Windows x64** |
-| キャラクター | ARKit 52カーブに対応したMorph Target、またはカーブから表情を駆動するリグ |
-| 音声アセット | mono / stereoのSoundWave、8〜192 kHz、最大5分 |
-| 推論 | DirectML対応GPUを優先。利用できない場合はCPUへフォールバック |
-| 検証環境 | RTX 3070 / Core i7-12700。最低動作要件を示すものではありません |
+| エンジン / OS | **UE 5.8.2 / Windows x64** |
+| キャラクター | ARKit 52対応Morph Target、またはカーブで駆動するリグ |
+| 音声 | SoundWave · mono / stereo · 8〜192 kHz · 最大5分 |
+| 推論 | DirectML優先、CPUフォールバック |
 
-SoundCue、MetaSound、Procedural SoundWave、外部WAV／MP3の直接読み込みには対応していません。再生速度は1倍で、ループ再生は対象外です。
+検証環境はRTX 3070 / Core i7-12700です。SoundCue・MetaSound・Procedural SoundWave・外部WAV/MP3の直接読み込みは対象外。再生は1倍速・ループなしです。
 
 ## 導入
 
-1. [v0.2.0のモデル入りZIP（約376 MiB）](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip) をダウンロードします。
-2. UEエディタを終了し、ZIP内の `LAMAudio2Expression` フォルダーを `<Project>/Plugins/` に配置します。
-3. プロジェクトを開き、Pluginsで **LAM Audio2Expression** を有効にします。再起動を求められたら再起動します。
-4. Project Settings → **LAM Audio2Expression** のModelが `/LAMAudio2Expression/Models/LAM_A2E` になっていることを確認します。既定で同梱モデルが指定されています。
-5. アプリをパッケージ化する場合は、Project Settings → Packaging → **Additional Asset Directories to Cook** に `/LAMAudio2Expression/Models` を追加します。
+1. [v0.2.0のモデル入りZIP（約376 MiB）](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip) をダウンロード。
+2. UEエディタを終了し、ZIP内の `LAMAudio2Expression` を `<Project>/Plugins/` に配置。
+3. プロジェクトで **LAM Audio2Expression** を有効にし、必要に応じて再起動。
+4. Project Settings → **LAM Audio2Expression** のModelが `/LAMAudio2Expression/Models/LAM_A2E` であることを確認。
+5. パッケージ化する場合は、Packaging → **Additional Asset Directories to Cook** に `/LAMAudio2Expression/Models` を追加。
 
-ZIPにはビルド済みプラグイン、C++ソース、学習済みモデルが含まれます。モデル変換や追加ダウンロードは不要です。`Source` と `Intermediate/Build` はビルドに必要なため、そのまま保持してください。[詳しい導入手順](Docs/RELEASE_INSTALL.md)
-
-GitHubの「Source code (zip / tar.gz)」にはモデルとバイナリが含まれません。上のモデル入りZIPを選んでください。[リリース詳細・チェックサム](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/tag/v0.2.0)
+> [!NOTE]
+> ビルド済みプラグイン・ソース・モデルを同梱しています。GitHubの「Source code」ZIPにはモデルとバイナリが含まれません。同梱の `Source` と `Intermediate/Build` は保持してください。[詳しい導入手順](Docs/RELEASE_INSTALL.md)
 
 ## Blueprintで使う
 
-1. キャラクターのActorに **LAMAudio2ExpressionComponent** を追加します。
-2. `Analyze SoundWave Async` にコンポーネントとSoundWaveを渡します。
-3. `Completed` から `Play Expression Clip` を呼び、返されたClipを渡します。
+Actorに **LAMAudio2ExpressionComponent** を追加し、コンポーネントとSoundWaveを解析ノードに渡します。
 
 ```text
-Analyze SoundWave Async
-    └─ Completed → Play Expression Clip
+Blueprint   Analyze SoundWave Async → Completed → Play Expression Clip
+AnimGraph   元のポーズ → Apply LAM ARKit Curves → Output Pose
 ```
 
-AnimBPでは、元のポーズと出力の間に **Apply LAM ARKit Curves** を接続します。
+`Completed` のClipを再生ノードへ、表情を供給するコンポーネントをAnimGraphノードの **Source Component** へ接続。**Alpha** で強さ、**Curve Profile** で名前変換・倍率・マスクを調整できます。
 
-```text
-元のポーズ → Apply LAM ARKit Curves → Output Pose
-```
+自然終了は `On Playback Finished`、停止や差し替えを含む終了は `On Playback Ended` で受け取れます。[再生制御・イベントの詳細](Docs/PLAYBACK_AND_LIVE.md)
 
-Source Componentに表情を供給するコンポーネントを指定します。Alphaで適用の強さを、Curve Profileでカーブ名・倍率・マスクを調整できます。`jawOpen` など標準のARKit名と同名のMorph Targetがある場合は、既定の対応で使えます。
+## ドキュメント
 
-音声を最後まで再生した後の処理には `On Playback Finished`、停止や差し替えを含む後処理には `On Playback Ended` を使用します。[再生制御・イベントの詳細](Docs/PLAYBACK_AND_LIVE.md)
-
-## デモとドキュメント
-
-[デモプロジェクト](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo) には、キャラクター・日本語音声6件・設定済みBlueprintを用意しています。実行版ならUEエディタなしでも試せます。デモ素材は別リポジトリで配布しています。
-
-- [Blueprint・表情設定・マイク／PCM入力](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/USAGE.md)
-- [再生制御・ライブ推論間隔・計測値](Docs/PLAYBACK_AND_LIVE.md)
-- [動作確認済みの範囲と検証結果](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VALIDATION.md)
-- [開発者向け：ソースからのセットアップとテスト](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/DEVELOPMENT.md)
-- [問題を報告する](https://github.com/yeczrtu/LAMAudio2Expression-UE/issues) — UEのバージョン、CPU/GPU、再現手順を添えてください。
+[Blueprint・表情・ライブ入力](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/USAGE.md) · [検証結果](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VALIDATION.md) · [ソースからビルド](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/DEVELOPMENT.md) · [問題を報告](https://github.com/yeczrtu/LAMAudio2Expression-UE/issues)
 
 ## ライセンス
 
-独自コードは [MIT](LICENSE)。[LAM Audio2Expression](https://github.com/aigc3d/LAM_Audio2Expression) 由来のコードと学習済みモデルは **Apache-2.0** です。モデルをMITへ変更するものではありません。
+独自コードは **[MIT](LICENSE)**。[LAM Audio2Expression](https://github.com/aigc3d/LAM_Audio2Expression) 由来のコードと学習済みモデルは **Apache-2.0** です。キャラクター・音声などのデモ素材は[別リポジトリ](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#ライセンスクレジット)で配布しています。
 
-再配布時は、`LICENSE`、`THIRD_PARTY_NOTICES.md`、`Licenses` の表記を保持してください。[第三者表記](THIRD_PARTY_NOTICES.md) · [モデルの出典と運用方針](Docs/MODEL_MANAGEMENT.md)
+再配布時は `LICENSE`・`THIRD_PARTY_NOTICES.md`・`Licenses` の表記を保持してください。[第三者表記](THIRD_PARTY_NOTICES.md) · [モデルの出典と運用](Docs/MODEL_MANAGEMENT.md)
