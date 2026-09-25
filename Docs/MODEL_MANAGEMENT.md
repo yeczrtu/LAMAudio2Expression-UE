@@ -9,6 +9,6 @@
 
 Gitにはソース・モデルの検証情報を保存し、約384 MiBのニューラルモデルuasset、ONNX、チェックポイントは除外します。生成には [デモリポジトリのsetup](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Tools/setup.ps1) を使用してください。キャラクターと音声はデモリポジトリ側で管理します。
 
-変換済みモデルを配布する場合は、GitHub Releaseなどに置き、プラグイン版・UE版・モデル版・SHA-256・Apache-2.0本文・変更説明をセットにします。ソース側は公式配布元の固定リビジョンを参照します。このリポジトリではモデルを含むReleaseはまだ作成していません。
+変換済みモデルを配布する場合は、GitHub Releaseなどに置き、プラグイン版・UE版・モデル版・SHA-256・Apache-2.0本文・変更説明をセットにします。ソース側は公式配布元の固定リビジョンを参照します。[v0.2.0 Release](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/tag/v0.2.0) にモデル入りプラグインZIPを配布します。通常のGit履歴にはモデルを追加せず、Releaseの添付ファイルで管理します。
 
 この確認は配布者のライセンス表示に基づきます。学習データ全体の権利調査や権利保証を意味しません。デモ素材の条件は [デモリポジトリの出典](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Resources/Demo/README.md) を参照してください。

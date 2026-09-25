@@ -3,6 +3,8 @@
 #include "Subsystems/AudioEngineSubsystem.h"
 #include "ActiveSoundUpdateInterface.h"
 #include "Sound/SoundNode.h"
+#include "Sound/SoundWave.h"
+#include "Audio.h"
 #include "LAMPlaybackTypes.h"
 #include "UObject/StrongObjectPtr.h"
 #include "LAMAudioRouter.generated.h"

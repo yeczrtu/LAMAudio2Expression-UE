@@ -8,7 +8,7 @@ The ARKit coefficient order and expression-processing concepts originate from th
 
 Weights: https://huggingface.co/3DAIGC/LAM_audio2exp
 Pinned revision: `0fe5f4dbb283ec7d9c01688681e6e4b6ac314858`. Repository metadata declares Apache-2.0.
-The packaged ONNX model is converted from LAM_audio2exp_streaming.tar. Its digest and numerical parity results are recorded in Docs/model-manifest.json in the sample repository.
+The packaged ONNX model is converted from LAM_audio2exp_streaming.tar. The checkpoint was converted to FP32 ONNX opset 17 with fixed audio/style input shapes, then imported into a UE NNEModelData asset for CPU and DirectML. Digests, pinned revisions and numerical parity results are recorded in Docs/model-manifest.json in this plugin.
 
 The model uses the upstream Wav2Vec2 implementation based on Hugging Face Transformers (Apache-2.0). Development tools use PyTorch (BSD-style license), ONNX (Apache-2.0), ONNX Runtime (MIT), NumPy and SciPy (BSD-style licenses). These Python packages are not distributed in the runtime plugin.
 

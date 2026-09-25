@@ -11,7 +11,15 @@ Licenses/
 Docs/
 ```
 
-## 導入
+## モデル入りダウンロード
+
+[v0.2.0 Release](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/tag/v0.2.0) の `LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip` は、ビルド済みプラグインと変換済みモデルを同梱しています。ZIP内の `LAMAudio2Expression` フォルダーをプロジェクトの `Plugins` に配置し、プラグインを有効にしてください。UE 5.8.2 / Windows x64用です。Python、モデル変換、モデルの追加ダウンロードは不要です。
+
+Modelの既定値は同梱アセットを指します。アプリをパッケージ化する場合は、Additional Asset Directories to Cook に `/LAMAudio2Expression/Models` を追加してください。詳細は [リリース導入手順](Docs/RELEASE_INSTALL.md) を参照してください。
+
+GitHubが自動生成する **Source code (zip/tar.gz) にはモデル・バイナリは含まれません**。上記の添付ZIPを選んでください。
+
+## ソースから導入
 
 UE 5.8.2、Windows、Visual Studio 2022 C++で検証しています。プロジェクトのPluginsに、このリポジトリを `LAMAudio2Expression` フォルダー名で配置してビルドしてください。
 
