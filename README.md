@@ -7,8 +7,6 @@ Windows x64用ランタイムプラグインです。SoundWaveを非同期解析
 ```text
 LAMAudio2Expression.uplugin
 Source/
-Content/Demo/
-Resources/Demo/
 Licenses/
 Docs/
 ```
@@ -35,11 +33,11 @@ cd LAM-A2EUE
 
 setupは固定版の公式チェックポイントを取得・検証し、ONNX変換、数値比較、UEへのインポートを行います。生成先は `Plugins/LAMAudio2Expression/Content/Models` です。他のプロジェクトへ導入するときは、この生成済み `Content/Models` もコピーしてください。Pythonとネットワークが必要なのは変換時だけです。
 
-## プラグイン内デモ
+## デモは別リポジトリ
 
-Content Browserで「プラグインコンテンツを表示」を有効にし、`/LAMAudio2Expression/Demo/Maps/LAM_FaceDemo` を開いてPlayします。hinzka / VRoidのFace52とJVNV / litaginの音声6件を同梱しています。1～6またはクリックで音声選択、Spaceで一時停止／再開、Rで再生できます。
+キャラクター、JVNV音声6件、マップ、操作UIは [LAM-A2EUE](https://github.com/yeczrtu/LAM-A2EUE) の `Content/LAMFaceDemo`、`Resources/Demo`、`Source/LAMDemo` に置いています。このプラグインにはデモ素材やCC BY-SAの音声を含めません。
 
-`Content/Demo` は `/Game` やデモプロジェクトのC++モジュールに依存しません。パッケージに含める場合はこのマップをMaps to Cookに追加してください。
+デモプロジェクトで `/Game/LAMFaceDemo/Maps/LAM_FaceDemo` を開いてPlayすると、1～6またはクリックで音声選択、Spaceで一時停止／再開、Rで再生できます。デモを配布する際の素材ライセンスと出典はデモリポジトリ側にまとめています。
 
 ## Blueprint / AnimGraph
 
@@ -49,6 +47,6 @@ Actorへ `LAMAudio2ExpressionComponent` を追加し、`Analyze SoundWave Async`
 
 ## ライセンス
 
-独自コードは [MIT](LICENSE)。上流由来部分と学習済みモデルはApache-2.0です。デモ音声と同期映像表現はCC BY-SA 4.0、キャラクターは作者の再配布許諾に従います。
+独自コードは [MIT](LICENSE)。上流由来部分と学習済みモデルはApache-2.0です。
 
-[第三者表記](THIRD_PARTY_NOTICES.md)、[デモ素材の出典・条件](Resources/Demo/README.md)、[モデル運用方針](Docs/MODEL_MANAGEMENT.md)を参照してください。配布時はこれらと `Licenses` を保持してください。
+[第三者表記](THIRD_PARTY_NOTICES.md)、[モデル運用方針](Docs/MODEL_MANAGEMENT.md)を参照してください。配布時はこれらと `Licenses` を保持してください。
