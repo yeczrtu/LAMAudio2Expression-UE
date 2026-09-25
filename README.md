@@ -4,7 +4,7 @@
 
 SoundWaveを解析し、音声再生に合わせてキャラクターの口や表情を動かします。Blueprintで解析・再生を制御し、専用のAnimGraphノードで表情を適用できます。推論はPC内で完結し、Pythonや外部サーバーは不要です。
 
-**[デモ動画（MP4）](https://raw.githubusercontent.com/yeczrtu/LAMAudio2Expression-UE-Demo/master/Docs/LAM_A2E_Demo.mp4)** · **[Windowsデモを試す](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#ダウンロード)** · **[モデル入りプラグインをダウンロード](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip)**
+**[デモ動画を見る](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#デモ動画)** · **[Windowsデモを試す](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#ダウンロード)** · **[モデル入りプラグインをダウンロード](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip)**
 
 ## できること
 
