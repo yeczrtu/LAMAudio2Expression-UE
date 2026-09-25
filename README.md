@@ -43,7 +43,9 @@ setupは固定版の公式チェックポイントを取得・検証し、ONNX�
 
 Actorへ `LAMAudio2ExpressionComponent` を追加し、`Analyze SoundWave Async` のCompletedから `Play Expression Clip` を呼びます。AnimBPでは入力ポーズに `Apply LAM ARKit Curves` を接続します。52値を個別に配線する必要はありません。
 
-詳細なAPI・マイク／PCM入力・検証手順は [デモリポジトリのREADME](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#blueprint)、数値検証は [検証結果](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VALIDATION.md) を参照してください。
+再生設定・サブミックス・イベント・可変ライブ推論間隔は [再生制御とライブ入力](Docs/PLAYBACK_AND_LIVE.md) を参照してください。
+
+基本API・マイク／PCM入力・検証手順は [デモリポジトリのREADME](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#blueprint)、数値検証は [検証結果](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VALIDATION.md) を参照してください。
 
 ## ライセンス
 

@@ -31,5 +31,5 @@ void MakeWindow(const TArray<float> &PCM, int64 EndSample, TArray<float> &Out);
 void Postprocess(TArray<float> &Curves, const TArray<float> &PCM, const FLAMAnalysisSettings &Settings, int32 Hop = 30);
 void Analyze(const TArray<float> &PCM, const FModels &Models, const FLAMAnalysisSettings &Settings, FLAMJob &Job);
 bool InferWindow(const TArray<float> &Window, int32 Style, const FModels &Models,
-                 TSharedPtr<UE::NNE::IModelInstanceRunSync> &Instance, bool &UsingGPU, TArray<float> &Output);
+                 TSharedPtr<UE::NNE::IModelInstanceRunSync> &Instance, bool &UsingGPU, TArray<float> &Output, float* InitializationMs = nullptr);
 } // namespace LAM

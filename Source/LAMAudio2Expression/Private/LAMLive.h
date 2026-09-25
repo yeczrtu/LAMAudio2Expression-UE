@@ -18,7 +18,14 @@ struct FLAMLiveSession
     LAM::FModels Models;
     FLAMAnalysisSettings Options;
     TSharedPtr<UE::NNE::IModelInstanceRunSync> Instance;
-    TArray<float> Result, Timings;
+    TArray<float> Result, Timings, Latencies;
+    float InitializationMs = 0;
+    int32 AppliedHop = 10;
+    int64 Dropped = 0;
+    bool Failed = false;
+    FString Backend;
+    double LastPresented = -1;
+    float MissingSeconds = 0;
     double ResultStart = 0;
     FString Error;
 };

@@ -8,6 +8,7 @@
 #include "Misc/SecureHash.h"
 #include "HAL/ThreadSafeCounter.h"
 #include "Misc/ScopeLock.h"
+#include "Misc/ScopeExit.h"
 
 LAM::FModels LAM::CreateModels(UNNEModelData *Data, bool PreferGPU)
 {
@@ -68,11 +69,13 @@ TArray<float> LAM::Resample(const TArray<float> &In, int32 SourceRate)
     return Out;
 }
 bool LAM::InferWindow(const TArray<float> &Audio, int32 Style, const FModels &Models,
-                      TSharedPtr<UE::NNE::IModelInstanceRunSync> &Instance, bool &UsingGPU, TArray<float> &Output)
+                      TSharedPtr<UE::NNE::IModelInstanceRunSync> &Instance, bool &UsingGPU, TArray<float> &Output, float* InitializationMs)
 {
     using namespace UE::NNE;
     auto Init = [&]()
     {
+        const double InitStart = FPlatformTime::Seconds();
+        ON_SCOPE_EXIT { if (InitializationMs) *InitializationMs += float((FPlatformTime::Seconds() - InitStart) * 1000); };
         if (!Instance)
         {
             if (UsingGPU)

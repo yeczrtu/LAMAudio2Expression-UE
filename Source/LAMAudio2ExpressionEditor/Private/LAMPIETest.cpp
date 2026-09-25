@@ -87,6 +87,7 @@ class FLAMPIEPlayback : public IAutomationLatentCommand
             OtherActor = GEditor->PlayWorld->SpawnActor<AActor>();
             auto *Other = NewObject<ULAMAudio2ExpressionComponent>(OtherActor.Get());
             Other->RegisterComponent();
+            Other->OnPlaybackEnded.AddDynamic(Receiver.Get(), &ULAMTestReceiver::PlaybackEnded);
             Test->TestTrue(TEXT("Shared clip plays on a second component"),
                            Other->PlayExpressionClip(Component->CurrentClip));
             auto *LongSound = LoadObject<USoundWave>(nullptr, TEXT("/Game/Audio/long_stream.long_stream"));
@@ -105,6 +106,7 @@ class FLAMPIEPlayback : public IAutomationLatentCommand
         else if (Stage == 5 && Now - Changed > 1)
         {
             Test->TestEqual(TEXT("No completion after cancellation or owner destruction"), Receiver->Completions, 0);
+            Test->TestEqual(TEXT("Owner teardown suppresses playback events"), Receiver->PlaybackEnds, 0);
             Test->TestEqual(TEXT("Procedural sound rejected"), Receiver->Failures, 1);
             Test->TestEqual(TEXT("32 cancellations and destroyed owner's job"), Receiver->Cancellations, 33);
             return true;

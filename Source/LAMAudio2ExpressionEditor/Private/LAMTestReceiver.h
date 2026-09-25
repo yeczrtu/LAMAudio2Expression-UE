@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "LAMTypes.h"
+#include "LAMPlaybackTypes.h"
 #include "LAMTestReceiver.generated.h"
 
 // Editor automation receiver; never linked into packaged games.
@@ -11,6 +12,8 @@ class ULAMTestReceiver : public UObject
   public:
     int32 Completions = 0, Failures = 0, Cancellations = 0;
     float LatestProgress = 0;
+    int32 PlaybackEnds = 0;
+    UFUNCTION() void PlaybackEnded(FLAMPlaybackInfo Info, ELAMPlaybackEndReason Reason) { ++PlaybackEnds; }
     UFUNCTION() void Completed(ULAMExpressionClip *Clip, float Value, FString Error)
     {
         ++Completions;
