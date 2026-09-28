@@ -5,7 +5,7 @@ const en = lang === 'en';
 ---
 {entry.data.sources && Astro.locals.starlightRoute.id !== '404' && <aside class="source-note" aria-label={en ? 'Sources' : '参照資料'} data-pagefind-ignore>
   <strong>{en ? 'Source notes' : '参照資料'}</strong>
-  <p>{en ? 'Based on the published v0.2.0 release and the linked source snapshots. Source-only changes are marked in the guide.' : '公開済みv0.2.0と、以下の公開ソースのスナップショットに基づきます。ソース版のみの変更は本文に明記しています。'}</p>
+  <p>{entry.data.sourceSummary ?? (en ? 'Based on the published v0.2.0 release and the linked source snapshots. Source-only changes are marked in the guide.' : '公開済みv0.2.0と、以下の公開ソースのスナップショットに基づきます。ソース版のみの変更は本文に明記しています。')}</p>
   <ul>{entry.data.sources.map((source) => <li><a href={source.url}>{source.label}</a></li>)}</ul>
 </aside>}
 <DefaultFooter />

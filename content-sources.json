@@ -18,5 +18,41 @@
     "poster": "Docs/demo-preview.png",
     "screenshot": "Docs/face-demo.png",
     "modifications": "Published image files copied unchanged. The upstream poster is a frame extracted at 5 seconds."
+  },
+  "comparison": {
+    "slug": "lip-sync-comparison",
+    "reviewedOn": "2026-09-28",
+    "basis": "Official public documentation, repositories and research; no new comparative benchmark. LAM coverage retains the pinned public snapshots above.",
+    "versionNotes": "LAM v0.2.0 and pinned sources; Audio2Face-3D v3.0 / Audio2Emotion v2.2 model cards; SG Com 5.0; SGX 4.4; research comparison arXiv:2606.10753v1. Other links reflect documentation reviewed on the date above.",
+    "urls": [
+      "https://arxiv.org/abs/2306.08990",
+      "https://arxiv.org/html/2606.10753v1",
+      "https://crazyminnowstudio.com/docs/salsa-lip-sync/modules/recommendations/",
+      "https://dev.epicgames.com/documentation/metahuman/audio-driven-animation",
+      "https://dev.epicgames.com/documentation/metahuman/realtime-animation-using-live-link",
+      "https://developers.meta.com/horizon/documentation/unreal/audio-ovrlipsync/",
+      "https://docs.nvidia.com/ace/ace-unreal-plugin/2.5/ace-unreal-plugin-animation.html",
+      "https://docs.speech-graphics.com/en/sg-com/5.0/sg-com-compute-resource-usage",
+      "https://docs.speech-graphics.com/en/sg-com/5.0/sg-com-platform-support",
+      "https://docs.speech-graphics.com/en/sg-com/5.0/what-is-sg-com",
+      "https://docs.speech-graphics.com/en/sgx/4.4/what-is-sgx",
+      "https://github.com/DanielSWolf/rhubarb-lip-sync/blob/master/README.adoc",
+      "https://github.com/EvelynFan/FaceFormer",
+      "https://github.com/NVIDIA/Audio2Face-3D",
+      "https://github.com/NVIDIA/Audio2Face-3D-SDK",
+      "https://github.com/Rudrabha/Wav2Lip",
+      "https://github.com/TMElyralab/MuseTalk",
+      "https://github.com/hecomi/uLipSync",
+      "https://github.com/met4citizen/HeadAudio",
+      "https://github.com/met4citizen/TalkingHead",
+      "https://github.com/psyai-net/EmoTalk_release",
+      "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VALIDATION.md",
+      "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md",
+      "https://huggingface.co/nvidia/Audio2Emotion-v2.2",
+      "https://huggingface.co/nvidia/Audio2Face-3D-v3.0",
+      "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-speech-synthesis-viseme",
+      "https://www.facefx.com/",
+      "https://www.reallusion.com/iclone/lipsync-animation.html"
+    ]
   }
 }

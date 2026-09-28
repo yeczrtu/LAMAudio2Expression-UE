@@ -32,7 +32,7 @@ export default defineConfig({
     },
     sidebar: [
       { label: 'はじめる', translations: { en: 'Get started' }, items: [
-        { slug: '' }, { slug: 'installation' }, { slug: 'demo' },
+        { slug: '' }, { slug: 'lip-sync-comparison' }, { slug: 'installation' }, { slug: 'demo' },
       ] },
       { label: '使い方', translations: { en: 'Guides' }, items: [
         { slug: 'blueprint' }, { slug: 'expression-curves' }, { slug: 'playback' },

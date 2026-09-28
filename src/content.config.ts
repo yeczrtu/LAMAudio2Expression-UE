@@ -8,6 +8,7 @@ export const collections = {
     loader: docsLoader(),
     schema: docsSchema({ extend: z.object({
       appliesTo: z.string(),
+      sourceSummary: z.string().optional(),
       sources: z.array(z.object({ label: z.string(), url: z.url() })).min(1),
     }) }),
   }),

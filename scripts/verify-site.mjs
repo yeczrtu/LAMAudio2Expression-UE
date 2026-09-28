@@ -5,7 +5,7 @@ import { parseHTML, DOMParser } from 'linkedom';
 const root = new URL('../dist/', import.meta.url);
 const base = '/LAMAudio2Expression-UE/';
 const origin = 'https://yeczrtu.github.io';
-const slugs = ['', 'installation', 'demo', 'blueprint', 'expression-curves', 'playback', 'live-input',
+const slugs = ['', 'lip-sync-comparison', 'installation', 'demo', 'blueprint', 'expression-curves', 'playback', 'live-input',
   'models-and-packaging', 'development', 'architecture', 'validation', 'troubleshooting', 'licenses'];
 const expected = slugs.flatMap(slug => ['', 'en/'].map(locale => `${base}${locale}${slug ? slug + '/' : ''}`));
 const documents = new Map();
@@ -77,6 +77,15 @@ for (const path of expected) {
   }
 }
 const index = new DOMParser().parseFromString(readFileSync(new URL('sitemap-index.xml', root), 'utf8'), 'text/xml');
+// Starlight keeps the URL fragment when switching language. Both comparison
+// documents must resolve the other language's section anchors as well.
+for (const locale of ['', 'en/']) {
+  const doc = documentAt(`${base}${locale}lip-sync-comparison/`);
+  const pair = documentAt(`${base}${locale ? '' : 'en/'}lip-sync-comparison/`);
+  for (const heading of doc.querySelectorAll('.sl-markdown-content h2, .sl-markdown-content h3')) {
+    assert(pair.getElementById(heading.id), `Missing translated section anchor: ${heading.id}`);
+  }
+}
 const sitemapUrls = [];
 for (const element of index.querySelectorAll('loc')) {
   const mapUrl = new URL(element.textContent);
@@ -84,10 +93,10 @@ for (const element of index.querySelectorAll('loc')) {
   const map = new DOMParser().parseFromString(readFileSync(localFile(mapUrl.pathname), 'utf8'), 'text/xml');
   for (const location of map.querySelectorAll('url > loc')) sitemapUrls.push(location.textContent);
 }
-assert.deepEqual(sitemapUrls.sort(), expected.map(path => origin + path).sort(), 'Sitemap must contain exactly 26 canonical documents');
+assert.deepEqual(sitemapUrls.sort(), expected.map(path => origin + path).sort(), `Sitemap must contain exactly ${expected.length} canonical documents`);
 const notFound = parseHTML(readFileSync(new URL('404.html', root), 'utf8')).document;
 assert(notFound.querySelector('meta[name="robots"]')?.getAttribute('content')?.includes('noindex'));
 assert(existsSync(new URL('pagefind/pagefind.js', root)), 'Missing search bundle');
 const searchEntry = JSON.parse(readFileSync(new URL('pagefind/pagefind-entry.json', root), 'utf8'));
-for (const language of ['ja', 'en']) assert.equal(searchEntry.languages[language]?.page_count, 13, `Search index: ${language}`);
-console.log(`Verified ${expected.length} pages, ${links} local links/assets, reciprocal language links, metadata, JSON-LD, sitemap, 404, and two 13-page search indexes.`);
+for (const language of ['ja', 'en']) assert.equal(searchEntry.languages[language]?.page_count, slugs.length, `Search index: ${language}`);
+console.log(`Verified ${expected.length} pages, ${links} local links/assets, reciprocal language links, metadata, JSON-LD, sitemap, 404, and two ${slugs.length}-page search indexes.`);

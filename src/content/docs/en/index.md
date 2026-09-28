@@ -18,6 +18,8 @@ sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yec
 
 ## Downloads
 
+Choosing an approach? [Compare audio lip-sync methods](/LAMAudio2Expression-UE/en/lip-sync-comparison/) for the output, emotion controls and integration requirements of LAM, Audio2Face, MetaHuman and other candidates.
+
 <div class="download-grid">
   <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip"><strong>Plugin</strong><span>For your Unreal project<br/>Model included · ~376 MiB</span></a>
   <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-Win64-Demo.zip"><strong>Windows demo</strong><span>No UE editor required<br/>Standalone ZIP · ~968 MiB</span></a>

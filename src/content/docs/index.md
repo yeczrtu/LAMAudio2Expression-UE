@@ -18,6 +18,8 @@ sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yec
 
 ## ダウンロード
 
+用途から選びたい場合は、[音声リップシンク手法の比較](/LAMAudio2Expression-UE/lip-sync-comparison/)でLAM・Audio2Face・MetaHumanなどの出力、感情表現、導入条件を確認できます。
+
 <div class="download-grid">
   <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip"><strong>プラグイン</strong><span>自分のUEプロジェクトへ<br/>モデル入りZIP · 約376 MiB</span></a>
   <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-Win64-Demo.zip"><strong>Windowsデモ</strong><span>UEエディタなしで試す<br/>実行版ZIP · 約968 MiB</span></a>
