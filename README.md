@@ -56,10 +56,12 @@ AnimGraph   元のポーズ → Apply LAM ARKit Curves → Output Pose
 
 ## ドキュメント
 
+[あいうえお・Oculus互換Visemeへの変換](Docs/VISEMES.md) — 5母音ルール、OpenFaceFX/TalkingHeadテンプレート逆算、モーフ名・強度の設定と専用AnimGraphノード。
+
 [Blueprint・表情・ライブ入力](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/USAGE.md) · [検証結果](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VALIDATION.md) · [ソースからビルド](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/DEVELOPMENT.md) · [問題を報告](https://github.com/yeczrtu/LAMAudio2Expression-UE/issues)
 
 ## ライセンス
 
 独自コードは **[MIT](LICENSE)**。[LAM Audio2Expression](https://github.com/aigc3d/LAM_Audio2Expression) 由来のコードと学習済みモデルは **Apache-2.0** です。キャラクター・音声などのデモ素材は[別リポジトリ](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo#ライセンスクレジット)で配布しています。
 
-再配布時は `LICENSE`・`THIRD_PARTY_NOTICES.md`・`Licenses` の表記を保持してください。[第三者表記](THIRD_PARTY_NOTICES.md) · [モデルの出典と運用](Docs/MODEL_MANAGEMENT.md)
+再配布時は `LICENSE`・`THIRD_PARTY_NOTICES.md`・`Licenses`・`ThirdParty/VisemeTemplates` の表記を保持してください。[第三者表記](THIRD_PARTY_NOTICES.md) · [モデルの出典と運用](Docs/MODEL_MANAGEMENT.md)

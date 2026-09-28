@@ -7,7 +7,7 @@ public class LAMAudio2Expression : ModuleRules {
   PrivateDependencyModuleNames.AddRange(new[]{"AudioMixer","AudioPlatformConfiguration","SignalProcessing","AudioCaptureCore","Projects"});
   RuntimeDependencies.Add(Path.Combine(PluginDirectory, "LICENSE"), StagedFileType.NonUFS);
   RuntimeDependencies.Add(Path.Combine(PluginDirectory, "THIRD_PARTY_NOTICES.md"), StagedFileType.NonUFS);
-  foreach (string DirectoryName in new[]{"Licenses"}) {
+  foreach (string DirectoryName in new[]{"Licenses", "ThirdParty/VisemeTemplates"}) {
    string Folder = Path.Combine(PluginDirectory, DirectoryName);
    if (Directory.Exists(Folder))
     foreach (string FileName in Directory.GetFiles(Folder, "*", SearchOption.AllDirectories))
