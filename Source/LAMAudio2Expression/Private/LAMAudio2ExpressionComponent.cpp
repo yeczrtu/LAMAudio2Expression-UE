@@ -1,5 +1,6 @@
 #include "LAMAudio2ExpressionComponent.h"
 #include "LAMAnalyzeAsync.h"
+#include "LAMBakedExpressionClip.h"
 #include "Components/AudioComponent.h"
 #include "GameFramework/Actor.h"
 #include "Sound/SoundWave.h"
@@ -94,6 +95,11 @@ bool ULAMAudio2ExpressionComponent::PlayExpressionClipWithSettings(ULAMExpressio
     if (bEndingPlay) return false;
     const int64 RequestId = ++NextPlaybackId;
     const auto RequestedSettings = Settings;
+    if (const auto* Baked = Cast<ULAMBakedExpressionClip>(Clip); Baked && !Baked->GetPlaybackValidationError().IsEmpty())
+    {
+        ReportPlaybackError(Clip, RequestId, TEXT("InvalidBakedClip"), Baked->GetPlaybackValidationError());
+        return false;
+    }
     if (!IsValid(Clip) || !IsValid(Clip->SoundWave) || Clip->Curves.IsEmpty() || Clip->Curves.Num() % 52 || !FMath::IsFinite(Clip->Duration) || Clip->Duration <= 0 ||
         !GetWorld() || !GetOwner() || !FMath::IsFinite(Start) || !FMath::IsFinite(Settings.Volume) ||
         Settings.Volume < 0 || !FMath::IsFinite(Settings.FadeInDuration) || Settings.FadeInDuration < 0 || Clip->SoundWave->IsLooping())

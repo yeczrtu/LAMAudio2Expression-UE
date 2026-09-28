@@ -13,10 +13,14 @@ class ULAMTestReceiver : public UObject
     int32 Completions = 0, Failures = 0, Cancellations = 0;
     float LatestProgress = 0;
     int32 PlaybackEnds = 0;
+    UPROPERTY() TObjectPtr<ULAMExpressionClip> LastClip;
+    FName PlaybackErrorCode;
+    UFUNCTION() void PlaybackFailed(FLAMPlaybackError Error) { PlaybackErrorCode = Error.Code; }
     UFUNCTION() void PlaybackEnded(FLAMPlaybackInfo Info, ELAMPlaybackEndReason Reason) { ++PlaybackEnds; }
     UFUNCTION() void Completed(ULAMExpressionClip *Clip, float Value, FString Error)
     {
         ++Completions;
+        LastClip = Clip;
     }
     UFUNCTION() void Failed(ULAMExpressionClip *Clip, float Value, FString Error)
     {

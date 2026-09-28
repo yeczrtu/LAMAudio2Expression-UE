@@ -57,13 +57,13 @@ class LAMAUDIO2EXPRESSION_API ULAMExpressionClip : public UObject
 {
     GENERATED_BODY()
   public:
-    UPROPERTY(BlueprintReadOnly, Category = "LAM") TObjectPtr<class USoundWave> SoundWave;
-    UPROPERTY(BlueprintReadOnly, Category = "LAM") float Duration = 0;
-    UPROPERTY(BlueprintReadOnly, Category = "LAM") int32 FrameRate = 30;
-    UPROPERTY(BlueprintReadOnly, Category = "LAM") int32 NumSamples = 0;
-    UPROPERTY(BlueprintReadOnly, Category = "LAM") FLAMAnalysisSettings Settings;
-    UPROPERTY(BlueprintReadOnly, Category = "LAM") FString Backend;
-    UPROPERTY(BlueprintReadOnly, Category = "LAM") float AnalysisSeconds = 0;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") TObjectPtr<class USoundWave> SoundWave;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") float Duration = 0;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") int32 FrameRate = 30;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") int32 NumSamples = 0;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") FLAMAnalysisSettings Settings;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") FString Backend;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") float AnalysisSeconds = 0;
     UPROPERTY() TArray<float> Curves;
     UFUNCTION(BlueprintPure, Category = "LAM") FLAMExpressionFrame Sample(float TimeSeconds) const;
 };
