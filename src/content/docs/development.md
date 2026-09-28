@@ -3,7 +3,7 @@ title: "ソースからのビルドとリリース手順"
 description: "LAM Audio2Expressionの公開ソースを固定コミットで取得し、UE 5.8.2向けモデル生成、テスト、WindowsパッケージとRelease ZIPを作成する手順。"
 sidebar: {"label":"開発・リリース"}
 appliesTo: "公開ソースのスナップショット · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/DEVELOPMENT.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/DEVELOPMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"}]
+sources: [{"label":"Demo / Docs/DEVELOPMENT.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/DEVELOPMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 このページは**公開ソースのスナップショット**を対象とします。すぐに使う場合は[モデル入りv0.2.0](/LAMAudio2Expression-UE/installation/)を利用してください。Blueprint版の顔デモはv0.2.0 ZIPより新しい実装です。
@@ -58,3 +58,7 @@ python Tools/assemble_release.py --plugin <BuildPlugin-output> --project <dispos
 ```
 
 新規出力先に、プラグイン・編集用プロジェクト・Windows実行版のZIP、マニフェスト、チェックサムを作成します。各ZIPを別の短いパスへ展開してモデル・顔デモ・再生制御を検証してから、両リポジトリの同じバージョンタグへ公開します。詳細な配布用コピーの条件はページ末尾のRelease原文を参照してください。
+
+## 事前解析Clipの開発・検証（公開ソース版）
+
+プラグイン1f06ac8 / デモf3b6f13に追加された機能です。Editorをビルドしてから、専用テストで生成・再生成・保存・別プロセス再生を確認します。Development / Shippingにも検証マップを含める`-IncludeBaked`が追加されています。[コマンドと生成対象](/LAMAudio2Expression-UE/baked-clips/#examples-and-validation-commands)を確認してください。v0.2.0の配布ZIPには含まれません。

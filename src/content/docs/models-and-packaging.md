@@ -3,7 +3,7 @@ title: "モデル管理とWindowsパッケージ化"
 description: "LAM Audio2Expressionの学習済みモデル、UEのCook設定、CPU・DirectML用データ、配布物のチェックサムとライセンス表記を整理します。"
 sidebar: {"label":"モデルとパッケージ化"}
 appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"}]
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## モデルの配置
@@ -35,3 +35,7 @@ DirectML対応GPUを優先し、利用できない場合はCPUへフォールバ
 ## 配布時の表記
 
 独自コードのMITと、上流由来コード・モデルのApache-2.0は適用範囲が異なります。`LICENSE`、`THIRD_PARTY_NOTICES.md`、`Licenses`、モデルの出典と変換内容を保持してください。デモの音声・映像・キャラクターにも別の条件があります。[ライセンス・クレジット](/LAMAudio2Expression-UE/licenses/)
+
+## 保存済みClipをCookする（公開ソース版）
+
+プラグイン1f06ac8の[事前解析Clip](/LAMAudio2Expression-UE/baked-clips/)は、生成後に保存し、元SoundWaveとともにCook対象へ含めます。Soft参照のみの場合はAsset Managerなどで対象を明示してください。Clip再生経路ではモデルをロードしませんが、既存のモデル同梱設定は変更しません。v0.2.0のZIPには未収録です。

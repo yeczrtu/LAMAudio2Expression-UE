@@ -3,7 +3,7 @@ title: "Playback controls and events"
 description: "Control synchronized audio and expressions in Blueprint: pause, seek, volume, submix routing, 3D audio, game pause behavior, and playback completion events."
 sidebar: {"label":"Playback controls"}
 appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"}]
+sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 `LAMAudio2ExpressionComponent` keeps audio and facial expressions synchronized. Set default Playback Settings and call `Play Expression Clip`, or pass settings per call with `Play Expression Clip With Settings`.
@@ -47,3 +47,7 @@ Playback Mode defaults to Two Dimensional. Three Dimensional supports Attachment
 Event data includes a Playback Id that increases within the component, and the Clip. Use the event arguments to identify the playback, especially when a listener starts the next clip. `Get Playback Info` returns state, position, duration, and progress.
 
 Preflight rejection emits Failed only and preserves existing playback. After playback has started, notifications are State Changed → Ended → Finished for natural completion, or Failed for a start failure. Notifications are suppressed during Actor destruction and PIE teardown. Natural completion refers to the source audio's end, not the end of reverb tails.
+
+## Play a baked clip (published source)
+
+Plugin 1f06ac8 accepts [saved clips](/LAMAudio2Expression-UE/en/baked-clips/) in the same playback nodes. Load the clip and audio first, and call Prime Sound early for streaming audio. This removes analysis waits, not audio output latency. The feature is not included in the v0.2.0 ZIPs.

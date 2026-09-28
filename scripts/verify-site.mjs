@@ -5,7 +5,7 @@ import { parseHTML, DOMParser } from 'linkedom';
 const root = new URL('../dist/', import.meta.url);
 const base = '/LAMAudio2Expression-UE/';
 const origin = 'https://yeczrtu.github.io';
-const slugs = ['', 'lip-sync-comparison', 'installation', 'demo', 'blueprint', 'expression-curves', 'playback', 'live-input',
+const slugs = ['', 'lip-sync-comparison', 'installation', 'demo', 'blueprint', 'baked-clips', 'expression-curves', 'playback', 'live-input',
   'models-and-packaging', 'development', 'architecture', 'validation', 'troubleshooting', 'licenses'];
 const expected = slugs.flatMap(slug => ['', 'en/'].map(locale => `${base}${locale}${slug ? slug + '/' : ''}`));
 const documents = new Map();
@@ -77,11 +77,11 @@ for (const path of expected) {
   }
 }
 const index = new DOMParser().parseFromString(readFileSync(new URL('sitemap-index.xml', root), 'utf8'), 'text/xml');
-// Starlight keeps the URL fragment when switching language. Both comparison
+// Starlight keeps the URL fragment when switching language. Paired
 // documents must resolve the other language's section anchors as well.
-for (const locale of ['', 'en/']) {
-  const doc = documentAt(`${base}${locale}lip-sync-comparison/`);
-  const pair = documentAt(`${base}${locale ? '' : 'en/'}lip-sync-comparison/`);
+for (const slug of ['lip-sync-comparison', 'baked-clips']) for (const locale of ['', 'en/']) {
+  const doc = documentAt(`${base}${locale}${slug}/`);
+  const pair = documentAt(`${base}${locale ? '' : 'en/'}${slug}/`);
   for (const heading of doc.querySelectorAll('.sl-markdown-content h2, .sl-markdown-content h3')) {
     assert(pair.getElementById(heading.id), `Missing translated section anchor: ${heading.id}`);
   }

@@ -3,7 +3,7 @@ title: "Audio-driven facial animation in Unreal Engine"
 description: "Generate ARKit 52 facial curves from audio with LAM Audio2Expression for Unreal Engine. Install the plugin, try the Windows demo, and connect lip sync in Blueprint."
 sidebar: {"label":"Overview"}
 appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"}]
+sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 <p class="lead">Turn a SoundWave into synchronized facial animation. LAM Audio2Expression is an Unreal Engine runtime plugin that runs inference locally on your PC.</p>
@@ -17,6 +17,10 @@ sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yec
 [Install the plugin](/LAMAudio2Expression-UE/en/installation/) · [Try the Windows demo](/LAMAudio2Expression-UE/en/demo/) · [Connect Blueprint nodes](/LAMAudio2Expression-UE/en/blueprint/)
 
 ## Downloads
+
+:::note[New in the published source: baked SoundWave clips]
+Analyze and save recorded dialogue in the editor, then play it with existing Blueprint nodes. See the new [generation, preloading, and regeneration guide](/LAMAudio2Expression-UE/en/baked-clips/). This requires source containing Plugin 1f06ac8 and is not included in the v0.2.0 ZIPs below.
+:::
 
 Choosing an approach? [Compare audio lip-sync methods](/LAMAudio2Expression-UE/en/lip-sync-comparison/) for the output, emotion controls and integration requirements of LAM, Audio2Face, MetaHuman and other candidates.
 

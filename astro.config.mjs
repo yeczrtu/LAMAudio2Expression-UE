@@ -35,7 +35,7 @@ export default defineConfig({
         { slug: '' }, { slug: 'lip-sync-comparison' }, { slug: 'installation' }, { slug: 'demo' },
       ] },
       { label: '使い方', translations: { en: 'Guides' }, items: [
-        { slug: 'blueprint' }, { slug: 'expression-curves' }, { slug: 'playback' },
+        { slug: 'blueprint' }, { slug: 'baked-clips' }, { slug: 'expression-curves' }, { slug: 'playback' },
         { slug: 'live-input' }, { slug: 'models-and-packaging' },
       ] },
       { label: '開発・リファレンス', translations: { en: 'Reference' }, items: [

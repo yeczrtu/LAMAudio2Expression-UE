@@ -2,8 +2,8 @@
 title: "検証結果と対応範囲"
 description: "UE 5.8.2、Windows x64、RTX 3070環境でのLAM Audio2Expressionの数値一致、Blueprint、Shipping、ライブPCM検証と未検証範囲。"
 sidebar: {"label":"検証結果"}
-appliesTo: "公開ソースのスナップショット · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/VALIDATION.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VALIDATION.md"}]
+appliesTo: "公開ソースのスナップショット · UE 5.8.2 / Windows x64 · 事前解析の追記: 1f06ac8 / f3b6f13"
+sources: [{"label":"Demo / Docs/VALIDATION.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VALIDATION.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"},{"label":"Demo / baked-clips-results.json · f3b6f13","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/f3b6f13e98d75d6e23933669adee79319ef3363f/Docs/Validation/baked-clips-results.json"}]
 ---
 
 公開資料の**2026年9月24〜25日**の結果を要約します。環境はUE 5.8.2、Windows x64、Visual Studio 2022 / MSVC 14.44、Core i7-12700、RTX 3070、メモリ64 GBです。配布版・後続ソース版・旧測定を区別して記載します。
@@ -54,3 +54,24 @@ sources: [{"label":"Demo / Docs/VALIDATION.md · 275a683","url":"https://github.
 - 発話全体の主観品質と他キャラクターへの適用。
 
 再実行方法は[開発・リリース](/LAMAudio2Expression-UE/development/)を参照してください。
+
+<span id="baked-clips" class="comparison-anchor" aria-hidden="true"></span>
+
+## 事前解析Clipの検証（2026-09-28）
+
+この節は**プラグイン1f06ac8 / デモf3b6f13、UE 5.8.2 / Win64**の[公開検証記録](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/f3b6f13e98d75d6e23933669adee79319ef3363f/Docs/Validation/baked-clips-results.json)に基づきます。v0.2.0の結果とは別で、本サイト作成時にUEテストを再実行したものではありません。
+
+- 自動テスト12件成功（警告なし10件・警告あり2件、失敗0件）。生成・再生成、データ検証を含みます。
+- Editor / Development / Shippingそれぞれ6件、計18件の再生テストがPASS。各構成に保存済みClipの再生ケースを含みます。
+- 同じ入力・設定によるCPUの動的解析との最大絶対カーブ誤差は0（許容値0.00001）。
+- 保存済みClipの再生ケースではモデル未ロードを確認。再生制御、ルーティング、3D、Concurrencyなども確認しています。
+
+| 構成 | 短いClipのサンプリングP95 | 300秒ClipのサンプリングP95 | 動的Viseme変換P95 |
+| --- | --- | --- | --- |
+| Editor | 0.201 µs | 0.399 µs | 78.700 µs |
+| Development | 0.200 µs | 0.200 µs | 53.800 µs |
+| Shipping | 0.200 µs | 0.300 µs | 65.400 µs |
+
+これらはローカルのマイクロベンチマークです。モデル推論時間、ゲーム全体のフレーム時間、再生開始待ち、物理音声出力までの遅延ではありません。記録はCPU / GPU型番を示していないため、上記の旧測定環境と同一とは扱いません。Viseme変換は保存済みClipから独立した実行時処理です。実マイク取得と生成ダイアログの目視確認は、この記録では未実施です。
+
+[生成・先読み・パッケージ化と再実行手順](/LAMAudio2Expression-UE/baked-clips/)

@@ -3,7 +3,7 @@ title: "導入・リップシンクのトラブル対処"
 description: "モデルが見つからない、表情が動かない、音声が読み込めない、ライブ入力が遅れる場合のLAM Audio2Expression確認手順。"
 sidebar: {"label":"トラブル対処"}
 appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"}]
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## モデルが見つからない
@@ -44,3 +44,7 @@ Windowsのマイク権限、録音デバイス、`On Live State Changed`を確�
 ## 問題を報告する
 
 [プラグインのIssue](https://github.com/yeczrtu/LAMAudio2Expression-UE/issues)か[デモのIssue](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/issues)へ、使用版、UE版、Editor / Shippingなどの構成、CPU / GPU、再現手順、Error.Code / Error.Messageを添えてください。配布版かソース版かも記載すると切り分けやすくなります。
+
+## 事前解析Clipの問題（公開ソース版）
+
+生成メニューが表示されない場合は、v0.2.0 ZIPではなくプラグイン1f06ac8を含むソースでEditorをビルドしたか確認します。`InvalidBakedClip`、生成後の保存、再生成、Cook漏れは[事前解析Clipのトラブル対処](/LAMAudio2Expression-UE/baked-clips/#troubleshooting)を参照してください。

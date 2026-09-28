@@ -54,5 +54,17 @@
       "https://www.facefx.com/",
       "https://www.reallusion.com/iclone/lipsync-animation.html"
     ]
+  },
+  "bakedClips": {
+    "slug": "baked-clips",
+    "reviewedOn": "2026-09-28",
+    "pluginCommit": "1f06ac858413090f00c3f5bb955e1d73653ef74e",
+    "demoCommit": "f3b6f13e98d75d6e23933669adee79319ef3363f",
+    "availability": "Published source only; not included in v0.2.0 release ZIPs.",
+    "validation": "Published test record; no UE tests rerun for the documentation update.",
+    "sources": [
+      "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md",
+      "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/f3b6f13e98d75d6e23933669adee79319ef3363f/Docs/Validation/baked-clips-results.json"
+    ]
   }
 }

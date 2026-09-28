@@ -3,7 +3,7 @@ title: "Models and Windows packaging"
 description: "Configure Unreal Engine cooking for the LAM Audio2Expression model. Understand CPU and DirectML data, model provenance, release checksums, and redistribution notices."
 sidebar: {"label":"Models & packaging"}
 appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"}]
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## Model location
@@ -35,3 +35,7 @@ Record plugin, UE, and model versions together with hashes. Prefer a new release
 ## Distribution notices
 
 MIT for original code and Apache-2.0 for upstream-derived code and model weights have different scopes. Preserve `LICENSE`, `THIRD_PARTY_NOTICES.md`, `Licenses`, model provenance, and conversion notes. Demo audio, visual presentation, and character assets have separate terms. See [licenses and credits](/LAMAudio2Expression-UE/en/licenses/).
+
+## Cook saved clips (published source)
+
+Save Plugin 1f06ac8 [baked clips](/LAMAudio2Expression-UE/en/baked-clips/) after generation and include both clips and source SoundWaves in the cook. Include soft-reference-only assets explicitly, for example through Asset Manager. Saved-clip playback does not load the model, but existing model packaging settings remain unchanged. This feature is not included in the v0.2.0 ZIPs.

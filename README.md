@@ -26,19 +26,19 @@ npm run build
 npm run preview
 ```
 
-The build verifier checks all 28 documents, internal links and fragments, assets,
+The build verifier checks all 30 documents, internal links and fragments, assets,
 unique metadata, self-canonicals, reciprocal language alternates, structured data,
-the sitemap, 404 exclusion, and both 14-page search indexes.
+the sitemap, 404 exclusion, and both 15-page search indexes.
 
 ## Editing documents
 
 Edit Japanese Markdown in `src/content/docs/` and the corresponding English file
 in `src/content/docs/en/` together. Keep the same slug in both languages.
 Each page requires `title`, `description`, `appliesTo`, and pinned `sources`.
-Comparison articles may add `sourceSummary` to describe their external evidence
+Articles may add `sourceSummary` to describe newer source snapshots or external evidence
 instead of the default LAM release note. Link official sources next to claims and
 state the review date and product version. Edit both translations together.
-The comparison page keeps alternate-language heading anchors so switching
+The comparison and baked-clips pages keep alternate-language heading anchors so switching
 languages from a section stays at the corresponding section. Preserve these
 anchors when editing headings and add paired anchors for new translated sections.
 Update source links and version notes when reviewing a new release or commit.
@@ -80,7 +80,11 @@ and search-engine indexing are external to deployment verification.
 
 See `content-sources.json` for the pinned public snapshots and release URLs.
 The initial site covers v0.2.0 and the September 25 public Blueprint demo changes.
-It excludes later Viseme work and unpublished Android investigation.
+The `baked-clips/` guide additionally covers Plugin `1f06ac8` and Demo `f3b6f13`,
+published September 28, 2026. It is explicitly outside the v0.2.0 release ZIPs.
+Keep its source-only availability note, pinned sources, and recorded validation
+conditions together when updating it. Model packaging settings remain unchanged.
+The site does not cover unpublished Android investigation or provide a full Viseme guide.
 The bilingual `lip-sync-comparison/` article additionally summarizes official
 third-party documentation and research reviewed on September 28, 2026. Its
 recommendations are based on published specifications, not new competitive

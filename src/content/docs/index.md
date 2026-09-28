@@ -3,7 +3,7 @@ title: "Unreal Engineで音声から表情をつくる"
 description: "LAM Audio2Expressionは音声からARKit 52表情カーブを生成するUnreal Engineプラグイン。日本語デモ、導入、Blueprintによるリップシンクの手順を解説します。"
 sidebar: {"label":"概要"}
 appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"}]
+sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 <p class="lead">SoundWaveを解析し、声に合わせてキャラクターの口と表情を動かす。LAM Audio2Expressionは、PC内で推論するUnreal Engine用ランタイムプラグインです。</p>
@@ -17,6 +17,10 @@ sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yec
 [プラグインを導入する](/LAMAudio2Expression-UE/installation/) · [Windowsデモを試す](/LAMAudio2Expression-UE/demo/) · [Blueprintの接続を見る](/LAMAudio2Expression-UE/blueprint/)
 
 ## ダウンロード
+
+:::note[公開ソースの新機能：SoundWaveの事前解析]
+収録済みの台詞をエディタで解析・保存し、既存のBlueprintノードで再生できます。[生成・先読み・再生成の手順](/LAMAudio2Expression-UE/baked-clips/)を追加しました。プラグイン1f06ac8以降のソースが必要で、下記v0.2.0のZIPには未収録です。
+:::
 
 用途から選びたい場合は、[音声リップシンク手法の比較](/LAMAudio2Expression-UE/lip-sync-comparison/)でLAM・Audio2Face・MetaHumanなどの出力、感情表現、導入条件を確認できます。
 

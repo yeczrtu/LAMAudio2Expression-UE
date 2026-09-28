@@ -3,7 +3,7 @@ title: "Blueprintで音声と表情を接続する"
 description: "Analyze SoundWave AsyncからPlay Expression Clip、AnimGraphのApply LAM ARKit Curvesまで、Unreal Engineで音声リップシンクを組み立てる手順。"
 sidebar: {"label":"Blueprintの接続"}
 appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"}]
+sources: [{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 音声の解析と、解析結果の再生を分けて接続します。Actorには`LAMAudio2ExpressionComponent`、表示するメッシュにはAnimation Blueprintが必要です。
@@ -50,3 +50,7 @@ Source Componentが空欄なら、SkeletalMeshを所有するActorから検索�
 配布プロジェクトの`/Game/Examples/BP_LAMPlayback`は非同期解析と再生の例、`/Game/Examples/ABP_LAMCurves`はAnimGraphの例です。後者はテスト用スケルトンで作られているため、自分のAnimBPへノード構成をコピーします。
 
 公開ソースのBlueprint顔デモでは、`BP_FaceDemo`の`02_Analyze_And_Play`から接続を確認できます。このデモ実装はv0.2.0 ZIPより新しい版です。[デモのバージョン差](/LAMAudio2Expression-UE/demo/)
+
+## 保存済みClipを使う（公開ソース版）
+
+収録済み音声は[SoundWaveの事前解析](/LAMAudio2Expression-UE/baked-clips/)でClipアセットを生成・保存できます。ロード済みClipをそのまま再生ノードへ渡し、実行時の解析を省きます。プラグイン1f06ac8の機能で、v0.2.0のZIPには未収録です。

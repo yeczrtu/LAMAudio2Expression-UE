@@ -3,7 +3,7 @@ title: "Troubleshoot setup and lip sync"
 description: "Resolve missing models, silent or motionless characters, rejected audio, slow startup, and delayed live input in LAM Audio2Expression for Unreal Engine."
 sidebar: {"label":"Troubleshooting"}
 appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"}]
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## The model cannot be found
@@ -44,3 +44,7 @@ Use `On Playback Finished`. `On Playback Ended` also fires for stops and replace
 ## Report a problem
 
 Open a [plugin issue](https://github.com/yeczrtu/LAMAudio2Expression-UE/issues) or a [demo issue](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/issues). Include the plugin version, UE version, Editor / Shipping configuration, CPU / GPU, reproduction steps, and Error.Code / Error.Message. State whether you are using a release archive or a source build.
+
+## Baked-clip issues (published source)
+
+If the generation menu is missing, build the Editor target from source containing Plugin 1f06ac8; the v0.2.0 ZIP does not include it. See [baked-clip troubleshooting](/LAMAudio2Expression-UE/en/baked-clips/#troubleshooting) for `InvalidBakedClip`, saving generated assets, regeneration, and missing cooked assets.

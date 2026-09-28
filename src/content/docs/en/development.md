@@ -3,7 +3,7 @@ title: "Build from source and prepare a release"
 description: "Check out the documented LAM Audio2Expression source snapshot, generate the UE model, run tests, package Windows builds, and assemble release ZIPs."
 sidebar: {"label":"Development & releases"}
 appliesTo: "Published source snapshot · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/DEVELOPMENT.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/DEVELOPMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"}]
+sources: [{"label":"Demo / Docs/DEVELOPMENT.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/DEVELOPMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 This page targets the **published source snapshot**. For immediate use, install the [model-included v0.2.0 release](/LAMAudio2Expression-UE/en/installation/). The Blueprint face demo described here is newer than the v0.2.0 ZIPs.
@@ -58,3 +58,7 @@ python Tools/assemble_release.py --plugin <BuildPlugin-output> --project <dispos
 ```
 
 The new output directory receives plugin, editable-project, and Windows-demo ZIPs, plus a manifest and checksums. Extract each archive to another short path and verify the model, face demo, and playback controls before publishing matching version tags in both repositories. The linked release source below provides the detailed rules for the disposable project copy.
+
+## Develop and validate baked clips (published source)
+
+This feature was added in Plugin 1f06ac8 / Demo f3b6f13. Build the Editor target before running dedicated checks for generation, regeneration, saving, and playback in another process. The new `-IncludeBaked` option includes the test map in Development / Shipping packages. See [commands and generated assets](/LAMAudio2Expression-UE/en/baked-clips/#examples-and-validation-commands). The v0.2.0 release ZIPs do not contain this feature.
