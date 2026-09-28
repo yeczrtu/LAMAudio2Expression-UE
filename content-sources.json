@@ -1,0 +1,22 @@
+{
+  "reviewedOn": "2026-09-28",
+  "release": "v0.2.0",
+  "plugin": {
+    "repository": "https://github.com/yeczrtu/LAMAudio2Expression-UE",
+    "commit": "3a042193a98f54400dccda3d2cc8a8adc4d70815",
+    "release": "https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/tag/v0.2.0"
+  },
+  "demo": {
+    "repository": "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo",
+    "commit": "275a683a530254451efae8409e6ec2d2f57af6bb",
+    "release": "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/tag/v0.2.0"
+  },
+  "policy": "Manually reviewed public snapshots only. Release artifacts and later Blueprint source changes are explicitly distinguished. No automatic source import.",
+  "media": {
+    "video": "https://github.com/user-attachments/assets/e93530a4-197d-4a56-860c-0890da1002e7",
+    "videoStatus": "HTTP 404 on 2026-09-28. Not embedded; published still image and runnable-demo instructions are displayed instead.",
+    "poster": "Docs/demo-preview.png",
+    "screenshot": "Docs/face-demo.png",
+    "modifications": "Published image files copied unchanged. The upstream poster is a frame extracted at 5 seconds."
+  }
+}

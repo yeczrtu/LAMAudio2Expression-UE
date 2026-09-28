@@ -1,0 +1,93 @@
+import assert from 'node:assert/strict';
+import { existsSync, readFileSync } from 'node:fs';
+import { parseHTML, DOMParser } from 'linkedom';
+
+const root = new URL('../dist/', import.meta.url);
+const base = '/LAMAudio2Expression-UE/';
+const origin = 'https://yeczrtu.github.io';
+const slugs = ['', 'installation', 'demo', 'blueprint', 'expression-curves', 'playback', 'live-input',
+  'models-and-packaging', 'development', 'architecture', 'validation', 'troubleshooting', 'licenses'];
+const expected = slugs.flatMap(slug => ['', 'en/'].map(locale => `${base}${locale}${slug ? slug + '/' : ''}`));
+const documents = new Map();
+const titles = new Set();
+const descriptions = new Set();
+let links = 0;
+
+function localFile(pathname) {
+  assert(pathname.startsWith(base), `URL escapes project base: ${pathname}`);
+  let path = decodeURIComponent(pathname.slice(base.length));
+  if (!path || path.endsWith('/')) path += 'index.html';
+  return new URL(path, root);
+}
+function documentAt(pathname) {
+  if (!documents.has(pathname)) documents.set(pathname, parseHTML(readFileSync(localFile(pathname), 'utf8')).document);
+  return documents.get(pathname);
+}
+
+for (const path of expected) {
+  const doc = documentAt(path);
+  const en = path.startsWith(base + 'en/');
+  const lang = en ? 'en' : 'ja';
+  const url = origin + path;
+  const pairSlug = path.slice(base.length).replace(/^en\//, '');
+  assert.equal(doc.documentElement.lang, lang, `Wrong language: ${path}`);
+  assert.equal(doc.querySelectorAll('h1').length, 1, `Expected one H1: ${path}`);
+  assert.equal(doc.querySelectorAll('link[rel="canonical"]').length, 1, `Duplicate canonical: ${path}`);
+  assert.equal(doc.querySelector('link[rel="canonical"]')?.getAttribute('href'), url, `Canonical: ${path}`);
+  assert.equal(doc.querySelector('meta[property="og:url"]')?.getAttribute('content'), url);
+  assert.equal(doc.querySelectorAll('meta[property="og:locale"]').length, 1);
+  assert.equal(doc.querySelectorAll('meta[name="twitter:card"]').length, 1);
+  assert.equal(doc.querySelectorAll('link[rel="sitemap"]').length, 1);
+  assert(!doc.querySelector('meta[name="robots"]')?.getAttribute('content')?.includes('noindex'), `Accidental noindex: ${path}`);
+  const title = doc.title;
+  const description = doc.querySelector('meta[name="description"]')?.getAttribute('content');
+  assert(title && !titles.has(title), `Missing / duplicate title: ${path}`);
+  assert(description && !descriptions.has(description), `Missing / duplicate description: ${path}`);
+  titles.add(title); descriptions.add(description);
+  assert.equal(doc.querySelector('link[hreflang="ja"]')?.getAttribute('href'), origin + base + pairSlug);
+  assert.equal(doc.querySelector('link[hreflang="en"]')?.getAttribute('href'), origin + base + 'en/' + pairSlug);
+  assert.equal(doc.querySelector('link[hreflang="x-default"]')?.getAttribute('href'), origin + base + pairSlug);
+  const json = doc.querySelector('script[type="application/ld+json"]');
+  assert(json, `Missing structured data: ${path}`);
+  const graph = JSON.parse(json.textContent)['@graph'];
+  assert.equal(graph.find(item => item['@type'] === 'TechArticle')?.url, url);
+  const breadcrumb = graph.find(item => item['@type'] === 'BreadcrumbList');
+  assert.equal(breadcrumb?.itemListElement.at(-1)?.item, url);
+  assert(doc.querySelector('nav.breadcrumbs'));
+  assert(doc.querySelector('.source-note a[href*="/blob/"]'), `Missing pinned source: ${path}`);
+  for (const button of doc.querySelectorAll('.expressive-code button')) {
+    assert.equal(button.getAttribute('title'), en ? 'Copy to clipboard' : 'コードをコピー', `Code control language: ${path}`);
+  }
+  assert(!doc.querySelector('main')?.textContent.includes('§'), `Authoring marker: ${path}`);
+  for (const image of doc.querySelectorAll('img')) assert(image.getAttribute('alt')?.trim(), `Image missing alt: ${path}`);
+  for (const tag of doc.querySelectorAll('[href], [src], [poster]')) {
+    for (const attr of ['href', 'src', 'poster']) {
+      const value = tag.getAttribute(attr);
+      if (!value || /^(data:|mailto:|javascript:)/.test(value)) continue;
+      assert(!value.includes('~/'), `Unresolved authoring path: ${value}`);
+      const target = new URL(value, url);
+      if (target.origin !== origin) continue;
+      assert(existsSync(localFile(target.pathname)), `Broken local resource on ${path}: ${value}`);
+      if (target.hash && (target.pathname.endsWith('/') || target.pathname.endsWith('.html'))) {
+        const targetDoc = documentAt(target.pathname);
+        assert(targetDoc.getElementById(decodeURIComponent(target.hash.slice(1))), `Broken anchor on ${path}: ${value}`);
+      }
+      links++;
+    }
+  }
+}
+const index = new DOMParser().parseFromString(readFileSync(new URL('sitemap-index.xml', root), 'utf8'), 'text/xml');
+const sitemapUrls = [];
+for (const element of index.querySelectorAll('loc')) {
+  const mapUrl = new URL(element.textContent);
+  assert.equal(mapUrl.origin, origin);
+  const map = new DOMParser().parseFromString(readFileSync(localFile(mapUrl.pathname), 'utf8'), 'text/xml');
+  for (const location of map.querySelectorAll('url > loc')) sitemapUrls.push(location.textContent);
+}
+assert.deepEqual(sitemapUrls.sort(), expected.map(path => origin + path).sort(), 'Sitemap must contain exactly 26 canonical documents');
+const notFound = parseHTML(readFileSync(new URL('404.html', root), 'utf8')).document;
+assert(notFound.querySelector('meta[name="robots"]')?.getAttribute('content')?.includes('noindex'));
+assert(existsSync(new URL('pagefind/pagefind.js', root)), 'Missing search bundle');
+const searchEntry = JSON.parse(readFileSync(new URL('pagefind/pagefind-entry.json', root), 'utf8'));
+for (const language of ['ja', 'en']) assert.equal(searchEntry.languages[language]?.page_count, 13, `Search index: ${language}`);
+console.log(`Verified ${expected.length} pages, ${links} local links/assets, reciprocal language links, metadata, JSON-LD, sitemap, 404, and two 13-page search indexes.`);

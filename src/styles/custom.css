@@ -1,0 +1,67 @@
+:root {
+  --sl-color-accent-low: #20204e;
+  --sl-color-accent: #7778f3;
+  --sl-color-accent-high: #d8d8ff;
+  --sl-color-white: #f4f7fc;
+  --sl-color-gray-1: #e1e7f0;
+  --sl-color-gray-2: #b4c0d2;
+  --sl-color-gray-3: #8392a9;
+  --sl-color-gray-4: #405169;
+  --sl-color-gray-5: #243147;
+  --sl-color-gray-6: #151f30;
+  --sl-color-black: #0d1523;
+  --sl-font: 'Segoe UI', 'Noto Sans JP', 'Yu Gothic UI', Meiryo, sans-serif;
+  --sl-content-width: 49rem;
+  --sl-text-body: 1rem;
+  --sl-line-height: 1.8;
+}
+:root[data-theme='light'] {
+  --sl-color-accent-low: #ececff;
+  --sl-color-accent: #4e49bc;
+  --sl-color-accent-high: #302b83;
+  --sl-color-white: #142138;
+  --sl-color-gray-1: #27364e;
+  --sl-color-gray-2: #43516a;
+  --sl-color-gray-3: #62718b;
+  --sl-color-gray-4: #98a6b9;
+  --sl-color-gray-5: #dce2ec;
+  --sl-color-gray-6: #f1f4fa;
+  --sl-color-gray-7: #f8faff;
+  --sl-color-black: #fff;
+}
+.site-title { font-size: 1.08rem; font-weight: 750; letter-spacing: -.025em; }
+.header { border-bottom-color: var(--sl-color-gray-5); }
+h1 { letter-spacing: -.035em; line-height: 1.3; font-size: clamp(1.85rem, 3.3vw, 2.65rem); }
+h2 { letter-spacing: -.02em; }
+.breadcrumbs { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; font-size: .875rem; margin-bottom: 1.1rem; color: var(--sl-color-gray-2); }
+.breadcrumbs a { color: var(--sl-color-gray-2); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.version-line { display: inline-block; margin-top: 1rem; padding: .3rem .65rem; font-size: .875rem; line-height: 1.6; border: 1px solid var(--sl-color-gray-5); border-radius: .25rem; color: var(--sl-color-gray-2); }
+.sl-markdown-content .lead { font-size: 1.12rem; line-height: 1.9; color: var(--sl-color-gray-1); }
+.signal-flow { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; background: var(--sl-color-gray-5); border: 1px solid var(--sl-color-gray-5); border-radius: .45rem; overflow: hidden; margin: 1.75rem 0; }
+.signal-flow > div { margin: 0; padding: 1rem; background: var(--sl-color-gray-6); }
+.signal-flow span { display: block; font-size: .75rem; letter-spacing: .12em; color: var(--sl-color-gray-2); }
+.signal-flow strong { display: block; margin-top: .2rem; font-size: 1.05rem; color: var(--sl-color-white); }
+.signal-flow small { display: block; font-size: .875rem; color: var(--sl-color-gray-2); }
+.download-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .7rem; margin: 1.25rem 0; }
+.download-grid a { display: block; margin: 0; padding: 1rem; border: 1px solid var(--sl-color-gray-5); border-top: 3px solid var(--sl-color-accent); border-radius: .3rem; text-decoration: none; background: var(--sl-color-gray-6); }
+.download-grid a:hover { border-color: var(--sl-color-accent); }
+.download-grid strong { display: block; font-size: 1rem; color: var(--sl-color-white); }
+.download-grid span { display: block; font-size: .875rem; color: var(--sl-color-gray-2); margin-top: .35rem; }
+.demo-player { width: 100%; height: auto; aspect-ratio: 16/9; display: block; border: 1px solid var(--sl-color-gray-5); border-radius: .45rem; background: #10151e; }
+.media-credit { font-size: .875rem; line-height: 1.7; color: var(--sl-color-gray-2); }
+.source-note { border-top: 1px solid var(--sl-color-gray-5); margin-top: 2.5rem; padding-top: 1.25rem; font-size: .875rem; color: var(--sl-color-gray-2); }
+.source-note p { margin: .5rem 0; }
+.source-note ul { padding-inline-start: 1.3rem; }
+.source-note a { color: var(--sl-color-text-accent); }
+.site-credit { font-size: .875rem; margin-top: 1.5rem; color: var(--sl-color-gray-2); }
+.site-credit a { color: inherit; }
+.sl-markdown-content table { font-size: .9375rem; }
+@media (max-width: 38rem) {
+  .download-grid { grid-template-columns: 1fr; }
+  .signal-flow { grid-template-columns: 1fr; }
+  .signal-flow > div { display: grid; grid-template-columns: 6.5rem minmax(0,1fr); column-gap: .75rem; padding: .75rem 1rem; }
+  .signal-flow small { grid-column: 2; }
+  .signal-flow strong { margin: 0; }
+  .site-title { font-size: .94rem; }
+}

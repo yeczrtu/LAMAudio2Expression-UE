@@ -1,0 +1,35 @@
+---
+const base = '/LAMAudio2Expression-UE/';
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>ページが見つかりません / Page not found | LAM Audio2Expression</title>
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <style>
+      :root { color-scheme: light dark; font-family: 'Segoe UI', 'Yu Gothic UI', Meiryo, sans-serif; }
+      body { margin: 0; padding: 2rem; background: #f8faff; color: #142138; line-height: 1.8; }
+      main { max-width: 44rem; margin: 12vh auto; }
+      .label { color: #4e49bc; font-weight: 700; letter-spacing: .04em; }
+      h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.4; }
+      a { color: #4e49bc; text-underline-offset: .2em; }
+      nav { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-top: 2rem; }
+      @media (prefers-color-scheme: dark) { body { background: #0d1523; color: #e1e7f0; } a, .label { color: #d8d8ff; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="label">LAM Audio2Expression · 404</p>
+      <h1>ページが見つかりません</h1>
+      <p>URLが変更されたか、ページが存在しません。ドキュメントのトップまたはサイト内検索からお探しください。</p>
+      <p lang="en">The page could not be found. Visit the documentation home or use its search to find a guide.</p>
+      <nav aria-label="ドキュメント / Documentation">
+        <a href={base}>日本語のドキュメント</a>
+        <a href={`${base}en/`} lang="en">English documentation</a>
+      </nav>
+    </main>
+  </body>
+</html>

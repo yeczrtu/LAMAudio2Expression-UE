@@ -1,0 +1,36 @@
+---
+import DefaultHead from '@astrojs/starlight/components/Head.astro';
+const data = Astro.locals.starlightRoute;
+const is404 = data.id === '404' || Astro.url.pathname.includes('/404');
+const en = data.lang === 'en';
+for (const tag of data.head) {
+  if (tag.attrs?.property === 'og:locale') tag.attrs.content = en ? 'en_US' : 'ja_JP';
+}
+const base = '/LAMAudio2Expression-UE/';
+const home = `https://yeczrtu.github.io${base}${en ? 'en/' : ''}`;
+const canonical = new URL(Astro.url.pathname, 'https://yeczrtu.github.io').href;
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'TechArticle', '@id': canonical + '#article', headline: data.entry.data.title,
+      description: data.entry.data.description, inLanguage: data.lang, url: canonical,
+      isPartOf: { '@type': 'WebSite', name: 'LAM Audio2Expression', url: home },
+      about: { '@type': 'SoftwareApplication', name: 'LAM Audio2Expression for Unreal Engine',
+        operatingSystem: 'Windows x64', applicationCategory: 'DeveloperApplication',
+        url: 'https://github.com/yeczrtu/LAMAudio2Expression-UE' },
+    },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: en ? 'Overview' : '概要', item: home },
+      ...(canonical === home ? [] : [{ '@type': 'ListItem', position: 2,
+        name: data.entry.data.title, item: canonical }]),
+    ] },
+  ],
+};
+---
+<DefaultHead />
+{is404 ? <meta name="robots" content="noindex" /> : <>
+  <meta property="og:locale:alternate" content={en ? 'ja_JP' : 'en_US'} />
+  <meta property="og:image" content="https://yeczrtu.github.io/LAMAudio2Expression-UE/images/demo-preview.png" />
+  <meta property="og:image:alt" content={en ? 'LAM Audio2Expression face demo in Unreal Engine' : 'Unreal Engineで動作するLAM Audio2Expressionの顔デモ'} />
+  <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\u003c')} />
+</>}

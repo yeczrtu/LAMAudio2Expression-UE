@@ -1,0 +1,60 @@
+---
+title: "ソースからのビルドとリリース手順"
+description: "LAM Audio2Expressionの公開ソースを固定コミットで取得し、UE 5.8.2向けモデル生成、テスト、WindowsパッケージとRelease ZIPを作成する手順。"
+sidebar: {"label":"開発・リリース"}
+appliesTo: "公開ソースのスナップショット · UE 5.8.2 / Windows x64"
+sources: [{"label":"Demo / Docs/DEVELOPMENT.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/DEVELOPMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"}]
+---
+
+このページは**公開ソースのスナップショット**を対象とします。すぐに使う場合は[モデル入りv0.2.0](/LAMAudio2Expression-UE/installation/)を利用してください。Blueprint版の顔デモはv0.2.0 ZIPより新しい実装です。
+
+## 開発環境
+
+UE 5.8.2、Visual Studio 2022のC++開発環境、Python 3.10、Gitを用意します。以下の例ではUEを`D:\Unreal\UE_5.8`へ配置しています。実際の場所に置き換えてください。
+
+## ドキュメントと同じ版を取得する
+
+```powershell
+git clone --recurse-submodules https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo.git
+cd LAMAudio2Expression-UE-Demo
+git checkout 275a683a530254451efae8409e6ec2d2f57af6bb
+git submodule update --init --recursive
+./Tools/setup.ps1 -Engine D:\Unreal\UE_5.8
+```
+
+このcheckoutは参照版を再現するためのものです。変更を保存する場合は作業用ブランチを作成してください。既存cloneを更新する場合も、サブモジュールの初期化が必要です。
+
+setupは専用の`.work/venv`を使用し、固定リビジョンのモデル取得、SHA-256照合、ONNX変換、数値比較、UEモデルアセット・テスト用アセット生成を行います。Python、PyTorch、ネットワークは開発時に必要ですが、配布アプリの推論には不要です。
+
+:::caution[生成対象]
+setupは`/Game/LAMDemo`と`/Game/Audio`のテストデータを再生成します。編集している場合は先にバックアップしてください。顔デモ自体は再生成しません。
+:::
+
+## ビルドとテスト
+
+プロジェクトのルートで実行します。
+
+```powershell
+./Tools/test.ps1 -Engine D:\Unreal\UE_5.8
+./Tools/package.ps1 -Configuration Development
+./Tools/package.ps1 -Configuration Shipping
+./Tools/smoke.ps1 -Configuration Development
+./Tools/smoke.ps1 -Configuration Shipping
+./Tools/test_playback_controls.ps1 -Configuration Shipping
+./Tools/test_face_demo.ps1 -Configuration Shipping -OutputDirectory Artifacts/BPChecks-Shipping
+```
+
+再生制御と顔デモのテストはEditor / Development / Shippingそれぞれで実行できます。Shippingの実行ファイルは`Artifacts/Shipping/Windows/LAMDemo.exe`です。配布にはWindowsフォルダー全体を使います。
+
+## Release ZIPの作成
+
+1. モデルを生成し、`Docs/model-manifest.json`とハッシュを照合します。
+2. `RunUAT.bat BuildPlugin`でプラグインをWin64向けにビルドします。出力先は新規の短いパスを指定します。このコマンドは出力先を空にします。
+3. デモの配布用コピーを別ディレクトリに作り、`Tools/prepare_release_examples.py`で配布用接続例を生成します。検証済みモデルをコピーし、BuildCookRunでShippingを作成します。
+4. 次のコマンドで配布物をまとめます。山括弧部分は実際のパスに置き換えます。
+
+```powershell
+python Tools/assemble_release.py --plugin <BuildPlugin-output> --project <disposable-project-directory> --shipping <Shipping-archive>/Windows --output <new-output-directory>
+```
+
+新規出力先に、プラグイン・編集用プロジェクト・Windows実行版のZIP、マニフェスト、チェックサムを作成します。各ZIPを別の短いパスへ展開してモデル・顔デモ・再生制御を検証してから、両リポジトリの同じバージョンタグへ公開します。詳細な配布用コピーの条件はページ末尾のRelease原文を参照してください。

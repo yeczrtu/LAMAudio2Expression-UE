@@ -1,0 +1,13 @@
+---
+import DefaultPageTitle from '@astrojs/starlight/components/PageTitle.astro';
+const { lang, entry } = Astro.locals.starlightRoute;
+const en = lang === 'en';
+const home = `/LAMAudio2Expression-UE/${en ? 'en/' : ''}`;
+const isHome = Astro.url.pathname === home;
+---
+<nav class="breadcrumbs" aria-label={en ? 'Breadcrumb' : 'パンくず'} data-pagefind-ignore>
+  <a href={home}>LAM Audio2Expression</a>
+  {!isHome && <><span aria-hidden="true">/</span><span aria-current="page">{entry.data.title}</span></>}
+</nav>
+<DefaultPageTitle />
+{entry.data.appliesTo && <p class="version-line" data-pagefind-ignore>{entry.data.appliesTo}</p>}
