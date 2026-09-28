@@ -57,6 +57,8 @@ AnimGraph   元のポーズ → Apply LAM ARKit Curves → Output Pose
 
 ## ドキュメント
 
+[Wav2ARKit CPUモデルの導入](Docs/WAV2ARKIT.md) — 既存Model設定で切り替え。CPU推論・identity 11固定。
+
 [あいうえお・Oculus互換Visemeへの変換](Docs/VISEMES.md) — 5母音ルール、OpenFaceFX/TalkingHeadテンプレート逆算、モーフ名・強度の設定と専用AnimGraphノード。
 
 [Blueprint・表情・ライブ入力](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/USAGE.md) · [検証結果](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VALIDATION.md) · [ソースからビルド](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/DEVELOPMENT.md) · [問題を報告](https://github.com/yeczrtu/LAMAudio2Expression-UE/issues)

@@ -29,6 +29,16 @@
 #include "Misc/PackageName.h"
 #include "NNEModelData.h"
 
+bool ULAMEditorLibrary::ConfigureCPUModel(UNNEModelData* Model)
+{
+    if (!Model)
+        return false;
+    const TArray<FString> Runtimes = {TEXT("NNERuntimeORTCpu")};
+    Model->SetTargetRuntimes(Runtimes);
+    Model->MarkPackageDirty();
+    return true;
+}
+
 static bool SaveLAMAsset(UObject *Object)
 {
     FSavePackageArgs Args;

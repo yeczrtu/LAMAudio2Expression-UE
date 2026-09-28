@@ -23,6 +23,8 @@ class FLAMBakeIntegration : public IAutomationLatentCommand
     double Start = FPlatformTime::Seconds();
     int32 Stage = 0;
     bool PreferGPU = GetDefault<ULAMSettings>()->bPreferGPU;
+    TSoftObjectPtr<UNNEModelData> PreviousModel = GetDefault<ULAMSettings>()->Model;
+    bool Wav2ARKit = false;
     TStrongObjectPtr<ULAMBakedExpressionClip> Clip;
     TStrongObjectPtr<ULAMAudio2ExpressionComponent> Component;
     TStrongObjectPtr<ULAMAnalyzeAsync> Dynamic;
@@ -32,12 +34,25 @@ class FLAMBakeIntegration : public IAutomationLatentCommand
     TStrongObjectPtr<ULAMCurveProfile> Collision;
     TStrongObjectPtr<ULAMBakedExpressionClip> CollisionClip;
     TArray<float> Original;
+    TArray<float> OtherModelCurves;
+
+    void StartDynamicWithModel(const TSoftObjectPtr<UNNEModelData>& Model)
+    {
+        GetMutableDefault<ULAMSettings>()->Model = Model;
+        Receiver->Completions = Receiver->Failures = 0;
+        Receiver->LastClip = nullptr;
+        Dynamic.Reset(ULAMAnalyzeAsync::AnalyzeSoundWaveAsync(Component.Get(), Clip->SoundWave, Clip->Settings));
+        Dynamic->Completed.AddDynamic(Receiver.Get(), &ULAMTestReceiver::Completed);
+        Dynamic->Failed.AddDynamic(Receiver.Get(), &ULAMTestReceiver::Failed);
+        Dynamic->Activate();
+    }
 
   public:
-    explicit FLAMBakeIntegration(FAutomationTestBase *T) : Test(T) {}
+    explicit FLAMBakeIntegration(FAutomationTestBase *T, bool UseWav2ARKit = false) : Test(T), Wav2ARKit(UseWav2ARKit) {}
     ~FLAMBakeIntegration()
     {
         GetMutableDefault<ULAMSettings>()->bPreferGPU = PreferGPU;
+        GetMutableDefault<ULAMSettings>()->Model = PreviousModel;
         if (Dynamic)
             Dynamic->Cancel();
         if (Offline)
@@ -55,13 +70,16 @@ class FLAMBakeIntegration : public IAutomationLatentCommand
         }
         if (Stage == 0)
         {
+            if (Wav2ARKit)
+                GetMutableDefault<ULAMSettings>()->Model = TSoftObjectPtr<UNNEModelData>(
+                    FSoftObjectPath(TEXT("/LAMAudio2Expression/Models/Wav2ARKit_CPU.Wav2ARKit_CPU")));
             GetMutableDefault<ULAMSettings>()->bPreferGPU = false;
             TArray<USoundWave *> Sounds;
             for (const TCHAR *Name : {TEXT("speech_stream"), TEXT("short_inline"), TEXT("fraction_stream"),
                                       TEXT("silence_inline"), TEXT("one_inline"), TEXT("inline_concurrency")})
             {
                 auto *Sound =
-                    LoadObject<USoundWave>(nullptr, *(FString(TEXT("/Game/Audio/")) + Name + TEXT(".") + Name));
+                    LoadObject<USoundWave>(nullptr, *(FString(Wav2ARKit ? TEXT("/Game/Wav2ARKitTests/") : TEXT("/Game/Audio/")) + Name + TEXT(".") + Name));
                 if (!Test->TestNotNull(TEXT("Bake fixture sound"), Sound))
                     return true;
                 Sounds.Add(Sound);
@@ -125,8 +143,40 @@ class FLAMBakeIntegration : public IAutomationLatentCommand
                 MaxError = FMath::Max(MaxError, FMath::Abs(Original[I] - Reference->Curves[I]));
             Test->TestTrue(TEXT("Dynamic and baked CPU curves match within 1e-5"), MaxError <= 1.e-5f);
             Test->AddInfo(FString::Printf(TEXT("Baked/dynamic max_error=%.9f"), MaxError));
+            if (Wav2ARKit)
+            {
+                StartDynamicWithModel(PreviousModel);
+                Stage = 20;
+                return false;
+            }
             Test->TestTrue(TEXT("Regenerate starts"), Baker->RegenerateClips({Clip.Get()}));
             Stage = 3;
+            return false;
+        }
+        if (Stage >= 20 && Stage <= 22)
+        {
+            if (Receiver->Failures) { Test->AddError(TEXT("Model-switch analysis failed")); return true; }
+            if (!Receiver->Completions) return false;
+            if (Stage == 20)
+            {
+                OtherModelCurves = Receiver->LastClip->Curves;
+                Test->TestTrue(TEXT("Different models produce distinct fixture curves"), OtherModelCurves != Original);
+                StartDynamicWithModel(TSoftObjectPtr<UNNEModelData>(FSoftObjectPath(Clip->ModelPath)));
+                Stage = 21;
+            }
+            else if (Stage == 21)
+            {
+                Test->TestTrue(TEXT("Switching back retrieves Wav2ARKit cache"), Receiver->LastClip->Curves == Original);
+                StartDynamicWithModel(PreviousModel);
+                Stage = 22;
+            }
+            else
+            {
+                Test->TestTrue(TEXT("LAM cache remains separate"), Receiver->LastClip->Curves == OtherModelCurves);
+                GetMutableDefault<ULAMSettings>()->Model = TSoftObjectPtr<UNNEModelData>(FSoftObjectPath(Clip->ModelPath));
+                Test->TestTrue(TEXT("Regenerate starts"), Baker->RegenerateClips({Clip.Get()}));
+                Stage = 3;
+            }
             return false;
         }
         if (Stage == 3)
@@ -234,6 +284,18 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLAMBakeIntegrationTest, "LAM.Bake.GenerateAndR
 bool FLAMBakeIntegrationTest::RunTest(const FString &)
 {
     ADD_LATENT_AUTOMATION_COMMAND(FLAMBakeIntegration(this));
+    return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLAMWav2ARKitBakeTest, "LAM.Wav2ARKit.Bake",
+                                 EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+bool FLAMWav2ARKitBakeTest::RunTest(const FString &)
+{
+    if (FParse::Param(FCommandLine::Get(), TEXT("LAMWav2ARKitTests")))
+    {
+        ADD_LATENT_AUTOMATION_COMMAND(FLAMBakeIntegration(this, true));
+    }
+    else
+        AddInfo(TEXT("Optional Wav2ARKit bake test requires -LAMWav2ARKitTests."));
     return true;
 }
 #endif

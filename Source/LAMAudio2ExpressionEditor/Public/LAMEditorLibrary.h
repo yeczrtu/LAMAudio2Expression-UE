@@ -7,6 +7,8 @@ class LAMAUDIO2EXPRESSIONEDITOR_API ULAMEditorLibrary : public UBlueprintFunctio
 {
     GENERATED_BODY()
   public:
+    UFUNCTION(BlueprintCallable, Category = "LAM|Editor")
+    static bool ConfigureCPUModel(class UNNEModelData* Model);
     UFUNCTION(BlueprintCallable, Category = "LAM|Editor") static bool CreateExamples();
     UFUNCTION(BlueprintCallable, Category = "LAM|Editor")
     static bool CreateBakedExample(class ULAMBakedExpressionClip* Clip);

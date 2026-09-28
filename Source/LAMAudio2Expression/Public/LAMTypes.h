@@ -13,7 +13,7 @@ USTRUCT(BlueprintType)
 struct LAMAUDIO2EXPRESSION_API FLAMAnalysisSettings
 {
     GENERATED_BODY()
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LAM", meta = (ClampMin = "0", ClampMax = "11"))
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LAM", meta = (ClampMin = "0", ClampMax = "11", ToolTip = "LAM speaker identity (0-11). Wav2ARKit always uses identity 11 and ignores this setting."))
     int32 Style = 0;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LAM") bool bSmooth = true;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LAM") bool bSuppressSilentMouth = true;

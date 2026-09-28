@@ -16,7 +16,8 @@ LAM::FModels LAM::CreateModels(UNNEModelData *Data, bool PreferGPU)
     if (!Data)
         return M;
     M.Key = Data->GetFileId().ToString();
-    if (PreferGPU)
+    const auto Targets = Data->GetTargetRuntimes();
+    if (PreferGPU && (Targets.IsEmpty() || Targets.Contains(TEXT("NNERuntimeORTDml"))))
     {
         auto R = UE::NNE::GetRuntime<INNERuntimeGPU>(TEXT("NNERuntimeORTDml"));
         if (R.IsValid())
@@ -72,6 +73,22 @@ bool LAM::InferWindow(const TArray<float> &Audio, int32 Style, const FModels &Mo
                       TSharedPtr<UE::NNE::IModelInstanceRunSync> &Instance, bool &UsingGPU, TArray<float> &Output, float* InitializationMs)
 {
     using namespace UE::NNE;
+    if (Audio.Num() != Window)
+        return false;
+    auto IsWav2ARKit = [&]()
+    {
+        const auto Inputs = Instance->GetInputTensorDescs(), Outputs = Instance->GetOutputTensorDescs();
+        return Inputs.Num() == 1 && Outputs.Num() == 1 && Inputs[0].GetName() == TEXT("audio_waveform") &&
+               Outputs[0].GetName() == TEXT("blendshapes");
+    };
+    auto HasExpectedOutputShape = [&]()
+    {
+        const auto Shapes = Instance->GetOutputTensorShapes();
+        if (Shapes.Num() != 1 || Shapes[0].Rank() != 3)
+            return false;
+        const auto Dims = Shapes[0].GetData();
+        return Dims[0] == 1 && Dims[1] == WindowFrames && Dims[2] == CurveCount;
+    };
     auto Init = [&]()
     {
         const double InitStart = FPlatformTime::Seconds();
@@ -90,8 +107,10 @@ bool LAM::InferWindow(const TArray<float> &Audio, int32 Style, const FModels &Mo
         if (!Instance)
             return false;
         const auto Inputs = Instance->GetInputTensorDescs(), Outputs = Instance->GetOutputTensorDescs();
-        if (Inputs.Num() != 2 || Outputs.Num() != 1 || Inputs[0].GetName() != TEXT("audio") ||
-            Inputs[1].GetName() != TEXT("identity") || Outputs[0].GetName() != TEXT("curves"))
+        const bool Wav2ARKit = IsWav2ARKit();
+        const bool OriginalLAM = Inputs.Num() == 2 && Outputs.Num() == 1 && Inputs[0].GetName() == TEXT("audio") &&
+                                 Inputs[1].GetName() == TEXT("identity") && Outputs[0].GetName() == TEXT("curves");
+        if (!Wav2ARKit && !OriginalLAM)
             return false;
         for (const auto &Desc : Inputs)
             if (Desc.GetDataType() != ENNETensorDataType::Float)
@@ -100,10 +119,11 @@ bool LAM::InferWindow(const TArray<float> &Audio, int32 Style, const FModels &Mo
             return false;
         const uint32 A[] = {1, 34133}, B[] = {1, 12};
         const FTensorShape Shapes[] = {FTensorShape::Make(A), FTensorShape::Make(B)};
-        if (Instance->SetInputTensorShapes(Shapes) != EResultStatus::Ok)
+        if (Instance->SetInputTensorShapes(MakeArrayView(Shapes, Wav2ARKit ? 1 : 2)) != EResultStatus::Ok)
             return false;
         const auto OutputShapes = Instance->GetOutputTensorShapes();
-        return OutputShapes.Num() == 1 && OutputShapes[0].Volume() == 64 * 52;
+        // ORT resolves Wav2ARKit's symbolic frame dimension on its first RunSync.
+        return (Wav2ARKit && OutputShapes.IsEmpty()) || HasExpectedOutputShape();
     };
     auto Run = [&]()
     {
@@ -118,7 +138,8 @@ bool LAM::InferWindow(const TArray<float> &Audio, int32 Style, const FModels &Mo
         FTensorBindingCPU In[] = {{const_cast<float *>(Audio.GetData()), uint64(Audio.Num() * sizeof(float))},
                                   {Identity, sizeof(Identity)}};
         FTensorBindingCPU Out[] = {{Output.GetData(), uint64(Output.Num() * sizeof(float))}};
-        if (Instance->RunSync(In, Out) != EResultStatus::Ok)
+        if (Instance->RunSync(MakeArrayView(In, IsWav2ARKit() ? 1 : 2), Out) != EResultStatus::Ok ||
+            !HasExpectedOutputShape())
             return false;
         for (float V : Output)
             if (!FMath::IsFinite(V))
@@ -251,7 +272,7 @@ void LAM::Analyze(const TArray<float> &PCM, const FModels &Models, const FLAMAna
         MakeWindow(PCM, Offset + Rate, WindowData);
         if (!InferWindow(WindowData, S.Style, Models, Instance, GPU, Output))
         {
-            Job.Error = TEXT("ONNX inference failed on GPU and CPU. Verify the fixed-shape model and cooked runtimes.");
+            Job.Error = TEXT("ONNX inference failed. Verify LAM/Wav2ARKit tensor I/O and cooked runtimes.");
             return;
         }
         const int Remaining = Frames - Job.Curves.Num() / 52, Count = FMath::Min(30, Remaining);

@@ -1,0 +1,16 @@
+{
+  "repository": "myned-ai/wav2arkit_cpu",
+  "revision": "48b7d27a147d4dfcce4c8225b11209ce4cd76e05",
+  "license": "Apache-2.0",
+  "files": {
+    "wav2arkit_cpu.onnx": {"size": 1862753, "sha256": "cdecbfad3915dd20b2f0718942d0b8894b2ee11edcc5a9a9da45d29a46af2ed9"},
+    "wav2arkit_cpu.onnx.data": {"size": 402063360, "sha256": "c0f0364673c6e50be126b193e2b56809c16ac6bee4805aea9b8251ce53429bf8"}
+  },
+  "input": {"audio_waveform": [1, 34133]},
+  "output": {"blendshapes": [1, 64, 52]},
+  "opset": 18,
+  "identity": 11,
+  "unreal_asset": "/LAMAudio2Expression/Models/Wav2ARKit_CPU",
+  "runtimes": ["NNERuntimeORTCpu"],
+  "changes": "None. Original ONNX and external weights are imported together; the runtime uses fixed 34133-sample windows."
+}

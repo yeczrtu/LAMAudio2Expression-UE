@@ -18,6 +18,12 @@ No FLAME meshes, Gaussian avatar renderer, character meshes, demo audio or audio
 
 License scope: original integration code and tools are MIT (see LICENSE). The adapted LAMCore.cpp, LAMTypes.cpp and LAMLive.cpp retain Apache-2.0. They port the coefficient order and processing to UE C++, replace chunk-state handling with integer timelines, add selectable postprocessing and deterministic blinking, and integrate CPU/DirectML inference. Upstream weights retain Apache-2.0 and are not relicensed under MIT. No weights or generated model assets are tracked in Git.
 
+## Optional Wav2ARKit model
+
+Myned AI / myned-ai/wav2arkit_cpu: https://huggingface.co/myned-ai/wav2arkit_cpu
+Pinned revision: `48b7d27a147d4dfcce4c8225b11209ce4cd76e05`. The publisher declares Apache-2.0; see Licenses/Apache-2.0.txt.
+Based on 3DAIGC/LAM_audio2exp and facebook/wav2vec2-base-960h. The ONNX graph and external weights are imported without modification, for CPU inference at fixed 34133-sample windows; speaker identity 11 is baked into the published graph. Source hashes and asset/runtime configuration are in Docs/wav2arkit-model-manifest.json. The original files and generated UE model asset are not tracked in Git.
+
 ## Viseme template recipes
 
 The optional ARKit-to-viseme fitter uses these pinned MIT-licensed forward recipes as its basis:
