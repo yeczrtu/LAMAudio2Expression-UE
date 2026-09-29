@@ -11,6 +11,13 @@
 
 ## デモ動画
 
+
+
+https://github.com/user-attachments/assets/659a6299-e75d-4d41-b43c-ae6f99a4ae73
+
+
+
+
 https://github.com/user-attachments/assets/e93530a4-197d-4a56-860c-0890da1002e7
 
 日本語音声6件／1分24秒・音声あり。動画・音声・デモ演出：CC BY-SA 4.0。キャラクター：hinzka / VRoid、音声：JVNV / litagin。[出典・利用条件](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/master/Docs/VIDEO.md)
