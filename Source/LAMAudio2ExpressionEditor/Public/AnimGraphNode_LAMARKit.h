@@ -3,7 +3,7 @@
 #include "AnimGraphNode_Base.h"
 #include "AnimNode_LAMARKit.h"
 #include "AnimGraphNode_LAMARKit.generated.h"
-UCLASS()
+UCLASS(meta = (Keywords = "Lipsync"))
 class LAMAUDIO2EXPRESSIONEDITOR_API UAnimGraphNode_LAMARKit : public UAnimGraphNode_Base
 {
     GENERATED_BODY()

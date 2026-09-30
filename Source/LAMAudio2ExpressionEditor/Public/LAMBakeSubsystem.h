@@ -28,17 +28,17 @@ class LAMAUDIO2EXPRESSIONEDITOR_API ULAMBakeSubsystem : public UEditorSubsystem
 {
     GENERATED_BODY()
   public:
-    UFUNCTION(BlueprintCallable, Category = "LAM|Editor")
+    UFUNCTION(BlueprintCallable, Category = "LAM|Editor", meta = (Keywords = "Lipsync"))
     bool GenerateClips(const TArray<USoundWave *> &Sounds, FLAMAnalysisSettings Settings);
-    UFUNCTION(BlueprintCallable, Category = "LAM|Editor")
+    UFUNCTION(BlueprintCallable, Category = "LAM|Editor", meta = (Keywords = "Lipsync"))
     bool RegenerateClips(const TArray<ULAMBakedExpressionClip *> &Clips);
-    UFUNCTION(BlueprintCallable, Category = "LAM|Editor") void Cancel();
-    UFUNCTION(BlueprintPure, Category = "LAM|Editor") bool IsBusy() const
+    UFUNCTION(BlueprintCallable, Category = "LAM|Editor", meta = (Keywords = "Lipsync")) void Cancel();
+    UFUNCTION(BlueprintPure, Category = "LAM|Editor", meta = (Keywords = "Lipsync")) bool IsBusy() const
     {
         return bBusy;
     }
-    UFUNCTION(BlueprintPure, Category = "LAM|Editor") float GetProgress() const;
-    UFUNCTION(BlueprintPure, Category = "LAM|Editor") FString GetStatus() const
+    UFUNCTION(BlueprintPure, Category = "LAM|Editor", meta = (Keywords = "Lipsync")) float GetProgress() const;
+    UFUNCTION(BlueprintPure, Category = "LAM|Editor", meta = (Keywords = "Lipsync")) FString GetStatus() const
     {
         return Status;
     }

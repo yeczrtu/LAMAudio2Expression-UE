@@ -28,41 +28,41 @@ class LAMAUDIO2EXPRESSION_API ULAMAudio2ExpressionComponent : public UActorCompo
     UPROPERTY(BlueprintAssignable, Category="LAM|Audio") FLAMPlaybackEndedEvent OnPlaybackEnded;
     UPROPERTY(BlueprintAssignable, Category="LAM|Audio") FLAMPlaybackFailedEvent OnPlaybackFailed;
     UPROPERTY(BlueprintAssignable, Category="LAM|Audio") FLAMPlaybackEvent OnPlaybackStateChanged;
-    UFUNCTION(BlueprintCallable, Category="LAM|Audio") bool PlayExpressionClipWithSettings(ULAMExpressionClip* Clip, const FLAMAudioPlaybackSettings& Settings, float StartTime = 0);
-    UFUNCTION(BlueprintCallable, Category="LAM|Audio") void SetOutputSubmix(USoundSubmixBase* Submix);
-    UFUNCTION(BlueprintCallable, Category="LAM|Audio") bool SetSubmixSend(USoundSubmixBase* Submix, float Level);
-    UFUNCTION(BlueprintCallable, Category="LAM|Audio") void RemoveSubmixSend(USoundSubmixBase* Submix);
-    UFUNCTION(BlueprintCallable, Category="LAM|Audio") bool SetVolume(float Volume);
-    UFUNCTION(BlueprintCallable, Category="LAM|Audio") void SetMuted(bool Muted);
-    UFUNCTION(BlueprintCallable, Category="LAM|Audio") bool FadeOutAndStop(float Duration);
-    UFUNCTION(BlueprintPure, Category="LAM|Audio") FLAMPlaybackInfo GetPlaybackInfo() const;
-    UFUNCTION(BlueprintCallable, Category = "LAM")
+    UFUNCTION(BlueprintCallable, Category="LAM|Audio", meta = (Keywords = "Lipsync")) bool PlayExpressionClipWithSettings(ULAMExpressionClip* Clip, const FLAMAudioPlaybackSettings& Settings, float StartTime = 0);
+    UFUNCTION(BlueprintCallable, Category="LAM|Audio", meta = (Keywords = "Lipsync")) void SetOutputSubmix(USoundSubmixBase* Submix);
+    UFUNCTION(BlueprintCallable, Category="LAM|Audio", meta = (Keywords = "Lipsync")) bool SetSubmixSend(USoundSubmixBase* Submix, float Level);
+    UFUNCTION(BlueprintCallable, Category="LAM|Audio", meta = (Keywords = "Lipsync")) void RemoveSubmixSend(USoundSubmixBase* Submix);
+    UFUNCTION(BlueprintCallable, Category="LAM|Audio", meta = (Keywords = "Lipsync")) bool SetVolume(float Volume);
+    UFUNCTION(BlueprintCallable, Category="LAM|Audio", meta = (Keywords = "Lipsync")) void SetMuted(bool Muted);
+    UFUNCTION(BlueprintCallable, Category="LAM|Audio", meta = (Keywords = "Lipsync")) bool FadeOutAndStop(float Duration);
+    UFUNCTION(BlueprintPure, Category="LAM|Audio", meta = (Keywords = "Lipsync")) FLAMPlaybackInfo GetPlaybackInfo() const;
+    UFUNCTION(BlueprintCallable, Category = "LAM", meta = (Keywords = "Lipsync"))
     bool PlayExpressionClip(ULAMExpressionClip *Clip, float StartTime = 0);
-    UFUNCTION(BlueprintCallable, Category = "LAM") void Pause();
-    UFUNCTION(BlueprintCallable, Category = "LAM") void Resume();
-    UFUNCTION(BlueprintCallable, Category = "LAM") void Stop();
-    UFUNCTION(BlueprintCallable, Category = "LAM") bool Seek(float TimeSeconds);
-    UFUNCTION(BlueprintCallable, Category = "LAM") void CancelAnalysis();
-    UFUNCTION(BlueprintPure, Category = "LAM") FLAMExpressionFrame GetCurrentExpressionFrame() const
+    UFUNCTION(BlueprintCallable, Category = "LAM", meta = (Keywords = "Lipsync")) void Pause();
+    UFUNCTION(BlueprintCallable, Category = "LAM", meta = (Keywords = "Lipsync")) void Resume();
+    UFUNCTION(BlueprintCallable, Category = "LAM", meta = (Keywords = "Lipsync")) void Stop();
+    UFUNCTION(BlueprintCallable, Category = "LAM", meta = (Keywords = "Lipsync")) bool Seek(float TimeSeconds);
+    UFUNCTION(BlueprintCallable, Category = "LAM", meta = (Keywords = "Lipsync")) void CancelAnalysis();
+    UFUNCTION(BlueprintPure, Category = "LAM", meta = (Keywords = "Lipsync")) FLAMExpressionFrame GetCurrentExpressionFrame() const
     {
         return Frame;
     }
-    UFUNCTION(BlueprintPure, Category = "LAM") float GetARKitCurveValue(FName Name) const;
-    UFUNCTION(BlueprintPure, Category = "LAM") static TArray<FName> GetARKitCurveNames();
-    UFUNCTION(BlueprintCallable, Category = "LAM|Live")
+    UFUNCTION(BlueprintPure, Category = "LAM", meta = (Keywords = "Lipsync")) float GetARKitCurveValue(FName Name) const;
+    UFUNCTION(BlueprintPure, Category = "LAM", meta = (Keywords = "Lipsync")) static TArray<FName> GetARKitCurveNames();
+    UFUNCTION(BlueprintCallable, Category = "LAM|Live", meta = (Keywords = "Lipsync"))
     bool StartMicrophone(FLAMAnalysisSettings Settings, int32 DeviceIndex = -1);
-    UFUNCTION(BlueprintCallable, Category = "LAM|Live") bool StartPCMStream(FLAMAnalysisSettings Settings);
-    UFUNCTION(BlueprintCallable, Category = "LAM|Live") void StopMicrophone();
-    UFUNCTION(BlueprintCallable, Category = "LAM|Live")
+    UFUNCTION(BlueprintCallable, Category = "LAM|Live", meta = (Keywords = "Lipsync")) bool StartPCMStream(FLAMAnalysisSettings Settings);
+    UFUNCTION(BlueprintCallable, Category = "LAM|Live", meta = (Keywords = "Lipsync")) void StopMicrophone();
+    UFUNCTION(BlueprintCallable, Category = "LAM|Live", meta = (Keywords = "Lipsync"))
     bool PushPCMAudio(const TArray<float> &InterleavedPCM, int32 SampleRate, int32 Channels);
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LAM|Live", meta = (ClampMin = "0.4", ClampMax = "2.0"))
     float PresentationDelay = 0.75f;
     UPROPERTY(BlueprintReadOnly, Category = "LAM|Live") float InferenceP95Milliseconds = 0;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintSetter=SetLiveInferenceInterval, Category="LAM|Live", meta=(ClampMin="33.333333", ClampMax="1000"))
     float LiveInferenceIntervalMilliseconds = 1000.f / 3;
-    UFUNCTION(BlueprintSetter, Category="LAM|Live") void SetLiveInferenceInterval(float Milliseconds);
-    UFUNCTION(BlueprintPure, Category="LAM|Live") float GetLiveInferenceInterval() const;
-    UFUNCTION(BlueprintPure, Category="LAM|Live") FLAMLiveMetrics GetLiveMetrics() const { return LiveMetrics; }
+    UFUNCTION(BlueprintSetter, Category="LAM|Live", meta = (Keywords = "Lipsync")) void SetLiveInferenceInterval(float Milliseconds);
+    UFUNCTION(BlueprintPure, Category="LAM|Live", meta = (Keywords = "Lipsync")) float GetLiveInferenceInterval() const;
+    UFUNCTION(BlueprintPure, Category="LAM|Live", meta = (Keywords = "Lipsync")) FLAMLiveMetrics GetLiveMetrics() const { return LiveMetrics; }
     UPROPERTY(BlueprintAssignable, Category="LAM|Live") FLAMLiveStateEvent OnLiveStateChanged;
     void SetAnalysis(ULAMAnalyzeAsync *Action);
 

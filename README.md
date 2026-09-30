@@ -51,6 +51,8 @@ https://github.com/user-attachments/assets/e93530a4-197d-4a56-860c-0890da1002e7
 
 ## Blueprintで使う
 
+BP／AnimationBPのノード追加メニューで **`Lipsync`** と検索すると、LAMの公開関数や **Apply LAM ARKit Curves**／**Apply LAM Viseme Curves** を見つけられます。Editor用の公開関数も対象です。表示される候補はグラフの種類と「Context Sensitive」の設定によって変わります。コンポーネントの関数は、その参照ピンから検索すると見つけやすくなります。
+
 Actorに **LAMAudio2ExpressionComponent** を追加し、コンポーネントとSoundWaveを解析ノードに渡します。
 
 ```text

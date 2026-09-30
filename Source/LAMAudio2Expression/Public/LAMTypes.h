@@ -65,5 +65,5 @@ class LAMAUDIO2EXPRESSION_API ULAMExpressionClip : public UObject
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") FString Backend;
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LAM") float AnalysisSeconds = 0;
     UPROPERTY() TArray<float> Curves;
-    UFUNCTION(BlueprintPure, Category = "LAM") FLAMExpressionFrame Sample(float TimeSeconds) const;
+    UFUNCTION(BlueprintPure, Category = "LAM", meta = (Keywords = "Lipsync")) FLAMExpressionFrame Sample(float TimeSeconds) const;
 };

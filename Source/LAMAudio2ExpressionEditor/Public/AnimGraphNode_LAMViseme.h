@@ -4,7 +4,7 @@
 #include "AnimNode_LAMViseme.h"
 #include "AnimGraphNode_LAMViseme.generated.h"
 
-UCLASS()
+UCLASS(meta = (Keywords = "Lipsync"))
 class LAMAUDIO2EXPRESSIONEDITOR_API UAnimGraphNode_LAMViseme : public UAnimGraphNode_Base
 {
     GENERATED_BODY()

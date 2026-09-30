@@ -140,8 +140,8 @@ class LAMAUDIO2EXPRESSION_API ULAMVisemeProfile : public UDataAsset
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LAM|Viseme") FLAMVisemeSettings Settings;
     // Missing / None entries do not write a curve. Names must be unique.
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LAM|Viseme") TMap<ELAMViseme, FName> TargetNames;
-    UFUNCTION(BlueprintCallable, Category = "LAM|Viseme") void ApplyNamePreset(ELAMVisemePreset Preset);
-    UFUNCTION(BlueprintPure, Category = "LAM|Viseme") bool ValidateProfile(TArray<FString> &Errors) const;
+    UFUNCTION(BlueprintCallable, Category = "LAM|Viseme", meta = (Keywords = "Lipsync")) void ApplyNamePreset(ELAMVisemePreset Preset);
+    UFUNCTION(BlueprintPure, Category = "LAM|Viseme", meta = (Keywords = "Lipsync")) bool ValidateProfile(TArray<FString> &Errors) const;
 #if WITH_EDITOR
     virtual EDataValidationResult IsDataValid(class FDataValidationContext &Context) const override;
 #endif
@@ -153,15 +153,15 @@ class LAMAUDIO2EXPRESSION_API ULAMVisemeLibrary : public UBlueprintFunctionLibra
     GENERATED_BODY()
   public:
     // Null Profile uses the default rule settings (and JapaneseFive when applied in AnimGraph).
-    UFUNCTION(BlueprintPure, Category = "LAM|Viseme")
+    UFUNCTION(BlueprintPure, Category = "LAM|Viseme", meta = (Keywords = "Lipsync"))
     static FLAMVisemeFrame ConvertARKitToVisemes(const FLAMExpressionFrame &Frame, const ULAMVisemeProfile *Profile);
-    UFUNCTION(BlueprintPure, Category = "LAM|Viseme")
+    UFUNCTION(BlueprintPure, Category = "LAM|Viseme", meta = (Keywords = "Lipsync"))
     static FLAMVowelWeights GetVowelWeights(const FLAMVisemeFrame &Frame);
-    UFUNCTION(BlueprintPure, Category = "LAM|Viseme")
+    UFUNCTION(BlueprintPure, Category = "LAM|Viseme", meta = (Keywords = "Lipsync"))
     static float GetVisemeWeight(const FLAMVisemeFrame &Frame, ELAMViseme Viseme);
-    UFUNCTION(BlueprintPure, Category = "LAM|Viseme") static TArray<FName> GetVisemeNames();
+    UFUNCTION(BlueprintPure, Category = "LAM|Viseme", meta = (Keywords = "Lipsync")) static TArray<FName> GetVisemeNames();
     // Replaces the rule list; use on a separate profile for the upstream ARKit node.
-    UFUNCTION(BlueprintCallable, Category = "LAM|Viseme")
+    UFUNCTION(BlueprintCallable, Category = "LAM|Viseme", meta = (Keywords = "Lipsync"))
     static void ApplyUpperFaceOnlyPreset(ULAMCurveProfile *Profile);
 };
 

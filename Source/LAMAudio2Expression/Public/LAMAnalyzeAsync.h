@@ -19,11 +19,11 @@ class LAMAUDIO2EXPRESSION_API ULAMAnalyzeAsync : public UBlueprintAsyncActionBas
     UPROPERTY(BlueprintAssignable) FLAMAnalysisEvent Progress;
     UPROPERTY(BlueprintAssignable) FLAMAnalysisEvent Cancelled;
     UFUNCTION(BlueprintCallable, Category = "LAM",
-              meta = (BlueprintInternalUseOnly = "true", DisplayName = "Analyze SoundWave Async"))
+              meta = (Keywords = "Lipsync", BlueprintInternalUseOnly = "true", DisplayName = "Analyze SoundWave Async"))
     static ULAMAnalyzeAsync *AnalyzeSoundWaveAsync(ULAMAudio2ExpressionComponent *Component, USoundWave *SoundWave,
                                                    FLAMAnalysisSettings Settings);
     void Activate() override;
-    UFUNCTION(BlueprintCallable, Category = "LAM") void Cancel();
+    UFUNCTION(BlueprintCallable, Category = "LAM", meta = (Keywords = "Lipsync")) void Cancel();
     void BeginDestroy() override;
 
   private:
