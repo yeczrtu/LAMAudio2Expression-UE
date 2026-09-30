@@ -20,6 +20,29 @@ sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https:
 
 A seek after stopping starts new playback. Playback is at 1× speed; looping is unsupported. A SoundWave with looping enabled is rejected.
 
+<!-- guide:playback-controls:start -->
+<figure class="guide-figure" id="figure-playback-controls" data-guide="playback-controls">
+<div class="guide-shot" style="--shot-ratio:564/548;--shot-width:363.12057%;--shot-left:-104.78723%;--shot-top:-31.20438%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/playback-controls.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="Blueprint calling Pause from P, Resume from R and Seek with Time Seconds 1.0 from S." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:49.8227%;--y:2.37226%;--w:47.87234%;--h:19.34307%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:49.8227%;--y:37.59124%;--w:47.87234%;--h:19.34307%"><b>2</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:49.8227%;--y:72.81022%;--w:47.87234%;--h:24.63504%"><b>3</b></span>
+</div>
+<figcaption>
+<p><strong>Wiring Pause, Resume and Seek</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/playback-controls.jpg">Open full-size image</a></p>
+<ol>
+<li>P calls Pause.</li>
+<li>R calls Resume.</li>
+<li>S calls Seek, moving to 1.0 seconds in this example.</li>
+</ol>
+<p>These keys belong to the documentation example. Configure the Actor to receive input and first play a clip on the same LAM component. These are not the demo key bindings.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+</figcaption>
+</figure>
+<!-- guide:playback-controls:end -->
+
 ## Audio routing
 
 An unset **Output Submix** inherits the source audio / SoundClass / engine routing. Setting it replaces the main output. **Additional Submix Sends** adds parallel sends. Levels range from 0 to 1; the last entry wins for duplicate destinations.
@@ -28,11 +51,51 @@ An unset **Output Submix** inherits the source audio / SoundClass / engine routi
 
 **Inherit SoundWave Sends** is enabled by default. Unset **Sound Class Override** and **Concurrency Settings** inherit from the source audio.
 
+<!-- guide:playback-settings:start -->
+<figure class="guide-figure" id="figure-playback-settings" data-guide="playback-settings">
+<div class="guide-shot" style="--shot-ratio:438/265;--shot-width:467.57991%;--shot-left:-324.65753%;--shot-top:-147.92453%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/playback-settings.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="Playback Settings showing Output Submix, Additional Submix Sends, Sound Class Override, Volume 1.0 and Muted disabled." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:8.21918%;--y:17.73585%;--w:89.72603%;--h:36.98113%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:8.21918%;--y:78.11321%;--w:61.41553%;--h:20.37736%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Component audio routing and volume</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/playback-settings.jpg">Open full-size image</a></p>
+<ol>
+<li>Configure Output Submix and additional sends. None inherits the source/engine routing.</li>
+<li>The capture shows Volume 1.0 and Muted disabled.</li>
+</ol>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+</figcaption>
+</figure>
+<!-- guide:playback-settings:end -->
+
 ## 3D playback and game pause
 
 Playback Mode defaults to Two Dimensional. Three Dimensional supports Attachment, Socket, Transform, and Attenuation Settings. An unset Attachment uses the owner's root. Unregistered components, another World, or a missing socket produce an error.
 
 **Play When Game Paused** defaults to false. Enable it to continue playback during game pause. Also enable **Tick Even When Paused** on the SkeletalMeshComponent if its AnimBP must continue updating.
+
+<!-- guide:playback-3d:start -->
+<figure class="guide-figure" id="figure-playback-3d" data-guide="playback-3d">
+<div class="guide-shot" style="--shot-ratio:463/175;--shot-width:442.33261%;--shot-left:-307.12743%;--shot-top:-372.57143%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/playback-3d.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="Two Dimensional and Three Dimensional options with Attachment, Socket and Attenuation Settings." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:35.42117%;--y:4%;--w:29.80562%;--h:37.71429%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:7.77538%;--y:50.85714%;--w:84.88121%;--h:42.85714%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Playback Mode and spatial-audio settings</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/playback-3d.jpg">Open full-size image</a></p>
+<ol>
+<li>Choose Three Dimensional in Playback Mode. The capture shows the open options.</li>
+<li>Configure Transform and Attenuation Settings as needed. Close the menu to inspect Attachment and Socket.</li>
+</ol>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+</figcaption>
+</figure>
+<!-- guide:playback-3d:end -->
 
 ## Choose the right completion event
 

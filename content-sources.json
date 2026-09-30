@@ -66,5 +66,14 @@
       "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md",
       "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/f3b6f13e98d75d6e23933669adee79319ef3363f/Docs/Validation/baked-clips-results.json"
     ]
+  },
+  "guideScreenshots": {
+    "capturedOn": "2026-09-30",
+    "ue": "5.8.2",
+    "pluginCommit": "1860d0e2b28ea120a804361d3c9f5c19622f05e4",
+    "demoCommit": "9dee71de2b60058e3434478f4f78b080cee9ca93",
+    "manifest": "guide-images.json",
+    "policy": "Raw English-UI captures in an isolated clone. CSS framing and numbered boxes only. Public-API example Blueprints prepared for documentation. No microphone recording or performance benchmark.",
+    "compatibility": "Common operations checked against v0.2.0 public headers; baked-clip UI is source-only. Release links and earlier article snapshots are unchanged."
   }
 }

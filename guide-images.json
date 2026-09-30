@@ -1,0 +1,1245 @@
+{
+  "schemaVersion": 1,
+  "capturedOn": "2026-09-30",
+  "ue": "5.8.2",
+  "pluginCommit": "1860d0e2b28ea120a804361d3c9f5c19622f05e4",
+  "demoCommit": "9dee71de2b60058e3434478f4f78b080cee9ca93",
+  "method": "Raw English-UI captures in an isolated clone. CSS framing and numbered boxes only. Public-API example Blueprints prepared for documentation. No microphone recording or performance benchmark.",
+  "guides": [
+    {
+      "id": "plugin-enabled",
+      "file": "images/guides/plugin-enabled.jpg",
+      "width": 937,
+      "height": 494,
+      "crop": [
+        248,
+        55,
+        675,
+        169
+      ],
+      "caption": {
+        "ja": "PluginsでLAM Audio2Expressionを有効にする",
+        "en": "Enable LAM Audio2Expression in Plugins"
+      },
+      "alt": {
+        "ja": "LAMで検索したPlugins画面。LAM Audio2Expressionが有効になっている。",
+        "en": "Plugins filtered by LAM, with LAM Audio2Expression enabled."
+      },
+      "annotations": [
+        {
+          "rect": [
+            260,
+            65,
+            562,
+            28
+          ],
+          "ja": "検索欄にLAMを入力します。",
+          "en": "Enter LAM in the search field."
+        },
+        {
+          "rect": [
+            275,
+            155,
+            23,
+            32
+          ],
+          "ja": "チェックを有効にし、要求されたらUEを再起動します。",
+          "en": "Enable the checkbox and restart UE if prompted."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "installation",
+          "section": {
+            "ja": "モデル入りZIPを配置する",
+            "en": "Install the model-included ZIP"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": {
+        "ja": "表示のVersion 0.2.0はプラグイン記述子の値です。撮影したソースのコミットは下記を参照してください。",
+        "en": "Version 0.2.0 is the descriptor label. The actual captured source commit is recorded below."
+      },
+      "sha256": "8b506fcbe8c0f711b8c3cf69b24fe5c1e1ddfb5a48ca71f9292b93d6e14a94e4"
+    },
+    {
+      "id": "model-settings",
+      "file": "images/guides/model-settings.jpg",
+      "width": 938,
+      "height": 494,
+      "crop": [
+        218,
+        194,
+        700,
+        195
+      ],
+      "caption": {
+        "ja": "Project Settingsのモデル指定",
+        "en": "Select the model in Project Settings"
+      },
+      "alt": {
+        "ja": "LAM Audio2ExpressionのModelにLAM_A2Eを指定し、Prefer GPUを有効、Cache MiBを64にした設定画面。",
+        "en": "LAM Audio2Expression settings showing LAM_A2E, Prefer GPU enabled and Cache MiB set to 64."
+      },
+      "annotations": [
+        {
+          "rect": [
+            623,
+            228,
+            281,
+            68
+          ],
+          "ja": "Modelで/LAMAudio2Expression/Models/LAM_A2Eを選択します。",
+          "en": "Select /LAMAudio2Expression/Models/LAM_A2E in Model."
+        },
+        {
+          "rect": [
+            627,
+            297,
+            132,
+            79
+          ],
+          "ja": "撮影例はPrefer GPU有効、Cache MiB 64です。",
+          "en": "The capture shows Prefer GPU enabled and Cache MiB 64."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "installation",
+          "section": {
+            "ja": "モデル入りZIPを配置する",
+            "en": "Install the model-included ZIP"
+          }
+        },
+        {
+          "slug": "models-and-packaging",
+          "section": {
+            "ja": "モデルの配置",
+            "en": "Model location"
+          }
+        },
+        {
+          "slug": "troubleshooting",
+          "section": {
+            "ja": "モデルが見つからない",
+            "en": "The model cannot be found"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": null,
+      "sha256": "7f066bdd89d05945ff33efc9e30c3baae2b888389bb7493c8a74bfb0e604cc50"
+    },
+    {
+      "id": "plugin-content",
+      "file": "images/guides/plugin-content.jpg",
+      "width": 222,
+      "height": 746,
+      "crop": [
+        0,
+        292,
+        222,
+        155
+      ],
+      "caption": {
+        "ja": "Content Browserにプラグインのアセットを表示する",
+        "en": "Show plugin assets in the Content Browser"
+      },
+      "alt": {
+        "ja": "Content BrowserのSettingsメニューでShow Plugin Contentが有効になっている。",
+        "en": "Content Browser Settings with Show Plugin Content enabled."
+      },
+      "annotations": [
+        {
+          "rect": [
+            8,
+            401,
+            204,
+            29
+          ],
+          "ja": "Content Browser右上のSettingsからShow Plugin Contentを有効にします。",
+          "en": "Open Settings at the top right of the Content Browser and enable Show Plugin Content."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "models-and-packaging",
+          "section": {
+            "ja": "モデルの配置",
+            "en": "Model location"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": null,
+      "sha256": "80d12117537c73f29c5be83434c80a2d459fc9feb59f2d614f3ed8a771818e5d"
+    },
+    {
+      "id": "cook-settings",
+      "file": "images/guides/cook-settings.jpg",
+      "width": 938,
+      "height": 494,
+      "crop": [
+        218,
+        298,
+        702,
+        68
+      ],
+      "caption": {
+        "ja": "モデルフォルダーをCook対象に含める",
+        "en": "Include the model folder when cooking"
+      },
+      "alt": {
+        "ja": "PackagingのAdditional Asset Directories to Cookに/LAMAudio2Expression/Modelsを登録した画面。",
+        "en": "Packaging with /LAMAudio2Expression/Models listed under Additional Asset Directories to Cook."
+      },
+      "annotations": [
+        {
+          "rect": [
+            236,
+            302,
+            658,
+            26
+          ],
+          "ja": "PackagingでAdditional Asset Directories to Cookを開きます。",
+          "en": "Open Additional Asset Directories to Cook under Packaging."
+        },
+        {
+          "rect": [
+            623,
+            331,
+            216,
+            27
+          ],
+          "ja": "モデルのフォルダー/LAMAudio2Expression/Modelsを追加します。",
+          "en": "Add the model folder /LAMAudio2Expression/Models."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "installation",
+          "section": {
+            "ja": "パッケージ化する場合",
+            "en": "Package your project"
+          }
+        },
+        {
+          "slug": "models-and-packaging",
+          "section": {
+            "ja": "Cookのチェックリスト",
+            "en": "Cooking checklist"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": null,
+      "sha256": "0bc53b43983e8ba60109bb12368472a414935540c10460b0d98186fe4a045706"
+    },
+    {
+      "id": "add-component",
+      "file": "images/guides/add-component.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        0,
+        101,
+        329,
+        157
+      ],
+      "caption": {
+        "ja": "ActorへLAMコンポーネントを追加する",
+        "en": "Add a LAM component to the Actor"
+      },
+      "alt": {
+        "ja": "BlueprintのComponentsパネル。Addボタンと追加済みのLAMコンポーネント。",
+        "en": "Blueprint Components panel showing Add and the added LAM component."
+      },
+      "annotations": [
+        {
+          "rect": [
+            11,
+            130,
+            72,
+            29
+          ],
+          "ja": "AddでLAM Audio2Expression Componentを検索して追加します。",
+          "en": "Use Add to find and add LAM Audio2Expression Component."
+        },
+        {
+          "rect": [
+            27,
+            214,
+            284,
+            28
+          ],
+          "ja": "追加したコンポーネントをLAMという名前で使用した例です。",
+          "en": "This example names the added component LAM."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "blueprint",
+          "section": {
+            "ja": "SoundWaveを解析する",
+            "en": "Analyze a SoundWave"
+          }
+        },
+        {
+          "slug": "installation",
+          "section": {
+            "ja": "最初の音声を再生する",
+            "en": "Play your first clip"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": null,
+      "sha256": "35cbeab5e4b50a708caf1e523672aa3b09947c494610982b364ca99dad70d015"
+    },
+    {
+      "id": "blueprint-analysis",
+      "file": "images/guides/blueprint-analysis.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        350,
+        283,
+        1051,
+        318
+      ],
+      "caption": {
+        "ja": "非同期解析のCompletedから再生する",
+        "en": "Play from the Completed output of asynchronous analysis"
+      },
+      "alt": {
+        "ja": "BeginPlayからAnalyze SoundWave Asyncを呼び、CompletedとClipをPlay Expression Clipへ接続したBlueprint。",
+        "en": "Blueprint connecting BeginPlay to Analyze SoundWave Async, then Completed and Clip to Play Expression Clip."
+      },
+      "annotations": [
+        {
+          "rect": [
+            690,
+            301,
+            304,
+            288
+          ],
+          "ja": "同じLAMコンポーネントとSoundWaveを解析ノードへ渡します。",
+          "en": "Pass the LAM component and a SoundWave to the analysis node."
+        },
+        {
+          "rect": [
+            1065,
+            301,
+            322,
+            185
+          ],
+          "ja": "Completedの実行線とClip出力を再生ノードへ接続します。",
+          "en": "Connect the Completed execution pin and Clip output to the playback node."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "blueprint",
+          "section": {
+            "ja": "SoundWaveを解析する",
+            "en": "Analyze a SoundWave"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": {
+        "ja": "接続の最小例です。製品ではFailed・Cancelled・Progressも処理してください。",
+        "en": "This is a minimal wiring example. Handle Failed, Cancelled and Progress in your application."
+      },
+      "sha256": "905c0e0273ff6d086e2fe7a202177900087753f17ccb9dd9bbd1bcb782b32c4b"
+    },
+    {
+      "id": "animgraph",
+      "file": "images/guides/animgraph.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        555,
+        389,
+        753,
+        219
+      ],
+      "caption": {
+        "ja": "既存ポーズへARKit表情カーブを適用する",
+        "en": "Apply ARKit expression curves to the input pose"
+      },
+      "alt": {
+        "ja": "Local Space Ref Pose、Apply LAM ARKit Curves、Output Poseを接続した実際のAnimGraph。",
+        "en": "Actual AnimGraph connecting Local Space Ref Pose, Apply LAM ARKit Curves and Output Pose."
+      },
+      "annotations": [
+        {
+          "rect": [
+            573,
+            407,
+            188,
+            76
+          ],
+          "ja": "このサンプルのRef Poseは説明用です。実際には既存のアニメーションポーズを入力します。",
+          "en": "Ref Pose is a placeholder in this example. Supply your existing animation pose."
+        },
+        {
+          "rect": [
+            832,
+            404,
+            212,
+            143
+          ],
+          "ja": "Source Componentに解析・再生用LAMを指定します。空欄なら所有Actorから検索されます。",
+          "en": "Assign the analysis/playback LAM to Source Component. If empty, the owning Actor is searched."
+        },
+        {
+          "rect": [
+            1072,
+            406,
+            219,
+            188
+          ],
+          "ja": "出力をOutput Poseへ接続します。",
+          "en": "Connect the output to Output Pose."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "blueprint",
+          "section": {
+            "ja": "AnimGraphへ表情を適用する",
+            "en": "Apply expressions in the AnimGraph"
+          }
+        },
+        {
+          "slug": "troubleshooting",
+          "section": {
+            "ja": "音声は鳴るが顔が動かない",
+            "en": "Audio plays but the face does not move"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": null,
+      "sha256": "4c205263044bc3366e6c25b0c60b69ac4b58e0493795eda71e2971e23885ca6d"
+    },
+    {
+      "id": "bake-generate-menu",
+      "file": "images/guides/bake-generate-menu.jpg",
+      "width": 1559,
+      "height": 971,
+      "crop": [
+        395,
+        163,
+        340,
+        84
+      ],
+      "caption": {
+        "ja": "SoundWaveの右クリックメニューから生成を開始する",
+        "en": "Start generation from the SoundWave context menu"
+      },
+      "alt": {
+        "ja": "SoundWaveを右クリックしたメニューのGenerate LAM Expression Clip。",
+        "en": "Generate LAM Expression Clip in the SoundWave context menu."
+      },
+      "annotations": [
+        {
+          "rect": [
+            414,
+            198,
+            311,
+            32
+          ],
+          "ja": "Content BrowserでSoundWaveを選択し、この項目を開きます。",
+          "en": "Select a SoundWave in the Content Browser and choose this command."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "baked-clips",
+          "section": {
+            "ja": "エディタでClipを生成する",
+            "en": "Generate clips in the editor"
+          }
+        }
+      ],
+      "availability": "source-only",
+      "note": null,
+      "sha256": "6e65852e53643e044fedea22bb4a2c621989c215cc32210e65a6e36c5ef71bb3"
+    },
+    {
+      "id": "bake-settings",
+      "file": "images/guides/bake-settings.jpg",
+      "width": 526,
+      "height": 580,
+      "crop": [
+        8,
+        87,
+        356,
+        170
+      ],
+      "caption": {
+        "ja": "Clipに保存する解析設定",
+        "en": "Analysis settings stored with the clip"
+      },
+      "alt": {
+        "ja": "Style 0、SmoothとSuppress Silent Mouthを有効、SymmetrizeとAuto Blinkを無効、Blink Seed 1234にした生成設定。",
+        "en": "Generation settings: Style 0, Smooth and Suppress Silent Mouth enabled, Symmetrize and Auto Blink disabled, Blink Seed 1234."
+      },
+      "annotations": [
+        {
+          "rect": [
+            20,
+            92,
+            333,
+            23
+          ],
+          "ja": "Styleは0〜11の話者スタイル番号です。感情名ではありません。",
+          "en": "Style is a speaker-style index from 0 to 11, not an emotion name."
+        },
+        {
+          "rect": [
+            20,
+            117,
+            333,
+            79
+          ],
+          "ja": "SmoothとSuppress Silent Mouthは有効、Symmetrizeは無効の例です。",
+          "en": "This example enables Smooth and Suppress Silent Mouth and disables Symmetrize."
+        },
+        {
+          "rect": [
+            20,
+            197,
+            333,
+            53
+          ],
+          "ja": "Auto Blinkは無効。Blink Seed 1234は自動瞬き用のシードです。",
+          "en": "Auto Blink is disabled. Blink Seed 1234 is the seed used for automatic blinking."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "baked-clips",
+          "section": {
+            "ja": "エディタでClipを生成する",
+            "en": "Generate clips in the editor"
+          }
+        },
+        {
+          "slug": "expression-curves",
+          "section": {
+            "ja": "解析設定",
+            "en": "Analysis settings"
+          }
+        }
+      ],
+      "availability": "source-only",
+      "note": {
+        "ja": "設定後、ダイアログ下部のGenerateを押します。解析設定はv0.2.0にもありますが、この生成ダイアログは公開ソース版の機能です。",
+        "en": "After setting the options, click Generate at the bottom of the dialog. The analysis options also exist in v0.2.0, but this generation dialog is a published-source feature."
+      },
+      "sha256": "082c866a5b3ec19d4f4df66e82c67f940a7c54b5b3e6b03acf5cf557c6ec1561"
+    },
+    {
+      "id": "bake-complete",
+      "file": "images/guides/bake-complete.jpg",
+      "width": 526,
+      "height": 580,
+      "crop": [
+        7,
+        267,
+        512,
+        76
+      ],
+      "caption": {
+        "ja": "生成完了を確認する",
+        "en": "Check generation completion"
+      },
+      "alt": {
+        "ja": "進捗バーとFinished. 1 clips, 0 failures. Save generated assets to keep them.の実際の完了表示。",
+        "en": "Actual completion message: Finished. 1 clips, 0 failures. Save generated assets to keep them."
+      },
+      "annotations": [
+        {
+          "rect": [
+            16,
+            304,
+            490,
+            31
+          ],
+          "ja": "この撮影では1件成功、失敗0件でした。完了後も保存が必要です。",
+          "en": "This captured operation completed one clip with no failures. Saving is still required."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "baked-clips",
+          "section": {
+            "ja": "エディタでClipを生成する",
+            "en": "Generate clips in the editor"
+          }
+        }
+      ],
+      "availability": "source-only",
+      "note": {
+        "ja": "1音声を生成した操作例です。新しい性能測定や網羅的な検証結果ではありません。",
+        "en": "This illustrates generation of one audio asset, not a new benchmark or comprehensive validation result."
+      },
+      "sha256": "83e8b1f3e24ef63edb11d4654c49e84fdd837452086c90d92b6ef15df4aa063f"
+    },
+    {
+      "id": "bake-save",
+      "file": "images/guides/bake-save.jpg",
+      "width": 646,
+      "height": 532,
+      "crop": [
+        0,
+        0,
+        646,
+        532
+      ],
+      "caption": {
+        "ja": "生成したClipをディスクへ保存する",
+        "en": "Save the generated clip to disk"
+      },
+      "alt": {
+        "ja": "Save Contentダイアログでspeech_stream_LAMClipが選択され、Save Selectedボタンが表示されている。",
+        "en": "Save Content dialog with speech_stream_LAMClip checked and the Save Selected button visible."
+      },
+      "annotations": [
+        {
+          "rect": [
+            16,
+            96,
+            617,
+            29
+          ],
+          "ja": "Save Allを押し、生成されたspeech_stream_LAMClipが選択されていることを確認します。",
+          "en": "Click Save All and check that the generated speech_stream_LAMClip is selected."
+        },
+        {
+          "rect": [
+            414,
+            487,
+            131,
+            29
+          ],
+          "ja": "Save Selectedで保存を確定します。",
+          "en": "Confirm with Save Selected."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "baked-clips",
+          "section": {
+            "ja": "エディタでClipを生成する",
+            "en": "Generate clips in the editor"
+          }
+        }
+      ],
+      "availability": "source-only",
+      "note": null,
+      "sha256": "3b4d9622b9e7390fcf9ff9054dbcc3ed8e8dfe7d22479c08e2031f4d9474c3a1"
+    },
+    {
+      "id": "baked-blueprint",
+      "file": "images/guides/baked-blueprint.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        539,
+        187,
+        674,
+        516
+      ],
+      "caption": {
+        "ja": "音声を先読みして保存済みClipを再生する",
+        "en": "Prime audio and play a saved clip"
+      },
+      "alt": {
+        "ja": "BeginPlayでspeech_streamをPrime Soundへ渡し、Space Barから保存済みClipをPlay Expression Clipで再生するBlueprint。",
+        "en": "Blueprint priming speech_stream on BeginPlay and playing its saved clip from Space Bar with Play Expression Clip."
+      },
+      "annotations": [
+        {
+          "rect": [
+            875,
+            202,
+            244,
+            124
+          ],
+          "ja": "Prime Soundには元のSoundWaveを指定します。先読みは早めに要求します。",
+          "en": "Pass the original SoundWave to Prime Sound and request priming early."
+        },
+        {
+          "rect": [
+            874,
+            439,
+            324,
+            211
+          ],
+          "ja": "Play Expression ClipのClipには保存済みのspeech_stream_LAMClipを指定します。",
+          "en": "Set Clip on Play Expression Clip to the saved speech_stream_LAMClip."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "baked-clips",
+          "section": {
+            "ja": "Blueprintで先読みして再生する",
+            "en": "Preload and play in Blueprint"
+          }
+        },
+        {
+          "slug": "development",
+          "section": {
+            "ja": "事前解析Clipの開発・検証（公開ソース版）",
+            "en": "Develop and validate baked clips (published source)"
+          }
+        }
+      ],
+      "availability": "source-only",
+      "note": {
+        "ja": "ノードのアセット名は欄幅によって省略されています。Prime Soundは読込完了通知ではありません。キー入力を使うActorには入力の受け取り設定が必要です。",
+        "en": "Asset names are truncated by the field width. Prime Sound does not signal completion. An Actor using keyboard events must be configured to receive input."
+      },
+      "sha256": "56dffb373ad596a21f96f286427d09791875cf9f35029ee4b95af669a00e9589"
+    },
+    {
+      "id": "bake-regenerate",
+      "file": "images/guides/bake-regenerate.jpg",
+      "width": 1559,
+      "height": 971,
+      "crop": [
+        240,
+        336,
+        468,
+        241
+      ],
+      "caption": {
+        "ja": "保存済みClipを再生成する",
+        "en": "Regenerate a saved clip"
+      },
+      "alt": {
+        "ja": "Content Browserのspeech_stream_LAMClipと、その右クリックメニューのRegenerate。",
+        "en": "speech_stream_LAMClip in the Content Browser with Regenerate in its context menu."
+      },
+      "annotations": [
+        {
+          "rect": [
+            408,
+            431,
+            278,
+            30
+          ],
+          "ja": "Clipを右クリックしてRegenerateを選び、記録済み設定で再生成します。",
+          "en": "Right-click the clip and choose Regenerate to use its stored settings."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "baked-clips",
+          "section": {
+            "ja": "音声やモデルを変更したら再生成する",
+            "en": "Regenerate after changing audio or models"
+          }
+        },
+        {
+          "slug": "troubleshooting",
+          "section": {
+            "ja": "事前解析Clipの問題（公開ソース版）",
+            "en": "Baked-clip issues (published source)"
+          }
+        }
+      ],
+      "availability": "source-only",
+      "note": null,
+      "sha256": "be9f22b2067ca06261b3c63247b23e22a2c5fd424a99ac7cbc5bfcf76af64440"
+    },
+    {
+      "id": "curve-profile",
+      "file": "images/guides/curve-profile.jpg",
+      "width": 2048,
+      "height": 1111,
+      "crop": [
+        15,
+        190,
+        975,
+        199
+      ],
+      "caption": {
+        "ja": "Curve ProfileでjawOpenを調整する例",
+        "en": "Example jawOpen adjustment with a Curve Profile"
+      },
+      "alt": {
+        "ja": "Curve ProfileのSource NameとTarget NameはjawOpen、Enabledは有効、Scaleは0.8、Offsetは0.0。",
+        "en": "Curve Profile with Source Name and Target Name jawOpen, Enabled checked, Scale 0.8 and Offset 0.0."
+      },
+      "annotations": [
+        {
+          "rect": [
+            44,
+            246,
+            920,
+            54
+          ],
+          "ja": "Source NameはLAMのカーブ名、Target Nameはキャラクター側の名前です。",
+          "en": "Source Name is the LAM curve; Target Name is the name on the character."
+        },
+        {
+          "rect": [
+            44,
+            302,
+            920,
+            77
+          ],
+          "ja": "この説明用ルールではEnabledを有効にし、Scale 0.8、Offset 0.0にしています。",
+          "en": "This illustrative rule uses Enabled, Scale 0.8 and Offset 0.0."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "expression-curves",
+          "section": {
+            "ja": "キャラクターへ合わせる",
+            "en": "Fit the output to a character"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": {
+        "ja": "0.8は撮影用の調整例で、すべてのキャラクターに共通の推奨値ではありません。作成したProfileをAnimGraphノードへ指定してください。",
+        "en": "0.8 is an illustrative adjustment, not a universal recommended value. Assign the created profile to the AnimGraph node."
+      },
+      "sha256": "890316ab4f6168e7711a9757a18a0a5115c073eb4dba29d42580254cd6d15bcd"
+    },
+    {
+      "id": "playback-controls",
+      "file": "images/guides/playback-controls.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        591,
+        171,
+        564,
+        548
+      ],
+      "caption": {
+        "ja": "Pause・Resume・Seekの接続例",
+        "en": "Wiring Pause, Resume and Seek"
+      },
+      "alt": {
+        "ja": "PキーからPause、RキーからResume、SキーからTime Seconds 1.0のSeekを呼ぶBlueprint。",
+        "en": "Blueprint calling Pause from P, Resume from R and Seek with Time Seconds 1.0 from S."
+      },
+      "annotations": [
+        {
+          "rect": [
+            872,
+            184,
+            270,
+            106
+          ],
+          "ja": "PからPauseを呼び、一時停止します。",
+          "en": "P calls Pause."
+        },
+        {
+          "rect": [
+            872,
+            377,
+            270,
+            106
+          ],
+          "ja": "RからResumeを呼び、再開します。",
+          "en": "R calls Resume."
+        },
+        {
+          "rect": [
+            872,
+            570,
+            270,
+            135
+          ],
+          "ja": "SからSeekを呼び、1.0秒の位置へ移動する例です。",
+          "en": "S calls Seek, moving to 1.0 seconds in this example."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "playback",
+          "section": {
+            "ja": "基本操作",
+            "en": "Basic controls"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": {
+        "ja": "撮影用Blueprintのキー割り当てです。Actorが入力を受け取る設定にし、同じLAMでClipを再生してから操作します。デモのキー割り当てとは異なります。",
+        "en": "These keys belong to the documentation example. Configure the Actor to receive input and first play a clip on the same LAM component. These are not the demo key bindings."
+      },
+      "sha256": "6ff0f6d35446ce22f9699985eed47a8b24cb34a7d9a31246e12de933a65a025d"
+    },
+    {
+      "id": "playback-settings",
+      "file": "images/guides/playback-settings.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        1422,
+        392,
+        438,
+        265
+      ],
+      "caption": {
+        "ja": "コンポーネントの出力先と音量",
+        "en": "Component audio routing and volume"
+      },
+      "alt": {
+        "ja": "Playback SettingsのOutput Submix、Additional Submix Sends、Sound Class Override、Volume 1.0、Muted無効。",
+        "en": "Playback Settings showing Output Submix, Additional Submix Sends, Sound Class Override, Volume 1.0 and Muted disabled."
+      },
+      "annotations": [
+        {
+          "rect": [
+            1458,
+            439,
+            393,
+            98
+          ],
+          "ja": "Output Submixと追加送信を設定します。Noneは元音声・エンジンの設定を継承します。",
+          "en": "Configure Output Submix and additional sends. None inherits the source/engine routing."
+        },
+        {
+          "rect": [
+            1458,
+            599,
+            269,
+            54
+          ],
+          "ja": "撮影例のVolumeは1.0、Mutedは無効です。",
+          "en": "The capture shows Volume 1.0 and Muted disabled."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "playback",
+          "section": {
+            "ja": "音声の出力先",
+            "en": "Audio routing"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": null,
+      "sha256": "35cbeab5e4b50a708caf1e523672aa3b09947c494610982b364ca99dad70d015"
+    },
+    {
+      "id": "playback-3d",
+      "file": "images/guides/playback-3d.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        1422,
+        652,
+        463,
+        175
+      ],
+      "caption": {
+        "ja": "Playback Modeと3D音声の設定箇所",
+        "en": "Playback Mode and spatial-audio settings"
+      },
+      "alt": {
+        "ja": "Playback ModeのTwo DimensionalとThree Dimensionalの選択肢、Attachment、Socket、Attenuation Settings。",
+        "en": "Two Dimensional and Three Dimensional options with Attachment, Socket and Attenuation Settings."
+      },
+      "annotations": [
+        {
+          "rect": [
+            1586,
+            659,
+            138,
+            66
+          ],
+          "ja": "Playback ModeでThree Dimensionalを選択します。撮影時は選択肢を開いた状態です。",
+          "en": "Choose Three Dimensional in Playback Mode. The capture shows the open options."
+        },
+        {
+          "rect": [
+            1458,
+            741,
+            393,
+            75
+          ],
+          "ja": "TransformとAttenuation Settingsも用途に合わせて設定します。AttachmentとSocketはメニューを閉じると確認できます。",
+          "en": "Configure Transform and Attenuation Settings as needed. Close the menu to inspect Attachment and Socket."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "playback",
+          "section": {
+            "ja": "3D再生とゲーム停止",
+            "en": "3D playback and game pause"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": null,
+      "sha256": "17eaaf3e1cf488dbc12905f61bb327c0a723cb5c0cdb05aa0b0b8b602089ef9a"
+    },
+    {
+      "id": "microphone-blueprint",
+      "file": "images/guides/microphone-blueprint.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        552,
+        207,
+        652,
+        470
+      ],
+      "caption": {
+        "ja": "マイク開始と停止の接続例",
+        "en": "Start and stop microphone input"
+      },
+      "alt": {
+        "ja": "MからStart Microphone、NからStop Microphoneを呼ぶBlueprint。Device Indexは-1。",
+        "en": "Blueprint calling Start Microphone from M and Stop Microphone from N, with Device Index -1."
+      },
+      "annotations": [
+        {
+          "rect": [
+            869,
+            221,
+            320,
+            183
+          ],
+          "ja": "Start MicrophoneのDevice Index -1は既定デバイスです。",
+          "en": "Device Index -1 on Start Microphone selects the default device."
+        },
+        {
+          "rect": [
+            869,
+            520,
+            320,
+            120
+          ],
+          "ja": "終了時は同じLAMにStop Microphoneを呼びます。",
+          "en": "Call Stop Microphone on the same LAM to finish."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "live-input",
+          "section": {
+            "ja": "マイク入力",
+            "en": "Microphone input"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": {
+        "ja": "接続だけの撮影例です。実マイクの録音・動作試験は行っていません。キーイベントを使う場合はActorの入力を有効にしてください。",
+        "en": "This capture illustrates wiring only; no microphone recording or runtime test was performed. Enable Actor input when using keyboard events."
+      },
+      "sha256": "b74f4c90583cb3603cf4115bea591595d929872a070e6a483c595122919b69a5"
+    },
+    {
+      "id": "pcm-blueprint",
+      "file": "images/guides/pcm-blueprint.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        638,
+        164,
+        480,
+        558
+      ],
+      "caption": {
+        "ja": "外部PCMを小さなブロックで渡す",
+        "en": "Submit external PCM in small blocks"
+      },
+      "alt": {
+        "ja": "Start PCMStream、OnPCMBlockReceivedカスタムイベントからPush PCMAudio、Stop Microphoneを接続したBlueprint。",
+        "en": "Blueprint with Start PCMStream, custom OnPCMBlockReceived feeding Push PCMAudio, and Stop Microphone."
+      },
+      "annotations": [
+        {
+          "rect": [
+            853,
+            173,
+            221,
+            106
+          ],
+          "ja": "先にStart PCMStreamを呼びます。",
+          "en": "Call Start PCMStream first."
+        },
+        {
+          "rect": [
+            650,
+            375,
+            455,
+            153
+          ],
+          "ja": "外部のPCM供給側からゲームスレッドでイベントを繰り返し呼びます。図は16,000 Hz・monoのfloat配列の例です。",
+          "en": "Have your PCM producer invoke the event repeatedly on the game thread. This example uses a float array at 16,000 Hz, mono."
+        },
+        {
+          "rect": [
+            853,
+            612,
+            221,
+            86
+          ],
+          "ja": "ストリーム終了にもStop Microphoneを使います。",
+          "en": "Use Stop Microphone to end this stream as well."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "live-input",
+          "section": {
+            "ja": "外部PCMを渡す",
+            "en": "Supply external PCM"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": {
+        "ja": "OnPCMBlockReceivedは説明用のカスタムイベントで、自動では呼ばれません。実データに合わせてSample RateとChannelsを指定してください。",
+        "en": "OnPCMBlockReceived is an illustrative custom event and is not called automatically. Match Sample Rate and Channels to the actual data."
+      },
+      "sha256": "23613847395de19aa6777f2003fbc2c69587e0d292748b3c2d61053fdf6cc5b0"
+    },
+    {
+      "id": "live-metrics",
+      "file": "images/guides/live-metrics.jpg",
+      "width": 2048,
+      "height": 1104,
+      "crop": [
+        345,
+        226,
+        1069,
+        432
+      ],
+      "caption": {
+        "ja": "推論間隔の指定とメトリクスの取得",
+        "en": "Set the inference interval and read metrics"
+      },
+      "alt": {
+        "ja": "Set Live Inference Intervalに333.333333 msを渡し、Get Live MetricsをBreak LAMLive Metricsへ接続したBlueprint。",
+        "en": "Blueprint setting 333.333333 ms with Set Live Inference Interval and connecting Get Live Metrics to Break LAMLive Metrics."
+      },
+      "annotations": [
+        {
+          "rect": [
+            655,
+            240,
+            322,
+            171
+          ],
+          "ja": "Millisecondsに希望する間隔を渡します。図の333.333333は設定値で、実測時間ではありません。",
+          "en": "Pass the requested interval in Milliseconds. 333.333333 is a configured value, not a timing measurement."
+        },
+        {
+          "rect": [
+            655,
+            500,
+            748,
+            122
+          ],
+          "ja": "Get Live Metricsを分解してStateやActual Intervalを読みます。下向き矢印で他の項目を展開できます。",
+          "en": "Break the Get Live Metrics result to read State and Actual Interval. Expand the downward arrow for the other fields."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "live-input",
+          "section": {
+            "ja": "実行状態を確認する",
+            "en": "Inspect runtime state"
+          }
+        }
+      ],
+      "availability": "common",
+      "note": {
+        "ja": "取得先をUIやログへ接続すると値を評価できます。この図は値の出力先を省略した接続例です。Iキーを使う場合はActorの入力を有効にしてください。",
+        "en": "Connect the outputs to UI or logging to evaluate the values. Those consumers are omitted here. Enable Actor input if using the I key."
+      },
+      "sha256": "de79d197a36a282c94bd5a3511dea0b18e45a489f639ba0c662d6ffe743bf27c"
+    },
+    {
+      "id": "demo-controls",
+      "file": "images/face-demo.png",
+      "width": 888,
+      "height": 500,
+      "crop": [
+        0,
+        0,
+        888,
+        500
+      ],
+      "caption": {
+        "ja": "公開済みデモ画面の操作箇所",
+        "en": "Controls in the published demo screenshot"
+      },
+      "alt": {
+        "ja": "顔デモの音声選択、SpaceとRの再生操作、音量、ライブ状態を表示した既存の実画面。",
+        "en": "Existing actual face-demo screen showing voice selection, Space and R playback controls, volume and live status."
+      },
+      "annotations": [
+        {
+          "rect": [
+            24,
+            91,
+            187,
+            193
+          ],
+          "ja": "1〜6のボタンで音声を選択します。ラベルはサンプル音声の分類です。",
+          "en": "Select audio using buttons 1–6. Their labels classify the speech samples."
+        },
+        {
+          "rect": [
+            23,
+            296,
+            189,
+            72
+          ],
+          "ja": "Spaceで一時停止・再開、Rで先頭から再生します。",
+          "en": "Space pauses/resumes; R replays from the beginning."
+        },
+        {
+          "rect": [
+            237,
+            19,
+            194,
+            183
+          ],
+          "ja": "音量・出力・ライブ状態を確認します。表示値は既存画像内の状態で、新しい測定結果ではありません。",
+          "en": "Inspect volume, output and live status. The values belong to the existing capture, not a new measurement."
+        }
+      ],
+      "placements": [
+        {
+          "slug": "demo",
+          "section": {
+            "ja": "操作一覧",
+            "en": "Controls"
+          }
+        }
+      ],
+      "availability": "published-demo",
+      "note": {
+        "ja": "キャラクター：hinzka / VRoid・pixiv。音声：JVNV / litagin。素材の利用条件はライセンスページを参照してください。",
+        "en": "Character: hinzka / VRoid and pixiv. Speech: JVNV / litagin. See the licenses page for usage conditions."
+      },
+      "capturedOn": null,
+      "sourceUrl": "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/face-demo.png",
+      "sha256": "0dd1c66fb465edab46bf6db23a75a3213df9060a9f9f50bffe64c14da8dc4d17"
+    }
+  ]
+}

@@ -56,6 +56,19 @@ h2 { letter-spacing: -.02em; }
 .source-note a { color: var(--sl-color-text-accent); }
 .site-credit { font-size: .875rem; margin-top: 1.5rem; color: var(--sl-color-gray-2); }
 .site-credit a { color: inherit; }
+/* Raw UE captures stay unchanged; framing and numbered callouts are presentation only. */
+.sl-markdown-content .guide-figure { margin: 1.5rem 0 2rem; }
+.guide-shot { position: relative; margin-inline: .75rem; aspect-ratio: var(--shot-ratio); background: #202020; border: 1px solid var(--sl-color-gray-4); border-radius: .3rem; }
+.guide-window { position: absolute; inset: 0; overflow: hidden; border-radius: .3rem; }
+.sl-markdown-content .guide-shot img { position: absolute; display: block; max-width: none; width: var(--shot-width,100%); height: auto; left: var(--shot-left,0%); top: var(--shot-top,0%); margin: 0; }
+.guide-callout { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); border: 2px solid #ffd65a; box-shadow: 0 0 0 1px #171717; pointer-events: none; }
+.sl-markdown-content .guide-callout, .sl-markdown-content .guide-window { margin: 0; }
+.guide-callout b { position: absolute; top: -.6rem; left: -.6rem; min-width: 1.2rem; padding: 0 .2rem; background: #ffd65a; color: #171717; font: 700 .75rem/1.2rem 'Segoe UI',sans-serif; text-align: center; }
+.sl-markdown-content .guide-figure figcaption { margin-top: .7rem; font-size: .875rem; line-height: 1.75; }
+.sl-markdown-content .guide-figure figcaption p { margin: .35rem 0; }
+.sl-markdown-content .guide-figure ol { margin: .5rem 0; padding-inline-start: 1.5rem; }
+.guide-provenance { color: var(--sl-color-gray-2); font-size: .8rem; }
+@media (max-width: 38rem) { .guide-callout { border-width: 1px; } .guide-callout b { min-width: 1rem; font-size: .65rem; line-height: 1rem; } }
 .sl-markdown-content table { font-size: .9375rem; }
 .comparison-table { max-width: 100%; overflow-x: auto; margin-block: 1.25rem; border: 1px solid var(--sl-color-gray-5); border-radius: .3rem; }
 .comparison-table:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 3px; }

@@ -62,3 +62,24 @@ python Tools/assemble_release.py --plugin <BuildPlugin-output> --project <dispos
 ## 事前解析Clipの開発・検証（公開ソース版）
 
 プラグイン1f06ac8 / デモf3b6f13に追加された機能です。Editorをビルドしてから、専用テストで生成・再生成・保存・別プロセス再生を確認します。Development / Shippingにも検証マップを含める`-IncludeBaked`が追加されています。[コマンドと生成対象](/LAMAudio2Expression-UE/baked-clips/#examples-and-validation-commands)を確認してください。v0.2.0の配布ZIPには含まれません。
+
+<!-- guide:baked-blueprint:start -->
+<figure class="guide-figure" id="figure-baked-blueprint" data-guide="baked-blueprint">
+<div class="guide-shot" style="--shot-ratio:674/516;--shot-width:303.85757%;--shot-left:-79.97033%;--shot-top:-36.24031%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/baked-blueprint.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="BeginPlayでspeech_streamをPrime Soundへ渡し、Space Barから保存済みClipをPlay Expression Clipで再生するBlueprint。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:49.85163%;--y:2.90698%;--w:36.20178%;--h:24.03101%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:49.70326%;--y:48.83721%;--w:48.07122%;--h:40.89147%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>音声を先読みして保存済みClipを再生する</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/baked-blueprint.jpg">原寸画像を開く</a></p>
+<ol>
+<li>Prime Soundには元のSoundWaveを指定します。先読みは早めに要求します。</li>
+<li>Play Expression ClipのClipには保存済みのspeech_stream_LAMClipを指定します。</li>
+</ol>
+<p>ノードのアセット名は欄幅によって省略されています。Prime Soundは読込完了通知ではありません。キー入力を使うActorには入力の受け取り設定が必要です。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+</figcaption>
+</figure>
+<!-- guide:baked-blueprint:end -->

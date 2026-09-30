@@ -97,3 +97,9 @@ and in the browser. The site shows the published still image and runnable-demo
 instructions instead of a broken player. Restore an embedded player only after
 confirming a working public URL for the same recording and updating the credit text.
 See `THIRD_PARTY_NOTICES.md`; the MIT license does not relicense third-party media.
+
+The operation guides share 20 English-UI captures made on September 30, 2026
+with UE 5.8.2, Plugin `1860d0e` and Demo `9dee71d`, plus the existing public demo
+image. See [SCREENSHOTS.md](SCREENSHOTS.md) for the isolated capture workflow,
+numbered HTML/CSS annotations, source-only labels and bilingual update checks.
+`guide-images.json` records the original hashes, crops, captions and placements.

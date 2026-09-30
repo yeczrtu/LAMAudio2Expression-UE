@@ -12,6 +12,44 @@ The model-included ZIP contains a neural model asset of roughly 384 MiB. Its def
 
 Models are not stored in the normal Git history. For a source checkout, follow [development setup](/LAMAudio2Expression-UE/en/development/) to retrieve and convert a pinned checkpoint, or use the published model-included package.
 
+<!-- guide:model-settings:start -->
+<figure class="guide-figure" id="figure-model-settings" data-guide="model-settings">
+<div class="guide-shot" style="--shot-ratio:700/195;--shot-width:134%;--shot-left:-31.14286%;--shot-top:-99.48718%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/model-settings.jpg" width="938" height="494" loading="lazy" decoding="async" alt="LAM Audio2Expression settings showing LAM_A2E, Prefer GPU enabled and Cache MiB set to 64." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:57.85714%;--y:17.4359%;--w:40.14286%;--h:34.87179%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:58.42857%;--y:52.82051%;--w:18.85714%;--h:40.51282%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Select the model in Project Settings</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/model-settings.jpg">Open full-size image</a></p>
+<ol>
+<li>Select /LAMAudio2Expression/Models/LAM_A2E in Model.</li>
+<li>The capture shows Prefer GPU enabled and Cache MiB 64.</li>
+</ol>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+</figcaption>
+</figure>
+<!-- guide:model-settings:end -->
+
+<!-- guide:plugin-content:start -->
+<figure class="guide-figure" id="figure-plugin-content" data-guide="plugin-content">
+<div class="guide-shot" style="--shot-ratio:222/155;--shot-width:100%;--shot-left:0%;--shot-top:-188.3871%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/plugin-content.jpg" width="222" height="746" loading="lazy" decoding="async" alt="Content Browser Settings with Show Plugin Content enabled." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:3.6036%;--y:70.32258%;--w:91.89189%;--h:18.70968%"><b>1</b></span>
+</div>
+<figcaption>
+<p><strong>Show plugin assets in the Content Browser</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/plugin-content.jpg">Open full-size image</a></p>
+<ol>
+<li>Open Settings at the top right of the Content Browser and enable Show Plugin Content.</li>
+</ol>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+</figcaption>
+</figure>
+<!-- guide:plugin-content:end -->
+
 ## Cooking checklist
 
 1. Confirm the Model setting in Project Settings → LAM Audio2Expression.
@@ -21,6 +59,26 @@ Models are not stored in the normal Git history. For a source checkout, follow [
 5. Copy or extract the complete output to another short path and test the packaged application.
 
 Distribute the entire folder, including cooked data, required DLLs, and licenses, rather than the executable alone. The published Windows demo also includes a VC++ runtime installer.
+
+<!-- guide:cook-settings:start -->
+<figure class="guide-figure" id="figure-cook-settings" data-guide="cook-settings">
+<div class="guide-shot" style="--shot-ratio:702/68;--shot-width:133.61823%;--shot-left:-31.05413%;--shot-top:-438.23529%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/cook-settings.jpg" width="938" height="494" loading="lazy" decoding="async" alt="Packaging with /LAMAudio2Expression/Models listed under Additional Asset Directories to Cook." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:2.5641%;--y:5.88235%;--w:93.73219%;--h:38.23529%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:57.69231%;--y:48.52941%;--w:30.76923%;--h:39.70588%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Include the model folder when cooking</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/cook-settings.jpg">Open full-size image</a></p>
+<ol>
+<li>Open Additional Asset Directories to Cook under Packaging.</li>
+<li>Add the model folder /LAMAudio2Expression/Models.</li>
+</ol>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+</figcaption>
+</figure>
+<!-- guide:cook-settings:end -->
 
 ## GPU and CPU
 

@@ -31,6 +31,27 @@ result = lerp(inputCurve,
 
 Disabled curves and bone poses are left unchanged. Weight includes effects such as the stop fade. Stopping returns to the input pose over 100 ms; pausing holds the current expression.
 
+<!-- guide:curve-profile:start -->
+<figure class="guide-figure" id="figure-curve-profile" data-guide="curve-profile">
+<div class="guide-shot" style="--shot-ratio:975/199;--shot-width:210.05128%;--shot-left:-1.53846%;--shot-top:-95.47739%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/curve-profile.jpg" width="2048" height="1111" loading="lazy" decoding="async" alt="Curve Profile with Source Name and Target Name jawOpen, Enabled checked, Scale 0.8 and Offset 0.0." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:2.97436%;--y:28.1407%;--w:94.35897%;--h:27.13568%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:2.97436%;--y:56.28141%;--w:94.35897%;--h:38.69347%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Example jawOpen adjustment with a Curve Profile</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/curve-profile.jpg">Open full-size image</a></p>
+<ol>
+<li>Source Name is the LAM curve; Target Name is the name on the character.</li>
+<li>This illustrative rule uses Enabled, Scale 0.8 and Offset 0.0.</li>
+</ol>
+<p>0.8 is an illustrative adjustment, not a universal recommended value. Assign the created profile to the AnimGraph node.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+</figcaption>
+</figure>
+<!-- guide:curve-profile:end -->
+
 ## Analysis settings
 
 | Setting | Default and meaning |
@@ -43,6 +64,29 @@ Disabled curves and bone poses are left unchanged. Weight includes effects such 
 | Blink Seed | Random seed for reproducible procedural blinking |
 
 Style selects an upstream model style; it is not an emotion selector. Verify the connection with defaults first, then adjust profile scales and masks for your character.
+
+<!-- guide:bake-settings:start -->
+<figure class="guide-figure" id="figure-bake-settings" data-guide="bake-settings">
+<div class="guide-shot" style="--shot-ratio:356/170;--shot-width:147.75281%;--shot-left:-2.24719%;--shot-top:-51.17647%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-settings.jpg" width="526" height="580" loading="lazy" decoding="async" alt="Generation settings: Style 0, Smooth and Suppress Silent Mouth enabled, Symmetrize and Auto Blink disabled, Blink Seed 1234." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:2.94118%;--w:93.53933%;--h:13.52941%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:17.64706%;--w:93.53933%;--h:46.47059%"><b>2</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:64.70588%;--w:93.53933%;--h:31.17647%"><b>3</b></span>
+</div>
+<figcaption>
+<p><strong>Analysis settings stored with the clip</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-settings.jpg">Open full-size image</a></p>
+<ol>
+<li>Style is a speaker-style index from 0 to 11, not an emotion name.</li>
+<li>This example enables Smooth and Suppress Silent Mouth and disables Symmetrize.</li>
+<li>Auto Blink is disabled. Blink Seed 1234 is the seed used for automatic blinking.</li>
+</ol>
+<p>After setting the options, click Generate at the bottom of the dialog. The analysis options also exist in v0.2.0, but this generation dialog is a published-source feature.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+</figcaption>
+</figure>
+<!-- guide:bake-settings:end -->
 
 ## From inference to the final look
 

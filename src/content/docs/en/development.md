@@ -62,3 +62,24 @@ The new output directory receives plugin, editable-project, and Windows-demo ZIP
 ## Develop and validate baked clips (published source)
 
 This feature was added in Plugin 1f06ac8 / Demo f3b6f13. Build the Editor target before running dedicated checks for generation, regeneration, saving, and playback in another process. The new `-IncludeBaked` option includes the test map in Development / Shipping packages. See [commands and generated assets](/LAMAudio2Expression-UE/en/baked-clips/#examples-and-validation-commands). The v0.2.0 release ZIPs do not contain this feature.
+
+<!-- guide:baked-blueprint:start -->
+<figure class="guide-figure" id="figure-baked-blueprint" data-guide="baked-blueprint">
+<div class="guide-shot" style="--shot-ratio:674/516;--shot-width:303.85757%;--shot-left:-79.97033%;--shot-top:-36.24031%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/baked-blueprint.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="Blueprint priming speech_stream on BeginPlay and playing its saved clip from Space Bar with Play Expression Clip." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:49.85163%;--y:2.90698%;--w:36.20178%;--h:24.03101%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:49.70326%;--y:48.83721%;--w:48.07122%;--h:40.89147%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Prime audio and play a saved clip</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/baked-blueprint.jpg">Open full-size image</a></p>
+<ol>
+<li>Pass the original SoundWave to Prime Sound and request priming early.</li>
+<li>Set Clip on Play Expression Clip to the saved speech_stream_LAMClip.</li>
+</ol>
+<p>Asset names are truncated by the field width. Prime Sound does not signal completion. An Actor using keyboard events must be configured to receive input.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+</figcaption>
+</figure>
+<!-- guide:baked-blueprint:end -->

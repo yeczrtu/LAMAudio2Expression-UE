@@ -28,11 +28,32 @@ sources: [{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczr
 
 マイクはWindows側のアクセス許可が必要です。スピーカーへの折り返しはありません。実マイクの長時間運用は未検証です。
 
+<!-- guide:demo-controls:start -->
+<figure class="guide-figure" id="figure-demo-controls" data-guide="demo-controls">
+<div class="guide-shot" style="--shot-ratio:888/500;--shot-width:100%;--shot-left:0%;--shot-top:0%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/face-demo.png" width="888" height="500" loading="lazy" decoding="async" alt="顔デモの音声選択、SpaceとRの再生操作、音量、ライブ状態を表示した既存の実画面。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:2.7027%;--y:18.2%;--w:21.05856%;--h:38.6%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:2.59009%;--y:59.2%;--w:21.28378%;--h:14.4%"><b>2</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:26.68919%;--y:3.8%;--w:21.84685%;--h:36.6%"><b>3</b></span>
+</div>
+<figcaption>
+<p><strong>公開済みデモ画面の操作箇所</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/face-demo.png">原寸画像を開く</a></p>
+<ol>
+<li>1〜6のボタンで音声を選択します。ラベルはサンプル音声の分類です。</li>
+<li>Spaceで一時停止・再開、Rで先頭から再生します。</li>
+<li>音量・出力・ライブ状態を確認します。表示値は既存画像内の状態で、新しい測定結果ではありません。</li>
+</ol>
+<p>キャラクター：hinzka / VRoid・pixiv。音声：JVNV / litagin。素材の利用条件はライセンスページを参照してください。</p>
+<p class="guide-provenance">既存の公開画像（撮影日不明）。Demo 275a683から無加工で再利用。 <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/face-demo.png">画像の出典</a> · <a href="/LAMAudio2Expression-UE/licenses/">素材のクレジット・利用条件</a></p>
+</figcaption>
+</figure>
+<!-- guide:demo-controls:end -->
+
 ## UEで編集する
 
 [モデル入りUEプロジェクト](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Project-Model.zip)をすべて展開し、UE 5.8.2で`LAMDemo.uproject`を開きます。`/Game/LAMFaceDemo/Maps/LAM_FaceDemo`を開いてPlayします。
-
-![Unreal Engine上でキャラクターと音声選択UIを表示した顔デモ](/LAMAudio2Expression-UE/images/face-demo.png)
 
 画像・デモ素材の[出典と利用条件](/LAMAudio2Expression-UE/licenses/)も確認してください。
 

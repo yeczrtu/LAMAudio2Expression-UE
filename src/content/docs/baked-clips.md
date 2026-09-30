@@ -53,6 +53,86 @@ Styleは0〜11のスタイル番号で、12種類の感情ラベルではあり�
 
 バッチは1音声ずつ処理し、失敗した項目を記録して次へ進みます。PIE中は生成できません。**Cancel**またはウィンドウを閉じる操作で残りの処理を中止します。実行中の推論呼び出しは完了まで待ちますが、その結果は反映しません。完了済みClipと、更新に失敗したClipの旧データは保持されます。
 
+<!-- guide:bake-generate-menu:start -->
+<figure class="guide-figure" id="figure-bake-generate-menu" data-guide="bake-generate-menu">
+<div class="guide-shot" style="--shot-ratio:340/84;--shot-width:458.52941%;--shot-left:-116.17647%;--shot-top:-194.04762%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-generate-menu.jpg" width="1559" height="971" loading="lazy" decoding="async" alt="SoundWaveを右クリックしたメニューのGenerate LAM Expression Clip。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:5.58824%;--y:41.66667%;--w:91.47059%;--h:38.09524%"><b>1</b></span>
+</div>
+<figcaption>
+<p><strong>SoundWaveの右クリックメニューから生成を開始する</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-generate-menu.jpg">原寸画像を開く</a></p>
+<ol>
+<li>Content BrowserでSoundWaveを選択し、この項目を開きます。</li>
+</ol>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+</figcaption>
+</figure>
+<!-- guide:bake-generate-menu:end -->
+
+<!-- guide:bake-settings:start -->
+<figure class="guide-figure" id="figure-bake-settings" data-guide="bake-settings">
+<div class="guide-shot" style="--shot-ratio:356/170;--shot-width:147.75281%;--shot-left:-2.24719%;--shot-top:-51.17647%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-settings.jpg" width="526" height="580" loading="lazy" decoding="async" alt="Style 0、SmoothとSuppress Silent Mouthを有効、SymmetrizeとAuto Blinkを無効、Blink Seed 1234にした生成設定。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:2.94118%;--w:93.53933%;--h:13.52941%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:17.64706%;--w:93.53933%;--h:46.47059%"><b>2</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:64.70588%;--w:93.53933%;--h:31.17647%"><b>3</b></span>
+</div>
+<figcaption>
+<p><strong>Clipに保存する解析設定</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-settings.jpg">原寸画像を開く</a></p>
+<ol>
+<li>Styleは0〜11の話者スタイル番号です。感情名ではありません。</li>
+<li>SmoothとSuppress Silent Mouthは有効、Symmetrizeは無効の例です。</li>
+<li>Auto Blinkは無効。Blink Seed 1234は自動瞬き用のシードです。</li>
+</ol>
+<p>設定後、ダイアログ下部のGenerateを押します。解析設定はv0.2.0にもありますが、この生成ダイアログは公開ソース版の機能です。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+</figcaption>
+</figure>
+<!-- guide:bake-settings:end -->
+
+<!-- guide:bake-complete:start -->
+<figure class="guide-figure" id="figure-bake-complete" data-guide="bake-complete">
+<div class="guide-shot" style="--shot-ratio:512/76;--shot-width:102.73438%;--shot-left:-1.36719%;--shot-top:-351.31579%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-complete.jpg" width="526" height="580" loading="lazy" decoding="async" alt="進捗バーとFinished. 1 clips, 0 failures. Save generated assets to keep them.の実際の完了表示。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:1.75781%;--y:48.68421%;--w:95.70313%;--h:40.78947%"><b>1</b></span>
+</div>
+<figcaption>
+<p><strong>生成完了を確認する</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-complete.jpg">原寸画像を開く</a></p>
+<ol>
+<li>この撮影では1件成功、失敗0件でした。完了後も保存が必要です。</li>
+</ol>
+<p>1音声を生成した操作例です。新しい性能測定や網羅的な検証結果ではありません。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+</figcaption>
+</figure>
+<!-- guide:bake-complete:end -->
+
+<!-- guide:bake-save:start -->
+<figure class="guide-figure" id="figure-bake-save" data-guide="bake-save">
+<div class="guide-shot" style="--shot-ratio:646/532;--shot-width:100%;--shot-left:0%;--shot-top:0%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-save.jpg" width="646" height="532" loading="lazy" decoding="async" alt="Save Contentダイアログでspeech_stream_LAMClipが選択され、Save Selectedボタンが表示されている。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:2.47678%;--y:18.04511%;--w:95.51084%;--h:5.45113%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:64.08669%;--y:91.54135%;--w:20.27864%;--h:5.45113%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>生成したClipをディスクへ保存する</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-save.jpg">原寸画像を開く</a></p>
+<ol>
+<li>Save Allを押し、生成されたspeech_stream_LAMClipが選択されていることを確認します。</li>
+<li>Save Selectedで保存を確定します。</li>
+</ol>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+</figcaption>
+</figure>
+<!-- guide:bake-save:end -->
+
 <span id="preload-and-play-in-blueprint" class="comparison-anchor" aria-hidden="true"></span>
 
 ## Blueprintで先読みして再生する
@@ -81,6 +161,27 @@ Clipのハード参照は元SoundWaveもロード対象にします。**Soft Obj
 
 `Play Expression Clip With Settings`、Pause / Resume / Seek / Stop、音量、フェード、2D / 3D、Submix、再生イベントは[既存の再生制御](/LAMAudio2Expression-UE/playback/)と共通です。保存済みカーブは参照を共有し、各フレームで52値を補間します。再生ごとの全配列コピーは行いません。
 
+<!-- guide:baked-blueprint:start -->
+<figure class="guide-figure" id="figure-baked-blueprint" data-guide="baked-blueprint">
+<div class="guide-shot" style="--shot-ratio:674/516;--shot-width:303.85757%;--shot-left:-79.97033%;--shot-top:-36.24031%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/baked-blueprint.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="BeginPlayでspeech_streamをPrime Soundへ渡し、Space Barから保存済みClipをPlay Expression Clipで再生するBlueprint。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:49.85163%;--y:2.90698%;--w:36.20178%;--h:24.03101%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:49.70326%;--y:48.83721%;--w:48.07122%;--h:40.89147%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>音声を先読みして保存済みClipを再生する</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/baked-blueprint.jpg">原寸画像を開く</a></p>
+<ol>
+<li>Prime Soundには元のSoundWaveを指定します。先読みは早めに要求します。</li>
+<li>Play Expression ClipのClipには保存済みのspeech_stream_LAMClipを指定します。</li>
+</ol>
+<p>ノードのアセット名は欄幅によって省略されています。Prime Soundは読込完了通知ではありません。キー入力を使うActorには入力の受け取り設定が必要です。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+</figcaption>
+</figure>
+<!-- guide:baked-blueprint:end -->
+
 <span id="regenerate-after-changing-audio-or-models" class="comparison-anchor" aria-hidden="true"></span>
 
 ## 音声やモデルを変更したら再生成する
@@ -90,6 +191,24 @@ Clipを右クリックして**Regenerate**を選ぶと、そのClipに記録さ�
 Clipには音声の更新GUID、入力PCMのSHA-1、モデルGUID、モデルのパス、処理・形式バージョンを記録します。音声の再インポート、加工・圧縮設定の変更、モデル更新後は、UE標準の**Validate Assets**で確認して再生成・保存してください。エディタの検証ではモデルをロードする場合があります。再生時に自動で再生成される仕組みではありません。
 
 解析中に音声やモデルが変更されると、その結果は破棄されます。ロード時には形式バージョン、音声参照、長さ、フレーム数、カーブ数、値の妥当性も検証します。破損・未対応形式の場合、`On Playback Failed`の`Error.Code`は**InvalidBakedClip**となり、エラー理由も通知されます。自動で動的解析へ切り替えることはありません。
+
+<!-- guide:bake-regenerate:start -->
+<figure class="guide-figure" id="figure-bake-regenerate" data-guide="bake-regenerate">
+<div class="guide-shot" style="--shot-ratio:468/241;--shot-width:333.11966%;--shot-left:-51.28205%;--shot-top:-139.41909%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-regenerate.jpg" width="1559" height="971" loading="lazy" decoding="async" alt="Content Browserのspeech_stream_LAMClipと、その右クリックメニューのRegenerate。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:35.89744%;--y:39.41909%;--w:59.40171%;--h:12.44813%"><b>1</b></span>
+</div>
+<figcaption>
+<p><strong>保存済みClipを再生成する</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-regenerate.jpg">原寸画像を開く</a></p>
+<ol>
+<li>Clipを右クリックしてRegenerateを選び、記録済み設定で再生成します。</li>
+</ol>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+</figcaption>
+</figure>
+<!-- guide:bake-regenerate:end -->
 
 <span id="cook-and-package" class="comparison-anchor" aria-hidden="true"></span>
 

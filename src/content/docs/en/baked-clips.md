@@ -53,6 +53,86 @@ The output is `<SoundWaveName>_LAMClip` in the source audio's folder. An existin
 
 Batches process one sound at a time, record failures, and continue to the next item. Generation is unavailable during PIE. **Cancel** or closing the window stops the remaining work. An inference call already running finishes, but its result is discarded. Completed clips and the previous data of clips whose update failed are retained.
 
+<!-- guide:bake-generate-menu:start -->
+<figure class="guide-figure" id="figure-bake-generate-menu" data-guide="bake-generate-menu">
+<div class="guide-shot" style="--shot-ratio:340/84;--shot-width:458.52941%;--shot-left:-116.17647%;--shot-top:-194.04762%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-generate-menu.jpg" width="1559" height="971" loading="lazy" decoding="async" alt="Generate LAM Expression Clip in the SoundWave context menu." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:5.58824%;--y:41.66667%;--w:91.47059%;--h:38.09524%"><b>1</b></span>
+</div>
+<figcaption>
+<p><strong>Start generation from the SoundWave context menu</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-generate-menu.jpg">Open full-size image</a></p>
+<ol>
+<li>Select a SoundWave in the Content Browser and choose this command.</li>
+</ol>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+</figcaption>
+</figure>
+<!-- guide:bake-generate-menu:end -->
+
+<!-- guide:bake-settings:start -->
+<figure class="guide-figure" id="figure-bake-settings" data-guide="bake-settings">
+<div class="guide-shot" style="--shot-ratio:356/170;--shot-width:147.75281%;--shot-left:-2.24719%;--shot-top:-51.17647%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-settings.jpg" width="526" height="580" loading="lazy" decoding="async" alt="Generation settings: Style 0, Smooth and Suppress Silent Mouth enabled, Symmetrize and Auto Blink disabled, Blink Seed 1234." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:2.94118%;--w:93.53933%;--h:13.52941%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:17.64706%;--w:93.53933%;--h:46.47059%"><b>2</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:3.37079%;--y:64.70588%;--w:93.53933%;--h:31.17647%"><b>3</b></span>
+</div>
+<figcaption>
+<p><strong>Analysis settings stored with the clip</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-settings.jpg">Open full-size image</a></p>
+<ol>
+<li>Style is a speaker-style index from 0 to 11, not an emotion name.</li>
+<li>This example enables Smooth and Suppress Silent Mouth and disables Symmetrize.</li>
+<li>Auto Blink is disabled. Blink Seed 1234 is the seed used for automatic blinking.</li>
+</ol>
+<p>After setting the options, click Generate at the bottom of the dialog. The analysis options also exist in v0.2.0, but this generation dialog is a published-source feature.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+</figcaption>
+</figure>
+<!-- guide:bake-settings:end -->
+
+<!-- guide:bake-complete:start -->
+<figure class="guide-figure" id="figure-bake-complete" data-guide="bake-complete">
+<div class="guide-shot" style="--shot-ratio:512/76;--shot-width:102.73438%;--shot-left:-1.36719%;--shot-top:-351.31579%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-complete.jpg" width="526" height="580" loading="lazy" decoding="async" alt="Actual completion message: Finished. 1 clips, 0 failures. Save generated assets to keep them." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:1.75781%;--y:48.68421%;--w:95.70313%;--h:40.78947%"><b>1</b></span>
+</div>
+<figcaption>
+<p><strong>Check generation completion</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-complete.jpg">Open full-size image</a></p>
+<ol>
+<li>This captured operation completed one clip with no failures. Saving is still required.</li>
+</ol>
+<p>This illustrates generation of one audio asset, not a new benchmark or comprehensive validation result.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+</figcaption>
+</figure>
+<!-- guide:bake-complete:end -->
+
+<!-- guide:bake-save:start -->
+<figure class="guide-figure" id="figure-bake-save" data-guide="bake-save">
+<div class="guide-shot" style="--shot-ratio:646/532;--shot-width:100%;--shot-left:0%;--shot-top:0%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-save.jpg" width="646" height="532" loading="lazy" decoding="async" alt="Save Content dialog with speech_stream_LAMClip checked and the Save Selected button visible." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:2.47678%;--y:18.04511%;--w:95.51084%;--h:5.45113%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:64.08669%;--y:91.54135%;--w:20.27864%;--h:5.45113%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Save the generated clip to disk</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-save.jpg">Open full-size image</a></p>
+<ol>
+<li>Click Save All and check that the generated speech_stream_LAMClip is selected.</li>
+<li>Confirm with Save Selected.</li>
+</ol>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+</figcaption>
+</figure>
+<!-- guide:bake-save:end -->
+
 <span id="blueprintで先読みして再生する" class="comparison-anchor" aria-hidden="true"></span>
 
 ## Preload and play in Blueprint
@@ -81,6 +161,27 @@ A hard reference to the clip also makes its source SoundWave a loading dependenc
 
 `Play Expression Clip With Settings`, Pause / Resume / Seek / Stop, volume, fades, 2D / 3D, submixes, and playback events use the [existing playback controls](/LAMAudio2Expression-UE/en/playback/). Playback shares the saved curve data and interpolates 52 values per frame; it does not copy the entire array on every play.
 
+<!-- guide:baked-blueprint:start -->
+<figure class="guide-figure" id="figure-baked-blueprint" data-guide="baked-blueprint">
+<div class="guide-shot" style="--shot-ratio:674/516;--shot-width:303.85757%;--shot-left:-79.97033%;--shot-top:-36.24031%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/baked-blueprint.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="Blueprint priming speech_stream on BeginPlay and playing its saved clip from Space Bar with Play Expression Clip." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:49.85163%;--y:2.90698%;--w:36.20178%;--h:24.03101%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:49.70326%;--y:48.83721%;--w:48.07122%;--h:40.89147%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Prime audio and play a saved clip</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/baked-blueprint.jpg">Open full-size image</a></p>
+<ol>
+<li>Pass the original SoundWave to Prime Sound and request priming early.</li>
+<li>Set Clip on Play Expression Clip to the saved speech_stream_LAMClip.</li>
+</ol>
+<p>Asset names are truncated by the field width. Prime Sound does not signal completion. An Actor using keyboard events must be configured to receive input.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+</figcaption>
+</figure>
+<!-- guide:baked-blueprint:end -->
+
 <span id="音声やモデルを変更したら再生成する" class="comparison-anchor" aria-hidden="true"></span>
 
 ## Regenerate after changing audio or models
@@ -90,6 +191,24 @@ Right-click a clip and choose **Regenerate** to reuse that clip's recorded analy
 Clips record the sound update GUID, input PCM SHA-1, model GUID, model path, and processing/format versions. After reimporting audio, changing its processing or compression settings, or updating the model, run UE's standard **Validate Assets**, regenerate, and save. Editor validation may load the model. Playback does not automatically regenerate stale clips.
 
 If audio or the model changes during analysis, the result is discarded. Loading also validates the format version, sound reference, duration, frame and curve counts, and value validity. Corrupt or unsupported data triggers `On Playback Failed` with **InvalidBakedClip** in `Error.Code` and a reason. It does not automatically fall back to dynamic analysis.
+
+<!-- guide:bake-regenerate:start -->
+<figure class="guide-figure" id="figure-bake-regenerate" data-guide="bake-regenerate">
+<div class="guide-shot" style="--shot-ratio:468/241;--shot-width:333.11966%;--shot-left:-51.28205%;--shot-top:-139.41909%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/bake-regenerate.jpg" width="1559" height="971" loading="lazy" decoding="async" alt="speech_stream_LAMClip in the Content Browser with Regenerate in its context menu." />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:35.89744%;--y:39.41909%;--w:59.40171%;--h:12.44813%"><b>1</b></span>
+</div>
+<figcaption>
+<p><strong>Regenerate a saved clip</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/bake-regenerate.jpg">Open full-size image</a></p>
+<ol>
+<li>Right-click the clip and choose Regenerate to use its stored settings.</li>
+</ol>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+</figcaption>
+</figure>
+<!-- guide:bake-regenerate:end -->
 
 <span id="cookとパッケージ化" class="comparison-anchor" aria-hidden="true"></span>
 

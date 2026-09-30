@@ -20,6 +20,29 @@ sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https:
 
 停止後のSeekは新しい再生を開始します。速度は1倍、ループは対象外です。ループ指定のSoundWaveは拒否されます。
 
+<!-- guide:playback-controls:start -->
+<figure class="guide-figure" id="figure-playback-controls" data-guide="playback-controls">
+<div class="guide-shot" style="--shot-ratio:564/548;--shot-width:363.12057%;--shot-left:-104.78723%;--shot-top:-31.20438%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/playback-controls.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="PキーからPause、RキーからResume、SキーからTime Seconds 1.0のSeekを呼ぶBlueprint。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:49.8227%;--y:2.37226%;--w:47.87234%;--h:19.34307%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:49.8227%;--y:37.59124%;--w:47.87234%;--h:19.34307%"><b>2</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:49.8227%;--y:72.81022%;--w:47.87234%;--h:24.63504%"><b>3</b></span>
+</div>
+<figcaption>
+<p><strong>Pause・Resume・Seekの接続例</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/playback-controls.jpg">原寸画像を開く</a></p>
+<ol>
+<li>PからPauseを呼び、一時停止します。</li>
+<li>RからResumeを呼び、再開します。</li>
+<li>SからSeekを呼び、1.0秒の位置へ移動する例です。</li>
+</ol>
+<p>撮影用Blueprintのキー割り当てです。Actorが入力を受け取る設定にし、同じLAMでClipを再生してから操作します。デモのキー割り当てとは異なります。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+</figcaption>
+</figure>
+<!-- guide:playback-controls:end -->
+
 ## 音声の出力先
 
 **Output Submix**が未指定なら元音声・SoundClass・エンジンの設定を継承し、指定すると主出力を置き換えます。**Additional Submix Sends**は並列の追加送信です。レベルは0〜1、同じ送信先を複数指定した場合は最後を採用します。
@@ -28,11 +51,51 @@ sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https:
 
 **Inherit SoundWave Sends**は既定で有効です。**Sound Class Override**と**Concurrency Settings**は未指定なら元音声から継承します。
 
+<!-- guide:playback-settings:start -->
+<figure class="guide-figure" id="figure-playback-settings" data-guide="playback-settings">
+<div class="guide-shot" style="--shot-ratio:438/265;--shot-width:467.57991%;--shot-left:-324.65753%;--shot-top:-147.92453%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/playback-settings.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="Playback SettingsのOutput Submix、Additional Submix Sends、Sound Class Override、Volume 1.0、Muted無効。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:8.21918%;--y:17.73585%;--w:89.72603%;--h:36.98113%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:8.21918%;--y:78.11321%;--w:61.41553%;--h:20.37736%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>コンポーネントの出力先と音量</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/playback-settings.jpg">原寸画像を開く</a></p>
+<ol>
+<li>Output Submixと追加送信を設定します。Noneは元音声・エンジンの設定を継承します。</li>
+<li>撮影例のVolumeは1.0、Mutedは無効です。</li>
+</ol>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+</figcaption>
+</figure>
+<!-- guide:playback-settings:end -->
+
 ## 3D再生とゲーム停止
 
 Playback Modeは既定でTwo Dimensionalです。Three DimensionalではAttachment、Socket、Transform、Attenuation Settingsを指定できます。Attachment未指定なら所有ActorのRootへ接続し、未登録・別World・存在しないSocketはエラーです。
 
 **Play When Game Paused**は既定でfalseです。有効時はゲーム停止中も再生できます。メッシュのAnimBPも更新するには、SkeletalMeshComponentの**Tick Even When Paused**を有効にします。
+
+<!-- guide:playback-3d:start -->
+<figure class="guide-figure" id="figure-playback-3d" data-guide="playback-3d">
+<div class="guide-shot" style="--shot-ratio:463/175;--shot-width:442.33261%;--shot-left:-307.12743%;--shot-top:-372.57143%">
+<div class="guide-window">
+<img src="/LAMAudio2Expression-UE/images/guides/playback-3d.jpg" width="2048" height="1104" loading="lazy" decoding="async" alt="Playback ModeのTwo DimensionalとThree Dimensionalの選択肢、Attachment、Socket、Attenuation Settings。" />
+</div>
+<span class="guide-callout" aria-hidden="true" style="--x:35.42117%;--y:4%;--w:29.80562%;--h:37.71429%"><b>1</b></span>
+<span class="guide-callout" aria-hidden="true" style="--x:7.77538%;--y:50.85714%;--w:84.88121%;--h:42.85714%"><b>2</b></span>
+</div>
+<figcaption>
+<p><strong>Playback Modeと3D音声の設定箇所</strong> · <a class="guide-original" href="/LAMAudio2Expression-UE/images/guides/playback-3d.jpg">原寸画像を開く</a></p>
+<ol>
+<li>Playback ModeでThree Dimensionalを選択します。撮影時は選択肢を開いた状態です。</li>
+<li>TransformとAttenuation Settingsも用途に合わせて設定します。AttachmentとSocketはメニューを閉じると確認できます。</li>
+</ol>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+</figcaption>
+</figure>
+<!-- guide:playback-3d:end -->
 
 ## 終了イベントを使い分ける
 

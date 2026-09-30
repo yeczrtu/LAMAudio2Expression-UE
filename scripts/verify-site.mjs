@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { parseHTML, DOMParser } from 'linkedom';
 
 const root = new URL('../dist/', import.meta.url);
@@ -12,6 +13,9 @@ const documents = new Map();
 const titles = new Set();
 const descriptions = new Set();
 let links = 0;
+const guideManifest = JSON.parse(readFileSync(new URL('../guide-images.json', import.meta.url), 'utf8'));
+const guideById = new Map(guideManifest.guides.map(g => [g.id, g]));
+let guideCount = 0;
 
 function localFile(pathname) {
   assert(pathname.startsWith(base), `URL escapes project base: ${pathname}`);
@@ -60,6 +64,24 @@ for (const path of expected) {
   }
   assert(!doc.querySelector('main')?.textContent.includes('§'), `Authoring marker: ${path}`);
   for (const image of doc.querySelectorAll('img')) assert(image.getAttribute('alt')?.trim(), `Image missing alt: ${path}`);
+  const expectedGuides = guideManifest.guides.filter(g => g.placements.some(p => p.slug + '/' === pairSlug)).map(g => g.id).sort();
+  const figures = [...doc.querySelectorAll('figure[data-guide]')];
+  assert.deepEqual(figures.map(f => f.dataset.guide).sort(), expectedGuides, `Guide placements: ${path}`);
+  for (const figure of figures) {
+    const g = guideById.get(figure.dataset.guide);
+    const img = figure.querySelector('img');
+    assert.equal(img?.getAttribute('src'), base + g.file);
+    assert.equal(img?.getAttribute('alt'), g.alt[lang]);
+    assert.equal(Number(img?.getAttribute('width')), g.width);
+    assert.equal(Number(img?.getAttribute('height')), g.height);
+    assert.equal(img?.getAttribute('loading'), 'lazy');
+    assert.equal(figure.querySelector('.guide-original')?.getAttribute('href'), base + g.file);
+    assert.equal(figure.querySelectorAll('.guide-callout').length, g.annotations.length);
+    assert.deepEqual([...figure.querySelectorAll('figcaption li')].map(li => li.textContent), g.annotations.map(a => a[lang]));
+    assert.deepEqual([...figure.querySelectorAll('.guide-callout b')].map(b => b.textContent), g.annotations.map((_,i) => String(i+1)));
+    if (g.availability === 'source-only') assert.match(figure.querySelector('.guide-provenance').textContent, /v0\.2\.0/);
+    guideCount++;
+  }
   for (const tag of doc.querySelectorAll('[href], [src], [poster]')) {
     for (const attr of ['href', 'src', 'poster']) {
       const value = tag.getAttribute(attr);
@@ -99,4 +121,12 @@ assert(notFound.querySelector('meta[name="robots"]')?.getAttribute('content')?.i
 assert(existsSync(new URL('pagefind/pagefind.js', root)), 'Missing search bundle');
 const searchEntry = JSON.parse(readFileSync(new URL('pagefind/pagefind-entry.json', root), 'utf8'));
 for (const language of ['ja', 'en']) assert.equal(searchEntry.languages[language]?.page_count, slugs.length, `Search index: ${language}`);
+for (const g of guideManifest.guides) {
+  const bytes = readFileSync(new URL(g.file, root));
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), g.sha256, `Raw image changed: ${g.id}`);
+  const [x,y,w,h] = g.crop;
+  assert(x >= 0 && y >= 0 && w > 0 && h > 0 && x+w <= g.width && y+h <= g.height, `Crop outside raw image: ${g.id}`);
+  for (const {rect:[ax,ay,aw,ah]} of g.annotations) assert(ax >= x && ay >= y && aw > 0 && ah > 0 && ax+aw <= x+w && ay+ah <= y+h, `Callout outside crop: ${g.id}`);
+}
 console.log(`Verified ${expected.length} pages, ${links} local links/assets, reciprocal language links, metadata, JSON-LD, sitemap, 404, and two ${slugs.length}-page search indexes.`);
+console.log(`Verified ${guideCount} bilingual figures and ${guideManifest.guides.length} original image hashes, crops, callouts, captions, alt text and full-size links.`);

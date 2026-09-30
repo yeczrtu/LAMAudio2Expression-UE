@@ -36,3 +36,15 @@ pages preserve the original creators, terms, links, and modification notices.
 
 The neural model and upstream LAM code referenced by the guides remain Apache-2.0;
 they are not shipped in this documentation branch.
+
+## Operation-guide captures
+
+`public/images/guides/*.jpg` are unmodified English-UI screenshots captured on
+2026-09-30 in an isolated UE 5.8.2 project, based on the public plugin and demo
+commits recorded in `guide-images.json`. Unreal Engine UI and branding remain
+Epic Games' property. Documentation-only sample Blueprints use the existing
+plugin API; their screenshots are illustrations, not new runtime test results.
+The page crops the visible region and overlays numbered boxes using HTML/CSS;
+it does not paint over source pixels. Full-size links retain the raw captures.
+The annotated reuse of `face-demo.png` retains all character and speech credits
+and usage conditions above. No microphone audio was recorded for these captures.
