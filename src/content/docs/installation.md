@@ -1,9 +1,9 @@
 ---
 title: "Unreal Engineプラグインの導入"
-description: "UE 5.8.2にLAM Audio2Expression v0.2.0を導入する手順。モデル入りZIP、プラグイン有効化、Cook設定、最初のBlueprint接続を説明します。"
+description: "UE 5.8.2にLAM Audio2Expression v0.3.0を導入する手順。モデル入りZIP、プラグイン有効化、Cook設定、最初のBlueprint接続を説明します。"
 sidebar: {"label":"プラグインの導入"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"}]
 ---
 
 自分のUnreal Engineプロジェクトへ音声リップシンクを追加する手順です。動作だけを試す場合は[Windowsデモ](/LAMAudio2Expression-UE/demo/)を利用できます。
@@ -11,14 +11,14 @@ sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://
 ## 事前に用意するもの
 
 - Windows x64と**Unreal Engine 5.8.2**。
-- ARKit 52対応のMorph Target、または表情カーブを利用できるリグ。
+- ARKit 52対応Morph Target、またはカーブ駆動リグ。5母音・Oculus互換モーフは[Viseme変換](/LAMAudio2Expression-UE/expression-curves/#visemes)を利用できます。
 - UEへインポート済みの通常のSoundWave。
 
 配布物にはEditor Development、Game Development / Shippingのビルド済みデータとC++ソースが含まれます。他のUE版は[ソースからの再ビルド](/LAMAudio2Expression-UE/development/)が必要です。
 
 ## モデル入りZIPを配置する
 
-1. [v0.2.0のプラグインZIP](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip)をダウンロードします。
+1. [v0.3.0のプラグインZIP](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-UE5.8.2-Win64-Model.zip)をダウンロードします。
 2. UEエディタを終了し、ZIPをすべて展開します。
 3. `LAMAudio2Expression`フォルダーを`<Project>/Plugins/LAMAudio2Expression`に配置します。更新時は既存フォルダーを別の場所へ退避してから置き換えます。
 4. UEで**LAM Audio2Expression**を有効にし、再起動します。依存するNNE ORTとAudioCaptureも有効になります。
@@ -43,8 +43,8 @@ sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://
 <li>検索欄にLAMを入力します。</li>
 <li>チェックを有効にし、要求されたらUEを再起動します。</li>
 </ol>
-<p>表示のVersion 0.2.0はプラグイン記述子の値です。撮影したソースのコミットは下記を参照してください。</p>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p>画面のVersion 0.2.0は撮影した公開ソースの記述子の値です。v0.3.0配布ZIPでは0.3.0へ更新されています。撮影コミットは下記を参照してください。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:plugin-enabled:end -->
@@ -64,7 +64,7 @@ sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://
 <li>Modelで/LAMAudio2Expression/Models/LAM_A2Eを選択します。</li>
 <li>撮影例はPrefer GPU有効、Cache MiB 64です。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:model-settings:end -->
@@ -92,7 +92,7 @@ AnimBPでは`Apply LAM ARKit Curves`を既存ポーズとOutput Poseの間に置
 <li>AddでLAM Audio2Expression Componentを検索して追加します。</li>
 <li>追加したコンポーネントをLAMという名前で使用した例です。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:add-component:end -->
@@ -118,7 +118,7 @@ Project Settings → Packaging → **Additional Asset Directories to Cook**へ`/
 <li>PackagingでAdditional Asset Directories to Cookを開きます。</li>
 <li>モデルのフォルダー/LAMAudio2Expression/Modelsを追加します。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:cook-settings:end -->

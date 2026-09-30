@@ -2,8 +2,8 @@
 title: "Licenses and credits"
 description: "Source attribution for LAM Audio2Expression code and model weights, JVNV speech, demo video, and the hinzka / VRoid character, based on the published project notices."
 sidebar: {"label":"Licenses & credits"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / THIRD_PARTY_NOTICES.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/THIRD_PARTY_NOTICES.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"},{"label":"Demo / Resources/Demo/README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Resources/Demo/README.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / THIRD_PARTY_NOTICES.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/THIRD_PARTY_NOTICES.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/VIDEO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/VIDEO.md"},{"label":"Demo / Resources/Demo/README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Resources/Demo/README.md"}]
 ---
 
 This page organizes the project's published attribution records. Code, model weights, and demo assets retain their respective licenses and notices.
@@ -18,7 +18,7 @@ This page organizes the project's published attribution records. Code, model wei
 | Character and textures | hinzka's published permission and applicable VRoid terms |
 | Unreal Engine | Epic Games terms |
 
-[MIT text](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/LICENSE) · [Apache-2.0 text](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Licenses/Apache-2.0.txt) · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+[MIT text](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/LICENSE) · [Apache-2.0 text](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Licenses/Apache-2.0.txt) · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## Upstream code and model
 
@@ -43,3 +43,9 @@ The preview is a frame extracted at five seconds from the published recording; t
 The older VRM metadata still contains `Redistribution_Prohibited`. The demo's provenance record explicitly notes that discrepancy and relies on the newer published README permission. The character is not relicensed as MIT or CC0.
 
 The demo migrates an FBX-converted Face52 mesh, assigns extracted textures, and uses masked, lit UE materials in place of MToon. Consult the [applicable VRoid terms](https://vroid.pixiv.help/hc/ja/articles/4405813333657) and the original attribution linked below.
+
+<span id="viseme-templates" class="comparison-anchor" aria-hidden="true"></span>
+
+## Viseme template attribution
+
+v0.3.0 uses MIT-licensed forward recipes from **OpenFaceFX contributors (2026)**, revision `f898db3c825bf89cfec63391bb16d91fc42192e8`, and **Mika Suominen / TalkingHead (2023–2024)**, revision `5b1f12057a0edad83d1fc75714217dbbc9496aa7`. Recipe data, notices, and full licenses are in the plugin's [ThirdParty/VisemeTemplates](https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4/ThirdParty/VisemeTemplates). Keep these alongside the plugin when redistributing. The inverse fitter is original integration code; the recipes are not an inverse phoneme recognizer. [Published notices](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/THIRD_PARTY_NOTICES.md)

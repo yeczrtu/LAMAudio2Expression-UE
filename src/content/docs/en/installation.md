@@ -1,9 +1,9 @@
 ---
 title: "Install the Unreal Engine plugin"
-description: "Install LAM Audio2Expression v0.2.0 in UE 5.8.2. Set up the model-included ZIP, enable dependencies, configure cooking, and connect your first Blueprint."
+description: "Install LAM Audio2Expression v0.3.0 in UE 5.8.2. Set up the model-included ZIP, enable dependencies, configure cooking, and connect your first Blueprint."
 sidebar: {"label":"Install the plugin"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"}]
 ---
 
 Use this guide to add audio-driven lip sync to your own Unreal Engine project. To try the result first, use the [standalone Windows demo](/LAMAudio2Expression-UE/en/demo/).
@@ -11,14 +11,14 @@ Use this guide to add audio-driven lip sync to your own Unreal Engine project. T
 ## Requirements
 
 - Windows x64 and **Unreal Engine 5.8.2**.
-- A character with ARKit 52 morph targets, or a rig that consumes expression curves.
+- ARKit 52 morph targets or a curve-driven rig; five-vowel and Oculus-compatible rigs can use [Viseme conversion](/LAMAudio2Expression-UE/en/expression-curves/#visemes).
 - A standard SoundWave imported into Unreal Engine.
 
 The release includes precompiled Editor Development and Game Development / Shipping data, plus C++ source. Other UE versions require a [source rebuild](/LAMAudio2Expression-UE/en/development/).
 
 ## Install the model-included ZIP
 
-1. Download the [v0.2.0 plugin ZIP](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip).
+1. Download the [v0.3.0 plugin ZIP](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-UE5.8.2-Win64-Model.zip).
 2. Close the UE editor and extract the entire archive.
 3. Place `LAMAudio2Expression` at `<Project>/Plugins/LAMAudio2Expression`. When upgrading, move the old plugin folder elsewhere before replacing it.
 4. Enable **LAM Audio2Expression** in UE and restart. The required NNE ORT and AudioCapture plugins are enabled as dependencies.
@@ -43,8 +43,8 @@ Do not remove `Source` or `Intermediate/Build`. These folders contain data requi
 <li>Enter LAM in the search field.</li>
 <li>Enable the checkbox and restart UE if prompted.</li>
 </ol>
-<p>Version 0.2.0 is the descriptor label. The actual captured source commit is recorded below.</p>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p>Version 0.2.0 is the captured public-source descriptor label. The v0.3.0 release ZIP updates it to 0.3.0. The capture commit is recorded below.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:plugin-enabled:end -->
@@ -64,7 +64,7 @@ Do not remove `Source` or `Intermediate/Build`. These folders contain data requi
 <li>Select /LAMAudio2Expression/Models/LAM_A2E in Model.</li>
 <li>The capture shows Prefer GPU enabled and Cache MiB 64.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:model-settings:end -->
@@ -92,7 +92,7 @@ The first analysis waits for the roughly 384 MiB model to load and inference to 
 <li>Use Add to find and add LAM Audio2Expression Component.</li>
 <li>This example names the added component LAM.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:add-component:end -->
@@ -118,7 +118,7 @@ The plugin alone does not include a face, speech samples, or demo map. Use the [
 <li>Open Additional Asset Directories to Cook under Packaging.</li>
 <li>Add the model folder /LAMAudio2Expression/Models.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:cook-settings:end -->

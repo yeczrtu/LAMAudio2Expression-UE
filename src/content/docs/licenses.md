@@ -2,8 +2,8 @@
 title: "ライセンス・クレジット"
 description: "LAM Audio2Expressionのコード、学習済みモデル、JVNV音声、デモ映像、hinzka / VRoidキャラクターの出典と公開資料に記録された利用条件。"
 sidebar: {"label":"ライセンス"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / THIRD_PARTY_NOTICES.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/THIRD_PARTY_NOTICES.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"},{"label":"Demo / Resources/Demo/README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Resources/Demo/README.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / THIRD_PARTY_NOTICES.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/THIRD_PARTY_NOTICES.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/VIDEO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/VIDEO.md"},{"label":"Demo / Resources/Demo/README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Resources/Demo/README.md"}]
 ---
 
 このページはプロジェクトの公開済み帰属資料を整理したものです。コード・モデル・デモ素材は、それぞれのライセンスと表記に従います。
@@ -18,7 +18,7 @@ sources: [{"label":"Plugin / THIRD_PARTY_NOTICES.md · 3a04219","url":"https://g
 | キャラクターとテクスチャ | hinzkaの公開許諾およびVRoidの条件 |
 | Unreal Engine | Epic Gamesの利用条件 |
 
-[MIT本文](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/LICENSE) · [Apache-2.0本文](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Licenses/Apache-2.0.txt) · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+[MIT本文](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/LICENSE) · [Apache-2.0本文](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Licenses/Apache-2.0.txt) · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## 上流コードと学習済みモデル
 
@@ -43,3 +43,9 @@ F1話者のanger_regular_31、disgust_regular_38、fear_regular_23、happy_regul
 旧VRMメタデータには`Redistribution_Prohibited`が残っているため、デモの出典資料では新しい公開READMEの明示許諾との相違も記録しています。キャラクターをMITやCC0へ変更するものではありません。
 
 デモではFBX変換済みFace52メッシュを移植し、テクスチャを割り当て、MToonからUEのマスク付きLitマテリアルへ変更しています。[VRoidの関連条件](https://vroid.pixiv.help/hc/ja/articles/4405813333657)とページ末尾の原文も確認してください。
+
+<span id="viseme-templates" class="comparison-anchor" aria-hidden="true"></span>
+
+## Visemeテンプレートの出典
+
+v0.3.0は**OpenFaceFX contributors（2026）**の固定版`f898db3c825bf89cfec63391bb16d91fc42192e8`と、**Mika Suominen / TalkingHead（2023–2024）**の固定版`5b1f12057a0edad83d1fc75714217dbbc9496aa7`によるMITの順方向配合を使用します。配合データ・著作権表記・ライセンス全文はプラグインの[ThirdParty/VisemeTemplates](https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4/ThirdParty/VisemeTemplates)にあり、再配布時も保持します。逆算処理は独自統合コードで、配合自体が逆方向の音素認識器ではありません。[公開の帰属資料](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/THIRD_PARTY_NOTICES.md)

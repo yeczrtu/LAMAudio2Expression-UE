@@ -2,8 +2,8 @@
 title: "導入・リップシンクのトラブル対処"
 description: "モデルが見つからない、表情が動かない、音声が読み込めない、ライブ入力が遅れる場合のLAM Audio2Expression確認手順。"
 sidebar: {"label":"トラブル対処"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/RELEASE_INSTALL.md"},{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/README.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## モデルが見つからない
@@ -27,7 +27,7 @@ Editorで動いて配布版で失敗する場合は、PackagingのAdditional Ass
 <li>Modelで/LAMAudio2Expression/Models/LAM_A2Eを選択します。</li>
 <li>撮影例はPrefer GPU有効、Cache MiB 64です。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:model-settings:end -->
@@ -58,7 +58,7 @@ Editorで動いて配布版で失敗する場合は、PackagingのAdditional Ass
 <li>Source Componentに解析・再生用LAMを指定します。空欄なら所有Actorから検索されます。</li>
 <li>出力をOutput Poseへ接続します。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:animgraph:end -->
@@ -87,9 +87,9 @@ Windowsのマイク権限、録音デバイス、`On Live State Changed`を確�
 
 [プラグインのIssue](https://github.com/yeczrtu/LAMAudio2Expression-UE/issues)か[デモのIssue](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/issues)へ、使用版、UE版、Editor / Shippingなどの構成、CPU / GPU、再現手順、Error.Code / Error.Messageを添えてください。配布版かソース版かも記載すると切り分けやすくなります。
 
-## 事前解析Clipの問題（公開ソース版）
+## 事前解析Clipの問題（v0.3.0）
 
-生成メニューが表示されない場合は、v0.2.0 ZIPではなくプラグイン1f06ac8を含むソースでEditorをビルドしたか確認します。`InvalidBakedClip`、生成後の保存、再生成、Cook漏れは[事前解析Clipのトラブル対処](/LAMAudio2Expression-UE/baked-clips/#troubleshooting)を参照してください。
+生成メニューが表示されない場合は、v0.3.0への更新・プラグイン有効化・Editor再起動を確認します。`InvalidBakedClip`、生成後の保存、再生成、Cook漏れは[事前解析Clipのトラブル対処](/LAMAudio2Expression-UE/baked-clips/#troubleshooting)を参照してください。
 
 <!-- guide:bake-regenerate:start -->
 <figure class="guide-figure" id="figure-bake-regenerate" data-guide="bake-regenerate">
@@ -104,7 +104,11 @@ Windowsのマイク権限、録音デバイス、`On Live State Changed`を確�
 <ol>
 <li>Clipを右クリックしてRegenerateを選び、記録済み設定で再生成します。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:bake-regenerate:end -->
+
+## Visemeで口が動かない
+
+ProfileのTarget Namesと実際のMorph Target名を照合してください。FiveVowelRulesの子音9枠は0です。15枠のモーフを持つ場合はTemplateFitを検討します。全ARKit口カーブとVisemeを同じ口へ重ねて適用しないでください。TemplateFitで未供給の入力を除外するときはScale=0ではなくFitWeight=0を使います。[Visemeの設定と制約](/LAMAudio2Expression-UE/expression-curves/#visemes)を参照してください。

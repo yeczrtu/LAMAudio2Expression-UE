@@ -2,8 +2,8 @@
 title: "Connect audio and facial animation in Blueprint"
 description: "Wire Analyze SoundWave Async to Play Expression Clip and Apply LAM ARKit Curves. A practical Blueprint and AnimGraph guide for audio-driven Unreal Engine lip sync."
 sidebar: {"label":"Blueprint connections"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 Connect audio analysis and playback as separate steps. Your Actor needs a `LAMAudio2ExpressionComponent`, and the displayed mesh needs an Animation Blueprint.
@@ -38,7 +38,7 @@ Pass the Clip output of `Completed` to the playback node. Keep the Clip in a Blu
 <li>Use Add to find and add LAM Audio2Expression Component.</li>
 <li>This example names the added component LAM.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:add-component:end -->
@@ -59,7 +59,7 @@ Pass the Clip output of `Completed` to the playback node. Keep the Clip in a Blu
 <li>Connect the Completed execution pin and Clip output to the playback node.</li>
 </ol>
 <p>This is a minimal wiring example. Handle Failed, Cancelled and Progress in your application.</p>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:blueprint-analysis:end -->
@@ -96,7 +96,7 @@ A mesh can consume standard curve names such as `jawOpen` through matching morph
 <li>Assign the analysis/playback LAM to Source Component. If empty, the owning Actor is searched.</li>
 <li>Connect the output to Output Pose.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:animgraph:end -->
@@ -112,8 +112,10 @@ A mesh can consume standard curve names such as `jawOpen` through matching morph
 
 The distributed project includes `/Game/Examples/BP_LAMPlayback` for async analysis and playback, and `/Game/Examples/ABP_LAMCurves` for the AnimGraph. The latter uses a test skeleton; copy its node arrangement into your own AnimBP.
 
-In the public Blueprint face-demo source, start at `02_Analyze_And_Play` in `BP_FaceDemo`. That demo implementation is newer than the v0.2.0 ZIPs. See the [demo version notes](/LAMAudio2Expression-UE/en/demo/).
+In the public Blueprint face-demo source, start at `02_Analyze_And_Play` in `BP_FaceDemo`. That implementation is included in the v0.3.0 ZIPs. See the [demo version notes](/LAMAudio2Expression-UE/en/demo/).
 
-## Use a saved clip (published source)
+## Use a saved clip (v0.3.0)
 
-For recorded audio, [bake a SoundWave clip](/LAMAudio2Expression-UE/en/baked-clips/) in the editor and save the asset. Pass the loaded clip directly to a playback node to skip runtime analysis. This feature is in Plugin 1f06ac8 and is not included in the v0.2.0 ZIPs.
+For recorded audio, [bake a SoundWave clip](/LAMAudio2Expression-UE/en/baked-clips/) in the editor and save the asset. Pass the loaded clip directly to a playback node to skip runtime analysis. This feature is included in the v0.3.0 ZIPs.
+
+In latest source Plugin `1860d0e`, **Lipsync** also finds these nodes. For the v0.3.0 ZIP use **LAM** or the displayed node name. For a vowel / Oculus rig, replace the mouth application with [Apply LAM Viseme Curves](/LAMAudio2Expression-UE/en/expression-curves/#visemes).

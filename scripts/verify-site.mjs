@@ -14,6 +14,7 @@ const titles = new Set();
 const descriptions = new Set();
 let links = 0;
 const guideManifest = JSON.parse(readFileSync(new URL('../guide-images.json', import.meta.url), 'utf8'));
+const contentSources = JSON.parse(readFileSync(new URL('../content-sources.json', import.meta.url), 'utf8'));
 const guideById = new Map(guideManifest.guides.map(g => [g.id, g]));
 let guideCount = 0;
 
@@ -34,6 +35,17 @@ for (const path of expected) {
   const lang = en ? 'en' : 'ja';
   const url = origin + path;
   const pairSlug = path.slice(base.length).replace(/^en\//, '');
+  // Check download targets against the reviewed release, not a second hard-coded version.
+  for (const a of doc.querySelectorAll('a[href*="/releases/download/"]')) {
+    const target = new URL(a.getAttribute('href'));
+    if (target.hostname !== 'github.com' || !target.pathname.startsWith('/yeczrtu/')) continue;
+    assert.equal(target.pathname.split('/releases/download/')[1].split('/')[0], contentSources.release, `Stale release download: ${path}`);
+  }
+  if (pairSlug === '') {
+    const downloads = [...doc.querySelectorAll('.download-grid a')];
+    assert.equal(downloads.length, 3);
+    for (const a of downloads) assert(a.href.includes(`/releases/download/${contentSources.release}/`), `Homepage release: ${path}`);
+  }
   assert.equal(doc.documentElement.lang, lang, `Wrong language: ${path}`);
   assert.equal(doc.querySelectorAll('h1').length, 1, `Expected one H1: ${path}`);
   assert.equal(doc.querySelectorAll('link[rel="canonical"]').length, 1, `Duplicate canonical: ${path}`);
@@ -79,7 +91,7 @@ for (const path of expected) {
     assert.equal(figure.querySelectorAll('.guide-callout').length, g.annotations.length);
     assert.deepEqual([...figure.querySelectorAll('figcaption li')].map(li => li.textContent), g.annotations.map(a => a[lang]));
     assert.deepEqual([...figure.querySelectorAll('.guide-callout b')].map(b => b.textContent), g.annotations.map((_,i) => String(i+1)));
-    if (g.availability === 'source-only') assert.match(figure.querySelector('.guide-provenance').textContent, /v0\.2\.0/);
+    if (g.availability === 'release-0.3.0') assert.match(figure.querySelector('.guide-provenance').textContent, /v0\.3\.0/);
     guideCount++;
   }
   for (const tag of doc.querySelectorAll('[href], [src], [poster]')) {

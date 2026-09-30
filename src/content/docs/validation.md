@@ -2,9 +2,49 @@
 title: "検証結果と対応範囲"
 description: "UE 5.8.2、Windows x64、RTX 3070環境でのLAM Audio2Expressionの数値一致、Blueprint、Shipping、ライブPCM検証と未検証範囲。"
 sidebar: {"label":"検証結果"}
-appliesTo: "公開ソースのスナップショット · UE 5.8.2 / Windows x64 · 事前解析の追記: 1f06ac8 / f3b6f13"
-sources: [{"label":"Demo / Docs/VALIDATION.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VALIDATION.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"},{"label":"Demo / baked-clips-results.json · f3b6f13","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/f3b6f13e98d75d6e23933669adee79319ef3363f/Docs/Validation/baked-clips-results.json"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64 · 2026-09-30"
+sources: [{"label":"Demo / Docs/VALIDATION.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VALIDATION.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"},{"label":"Demo / baked-clips-results.json · f3b6f13","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/f3b6f13e98d75d6e23933669adee79319ef3363f/Docs/Validation/baked-clips-results.json"},{"label":"v0.3.0 / validation.json · 2026-09-28","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/validation.json"},{"label":"v0.3.0 / release-manifest.json","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json"}]
 ---
+
+現在の配布版は**v0.3.0**です。以下は**2026年9月28日**の公開リリース検証を9月30日に確認した内容です。今回のドキュメント更新でUEテストや性能測定を再実行したものではありません。従来のソース検証結果は、日付と条件を分けて後半に残しています。
+
+<span id="release-validation" class="comparison-anchor" aria-hidden="true"></span>
+
+## v0.3.0配布版の検証
+
+ビルド元は**Plugin 1f06ac8 / Demo f3b6f13**。環境は**UE 5.8.2、Windows 11 x64、Core i7-12700、RTX 3070**です。[配布版の検証JSON](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/validation.json)と[マニフェスト](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json)に次の結果が記録されています。
+
+| 対象 | 公開結果 |
+| --- | --- |
+| BuildPlugin | Editor Development・Game Development・Game Shipping成功 |
+| デモビルド | Editor Development・前提ランタイム込みWin64 Shipping成功 |
+| UE Automation | 全12件成功、うち警告あり2件。失敗0件 |
+| Bake保存フィクスチャ | 2件成功、うち警告あり1件。失敗0件（別実行） |
+| 展開ZIPの整合性 | 3種のCRC・SHA-256成功。単体・プロジェクト同梱プラグインはバイト一致 |
+| 展開後Editorのモデル | 数値比較成功。CPU・DirectMLの誤差は0.001未満 |
+| 展開後顔デモ | Editorで6音声すべて成功 |
+| 展開後Shipping再生制御 | 保存済みClip、ライブ間隔、CPU競合を含む6ケース成功 |
+| 展開後Shippingスモーク | Blueprint、ライブPCM、300秒音声を含む10ケース成功 |
+| 展開後Shipping Viseme | 5母音・OpenFaceFX・TalkingHeadの各構成で6音声すべて成功 |
+
+警告には不正なBake入力の意図的拒否、音声DDCキー警告、WASAPI raw-modeのフォールバックが含まれます。全アサーションは成功しています。警告あり2件は全12件の内数で、14件ではありません。Bake保存フィクスチャは別実行の記録です。
+
+展開後Editor・Shippingの代表画像では、顔・マテリアル・口形状・HUDの表示、テクスチャ欠落や空キャプチャがないことを目視確認済みと記録されています。機能・表示の確認であり、他方式とのリップシンク品質比較ではありません。
+
+### 配布版の性能記録の例
+
+展開後ShippingのDirectML試験では、300秒音声（4,800,000サンプル・9,000フレーム）が結果欄の**推論3.293秒・合計7.529秒**でした。公開試験の記録値であり、リアルタイムの提示遅延や今回の新規測定ではありません。
+
+| 保存済みClipの再生ケース | 短いClipのサンプリングP95 | 300秒ClipのサンプリングP95 | 動的Viseme変換P95 |
+| --- | --- | --- | --- |
+| Editor | 0.201 µs | 0.298 µs | 58.699 µs |
+| 展開後Shipping | 0.100 µs | 0.200 µs | 110.400 µs |
+
+両ケースで`baked_model_unloaded=1`が記録されています。サンプリングとViseme変換は別のマイクロベンチマークで、ストレージ読み込み、物理音声出力までの遅延、ゲーム全体のフレーム時間を含みません。再生がゼロレイテンシーになる意味ではありません。後半の旧ソース測定は別実行で、v0.3.0配布版の測定値として扱いません。
+
+配布版の記録では**Android、他のUE版、実マイクの長時間取得、実GPU故障、物理音声出力までの遅延**は未検証です。Wav2ARKitの機能ブランチは含まれていません。
+
+## 過去の記録：9月24〜25日
 
 公開資料の**2026年9月24〜25日**の結果を要約します。環境はUE 5.8.2、Windows x64、Visual Studio 2022 / MSVC 14.44、Core i7-12700、RTX 3070、メモリ64 GBです。配布版・後続ソース版・旧測定を区別して記載します。
 

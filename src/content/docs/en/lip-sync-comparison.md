@@ -2,11 +2,11 @@
 title: "Audio lip-sync compared: LAM, Audio2Face and MetaHuman"
 description: "Compare LAM, Audio2Face, MetaHuman Animator, OVRLipsync and SG Com for Unreal Engine lip sync. Understand ARKit 52, emotion control, live input, and alternatives for Unity and the web."
 sidebar: {"label":"Lip-sync comparison"}
-appliesTo: "Reviewed September 28, 2026 · Published specifications"
-sourceSummary: "Official documentation, repositories and research papers linked in this article were reviewed on September 28, 2026. LAM coverage uses this site's pinned public snapshots and v0.2.0. We have not benchmarked competing products against each other."
+appliesTo: "LAM updated 2026-09-30 · Other products reviewed 2026-09-28"
+sourceSummary: "Third-party specifications and research were reviewed on 2026-09-28. LAM release availability was updated to v0.3.0 on 2026-09-30; historical benchmarks retain their original sources. No competitive benchmark was performed."
 sources:
-  - label: "LAM Plugin / README · 3a04219"
-    url: "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"
+  - label: "LAM Plugin / README · 1860d0e"
+    url: "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"
   - label: "LAM Demo / Validation record · 275a683"
     url: "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VALIDATION.md"
   - label: "NVIDIA Audio2Face-3D / Official tools and models"
@@ -82,7 +82,7 @@ Scroll the tables horizontally when needed. Product names link to explanations a
 
 | Method | Environment and deployment | Integration and terms | Maintenance and coverage |
 | --- | --- | --- | --- |
-| [LAM UE integration](#lam-audio2expression) | UE 5.8.2, Windows x64; local CPU / DirectML | Original integration: MIT; upstream code and model: Apache-2.0 | v0.2.0 and pinned public source. Long physical-microphone sessions unverified |
+| [LAM UE integration](#lam-audio2expression) | UE 5.8.2, Windows x64; local CPU / DirectML | Original integration: MIT; upstream code and model: Apache-2.0 | v0.3.0 and pinned public source. Long physical-microphone sessions unverified |
 | [Audio2Face-3D](#audio2face-3d) | Windows / Linux SDK, CUDA and TensorRT; local / cloud configurations | MIT SDK; separate facial-model and Audio2Emotion terms. Rig adaptation required | Check SDK, model and UE plugin versions separately |
 | [MetaHuman Animator](#metahuman-animator) | Unreal Engine and MetaHuman; UE processing / Live Link | Uses an assembled MetaHuman and its rig; Epic's terms apply | Offline audio requires UE 5.6 or later. Check the requirements for your UE version |
 | [OVRLipsync](#ovrlipsync) | UE / Unity plugins; CPU audio analysis | Map 15 visemes and review the SDK terms | End-of-life; Movement SDK migration path for Quest |
@@ -92,11 +92,13 @@ Scroll the tables horizontally when needed. Product names link to explanations a
 
 ### LAM Audio2Expression
 
-This UE integration resamples audio to 16 kHz and generates ARKit 52 curves at 30 fps. **The 12 Style values are speaker styles, not 12 emotions.** There is no dedicated input for happiness or anger. Runtime inference needs neither Python nor an external server, making it a candidate for local animation of a generic ARKit rig. [Published specification](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md)
+This UE integration resamples audio to 16 kHz and generates ARKit 52 curves at 30 fps. **The 12 Style values are speaker styles, not 12 emotions.** There is no dedicated input for happiness or anger. Runtime inference needs neither Python nor an external server, making it a candidate for local animation of a generic ARKit rig. [Published specification](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md)
 
 You still need to match curve names and adjust scales or masks for the face. It does not automatically retarget arbitrary rigs. Start with [installation](/LAMAudio2Expression-UE/en/installation/), then [Blueprint connections](/LAMAudio2Expression-UE/en/blueprint/) and [expression curves](/LAMAudio2Expression-UE/en/expression-curves/).
 
 The default live inference interval is about 333.3 ms, with a requested presentation delay of 0.75 seconds. Fast fixed-window inference numbers do not directly describe conversational latency. [Live settings and limitations](/LAMAudio2Expression-UE/en/live-input/)
+
+**LAM update, 2026-09-30:** v0.3.0 includes saved SoundWave clips and [five-vowel / Oculus-compatible conversion](/LAMAudio2Expression-UE/en/expression-curves/#visemes). FiveVowelRules leaves consonant slots at zero; TemplateFit approximates 15-slot mouth shapes from ARKit curves and is not phoneme recognition. The [release manifest](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json) confirms availability. These additions do not add direct emotion labels or a new audio inference model.
 
 ### Audio2Face-3D
 
@@ -123,6 +125,7 @@ This mouth-focused approach provides 15 visemes and laughter detection. It analy
 SG Com is a commercial CPU-based candidate for generating full-face animation, head motion and gaze from an audio stream. It offers UE integration and requires character setup and licensing. **The 50 ms in its 5.0 documentation is a vendor-stated input-to-output processing delay**, not a measurement under the same conditions as this site's LAM results. [SG Com 5.0 overview](https://docs.speech-graphics.com/en/sg-com/5.0/what-is-sg-com), [CPU resource usage](https://docs.speech-graphics.com/en/sg-com/5.0/sg-com-compute-resource-usage)
 
 Check the [supported platforms](https://docs.speech-graphics.com/en/sg-com/5.0/sg-com-platform-support). Consider audio processing location and license authentication separately: cloud-based licensing needs connectivity, so fully offline deployment also depends on the contract and licensing mode.
+
 
 <span id="その他の候補" class="comparison-anchor" aria-hidden="true"></span>
 

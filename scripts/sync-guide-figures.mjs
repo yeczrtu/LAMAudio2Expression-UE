@@ -22,7 +22,7 @@ function figure(g, lang) {
     provenance += ` <a href="${g.sourceUrl}">${ja ? '画像の出典' : 'Image source'}</a> · <a href="${base}${ja ? '' : 'en/'}licenses/">${ja ? '素材のクレジット・利用条件' : 'Credits and usage conditions'}</a>`;
   } else {
     provenance = `${ja ? '撮影' : 'Captured'} ${manifest.capturedOn} · UE ${manifest.ue} · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/${manifest.pluginCommit}">Plugin ${manifest.pluginCommit.slice(0,7)}</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/${manifest.demoCommit}">Demo ${manifest.demoCommit.slice(0,7)}</a> · `;
-    provenance += g.availability === 'source-only' ? (ja ? '公開ソース版の画面・v0.2.0 ZIPには未収録。' : 'Published-source UI; not included in v0.2.0 ZIPs.') : (ja ? 'v0.2.0と共通の操作。' : 'Operation shared with v0.2.0.');
+    provenance += ja ? 'v0.3.0に含まれる操作。' : 'Operation included in v0.3.0.';
   }
   return `<!-- guide:${g.id}:start -->
 <figure class="guide-figure" id="figure-${g.id}" data-guide="${g.id}">

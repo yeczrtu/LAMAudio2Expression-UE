@@ -1,9 +1,9 @@
 ---
-title: "ARKit 52 curves and Curve Profiles"
-description: "Configure ARKit 52 facial curves in Unreal Engine. Map morph target names, adjust scale and masks, and understand smoothing, silence suppression, and blinking."
+title: "ARKit 52 curves, Curve Profiles, and Viseme conversion"
+description: "Configure ARKit 52 curves and v0.3.0 five-vowel / Oculus-compatible Visemes in Unreal Engine. Covers profile names, TemplateFit, mouth ownership, and limits."
 sidebar: {"label":"Expression curves"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Demo / Docs/ARCHITECTURE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/ARCHITECTURE.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"},{"label":"Demo / Docs/ARCHITECTURE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/ARCHITECTURE.md"},{"label":"Plugin / Docs/VISEMES.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/VISEMES.md"}]
 ---
 
 LAM Audio2Expression outputs 52 curves in the standard upstream order. Match them to your character's morph target names, or consume their values in an existing rig.
@@ -47,7 +47,7 @@ Disabled curves and bone poses are left unchanged. Weight includes effects such 
 <li>This illustrative rule uses Enabled, Scale 0.8 and Offset 0.0.</li>
 </ol>
 <p>0.8 is an illustrative adjustment, not a universal recommended value. Assign the created profile to the AnimGraph node.</p>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:curve-profile:end -->
@@ -82,8 +82,8 @@ Style selects an upstream model style; it is not an emotion selector. Verify the
 <li>This example enables Smooth and Suppress Silent Mouth and disables Symmetrize.</li>
 <li>Auto Blink is disabled. Blink Seed 1234 is the seed used for automatic blinking.</li>
 </ol>
-<p>After setting the options, click Generate at the bottom of the dialog. The analysis options also exist in v0.2.0, but this generation dialog is a published-source feature.</p>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+<p>After setting the options, click Generate at the bottom of the dialog. This generation dialog is included in v0.3.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:bake-settings:end -->
@@ -93,3 +93,56 @@ Style selects an upstream model style; it is not an emotion selector. Verify the
 Analysis advances a fixed window of about 2.13 seconds in one-second steps, producing curves at 30 fps. Post-processing runs across the resulting sequence. This does not reproduce the upstream demo's random output exactly.
 
 You can drive Control Rig or a bone-based setup with these curves, but the plugin does not automatically retarget arbitrary rigs. See [Blueprint connections](/LAMAudio2Expression-UE/en/blueprint/) and [validation coverage](/LAMAudio2Expression-UE/en/validation/).
+
+<span id="visemes" class="comparison-anchor" aria-hidden="true"></span>
+
+## Five-vowel and Oculus-compatible Visemes
+
+**Included in v0.3.0.** `Apply LAM Viseme Curves` converts the interpolated ARKit 52 frame into five vowel weights or 15 Oculus-compatible slots. It works with dynamic SoundWave analysis, saved clips, and live input without another model, the Oculus SDK, or reanalysis. This is mouth-shape conversion, not phoneme recognition. [Public specification, reviewed 2026-09-30](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/VISEMES.md)
+
+1. Prepare a mesh with a neutral mouth and the required morph targets. The plugin does not automatically create arbitrary character morphs.
+2. Enable **Show Plugin Content**, duplicate a profile from `/LAMAudio2Expression/Profiles/` into your project, and set **Target Names** to the mesh's actual morph names. `None` means no write.
+3. Connect `Existing Pose → Apply LAM Viseme Curves → Output Pose` in AnimGraph. Set **Profile** and **Source Component** to the actor's LAM component. An empty Source Component searches the owning actor; assign it explicitly when several components exist.
+4. Test pause, seek, stop, neutral mouth, and your own speech material. Missing morph names produce curves but no mesh deformation.
+
+| Profile | Conversion / intended morphs |
+| --- | --- |
+| `DA_JapaneseFive` | FiveVowelRules; default names `A/I/U/E/O` |
+| `DA_OculusReference` / `DA_OculusSDK` | FiveVowelRules with 15 output names; the nine consonant slots remain zero |
+| `DA_OculusOpenFaceFX` | TemplateFit; OpenFaceFX recipe, SDK names such as `ih/oh/ou` |
+| `DA_OculusTalkingHead` | TemplateFit; TalkingHead recipe, prefixed names such as `viseme_I/viseme_O/viseme_U` |
+
+Output names and conversion mode are independent settings. For a five-vowel-only mesh, keep **FiveVowelRules**. With no Profile assigned, the node uses the default five-vowel settings and `A/I/U/E/O` names. In FiveVowelRules, adjust neutral **Input Corrections**, then **Activation**, **Width / Roundness / OpenSplit**, and finally **Vowel Gains**. These are shape-based approximations; they do not guarantee phonetic accuracy across characters.
+
+### Combining upper-face and mouth animation
+
+Use `DA_UpperFaceOnly` on the ARKit node if LAM should also drive eyes and brows:
+
+```text
+Existing Pose
+  → Apply LAM ARKit Curves (DA_UpperFaceOnly)
+  → Apply LAM Viseme Curves (character Profile)
+  → Output Pose
+```
+
+UpperFaceOnly disables writing `jaw*`, `mouth*`, and `tongueOut`; it **does not clear mouth curves already present in the input pose**. Avoid simultaneously driving the same mouth through a full ARKit node or Set Morph Target. Pausing holds the frame, seeking follows the new time, and stopping uses the component's 100 ms fade back to the input pose. Conversion adds no temporal smoothing.
+
+### TemplateFit settings and limits
+
+**ConversionMode=TemplateFit** fits 14 non-neutral weights to the selected forward recipe, with nonnegative weights whose sum is at most 1. **sil** is the residual `1 − sum`, not an audio-silence detector. Set its Target Name to None if no neutral morph is needed.
+
+For an unavailable input channel such as `tongueOut`, set **Input Corrections → FitWeight=0**. Scale=0 instead tells the fitter that the observed value is zero. Use **Viseme Gains** for the 14 output gains; sil's gain is ignored. Vowel Gains and the opening / width / roundness thresholds belong to FiveVowelRules. Validate the profile with **Validate Assets** after changes.
+
+Both template matrices have rank 11, so 14 weights cannot always be recovered uniquely. TalkingHead's CH and RR recipes are identical and share weight equally before gains. Expressions such as smiles also affect mouth shape. TemplateFit approximates shapes; it does not reproduce Oculus audio inference or reliably identify spoken consonants. See the [pinned recipes and full constraints](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/VISEMES.md).
+
+### Read converted weights in Blueprint
+
+```text
+Get Current Expression Frame
+  → Convert ARKit To Visemes (Frame, Profile)
+  → Get Vowel Weights / Get Viseme Weight
+```
+
+The fixed 15-slot order is `sil, PP, FF, TH, DD, kk, CH, SS, nn, RR, aa, E, ih, oh, ou`. Check **bValid** before custom application; **Values** do not include **Weight**, so apply Alpha × Weight once. Invalid frames return 15 zeros, including sil. External ARKit input must use the order returned by `Get ARKit Curve Names`, with 52 finite values and valid time / weight metadata.
+
+See [demo assets](/LAMAudio2Expression-UE/en/demo/) and [release validation](/LAMAudio2Expression-UE/en/validation/#release-validation). The plugin bundles the MIT-licensed recipe data and notices; it does not require the OpenFaceFX, TalkingHead, Blender, or Oculus runtimes. [Credits](/LAMAudio2Expression-UE/en/licenses/#viseme-templates)

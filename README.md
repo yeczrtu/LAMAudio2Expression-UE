@@ -79,12 +79,14 @@ and search-engine indexing are external to deployment verification.
 ## Sources and media
 
 See `content-sources.json` for the pinned public snapshots and release URLs.
-The initial site covers v0.2.0 and the September 25 public Blueprint demo changes.
-The `baked-clips/` guide additionally covers Plugin `1f06ac8` and Demo `f3b6f13`,
-published September 28, 2026. It is explicitly outside the v0.2.0 release ZIPs.
-Keep its source-only availability note, pinned sources, and recorded validation
-conditions together when updating it. Model packaging settings remain unchanged.
-The site does not cover unpublished Android investigation or provide a full Viseme guide.
+The site targets v0.3.0 (reviewed September 30, 2026), built from Plugin
+`1f06ac8` / Demo `f3b6f13`, and the current public source Plugin `1860d0e` /
+Demo `9dee71d`. Baked clips, Viseme conversion, and the Blueprint demo are in
+the release. The later source adds Lipsync search keywords. Release metadata is
+authoritative for ZIP contents; upstream README links and script defaults may lag.
+The expression-curves guide covers five-vowel and Oculus template conversion.
+Historical benchmark records and raw screenshot provenance remain labeled.
+The site does not cover unpublished Android investigation or Wav2ARKit branches.
 The bilingual `lip-sync-comparison/` article additionally summarizes official
 third-party documentation and research reviewed on September 28, 2026. Its
 recommendations are based on published specifications, not new competitive
@@ -101,5 +103,5 @@ See `THIRD_PARTY_NOTICES.md`; the MIT license does not relicense third-party med
 The operation guides share 20 English-UI captures made on September 30, 2026
 with UE 5.8.2, Plugin `1860d0e` and Demo `9dee71d`, plus the existing public demo
 image. See [SCREENSHOTS.md](SCREENSHOTS.md) for the isolated capture workflow,
-numbered HTML/CSS annotations, source-only labels and bilingual update checks.
+numbered HTML/CSS annotations, release-availability labels and bilingual update checks.
 `guide-images.json` records the original hashes, crops, captions and placements.

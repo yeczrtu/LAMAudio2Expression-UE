@@ -4,7 +4,7 @@ The files in `public/images/guides/` are unmodified captures of Unreal Engine's 
 
 Capture baseline: UE 5.8.2 on Windows, plugin `1860d0e2b28ea120a804361d3c9f5c19622f05e4`, demo `9dee71de2b60058e3434478f4f78b080cee9ca93`. The capture project is a separate clone. Documentation-only sample Blueprints illustrate existing public API calls; they are not a new plugin release. A successful Blueprint compile does not establish runtime behavior or performance. Microphone capture and performance benchmarks are not run for these illustrations.
 
-Each image's date, source commits, visible crop, numbered annotations, and bilingual captions are recorded in `guide-images.json`. The release-download links continue to target v0.2.0. In particular, saved expression clips are a later source feature and are not included in that ZIP. The plugin browser's displayed version alone does not identify the source commit.
+Each image's date, source commits, visible crop, numbered annotations, and bilingual captions are recorded in `guide-images.json`. Release-download links target v0.3.0, which includes baked clips and Viseme conversion. Raw captures and their commits are preserved. The captured source descriptor shows 0.2.0; the release packaging sets it to 0.3.0. The displayed version alone does not identify the source commit.
 
 When updating a screenshot:
 

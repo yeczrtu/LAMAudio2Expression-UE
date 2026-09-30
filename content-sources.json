@@ -1,17 +1,17 @@
 {
-  "reviewedOn": "2026-09-28",
-  "release": "v0.2.0",
+  "reviewedOn": "2026-09-30",
+  "release": "v0.3.0",
   "plugin": {
     "repository": "https://github.com/yeczrtu/LAMAudio2Expression-UE",
-    "commit": "3a042193a98f54400dccda3d2cc8a8adc4d70815",
-    "release": "https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/tag/v0.2.0"
+    "commit": "1860d0e2b28ea120a804361d3c9f5c19622f05e4",
+    "release": "https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/tag/v0.3.0"
   },
   "demo": {
     "repository": "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo",
-    "commit": "275a683a530254451efae8409e6ec2d2f57af6bb",
-    "release": "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/tag/v0.2.0"
+    "commit": "9dee71de2b60058e3434478f4f78b080cee9ca93",
+    "release": "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/tag/v0.3.0"
   },
-  "policy": "Manually reviewed public snapshots only. Release artifacts and later Blueprint source changes are explicitly distinguished. No automatic source import.",
+  "policy": "Manually reviewed public v0.3.0 release artifacts and pinned source snapshots. Historical measurements and media retain their original provenance. No automatic source import.",
   "media": {
     "video": "https://github.com/user-attachments/assets/e93530a4-197d-4a56-860c-0890da1002e7",
     "videoStatus": "HTTP 404 on 2026-09-28. Not embedded; published still image and runnable-demo instructions are displayed instead.",
@@ -23,7 +23,7 @@
     "slug": "lip-sync-comparison",
     "reviewedOn": "2026-09-28",
     "basis": "Official public documentation, repositories and research; no new comparative benchmark. LAM coverage retains the pinned public snapshots above.",
-    "versionNotes": "LAM v0.2.0 and pinned sources; Audio2Face-3D v3.0 / Audio2Emotion v2.2 model cards; SG Com 5.0; SGX 4.4; research comparison arXiv:2606.10753v1. Other links reflect documentation reviewed on the date above.",
+    "versionNotes": "LAM v0.3.0 (updated 2026-09-30), pinned sources and explicitly historical benchmarks; Audio2Face-3D v3.0 / Audio2Emotion v2.2 model cards; SG Com 5.0; SGX 4.4; research comparison arXiv:2606.10753v1. Other links reflect documentation reviewed on the date above.",
     "urls": [
       "https://arxiv.org/abs/2306.08990",
       "https://arxiv.org/html/2606.10753v1",
@@ -47,7 +47,7 @@
       "https://github.com/met4citizen/TalkingHead",
       "https://github.com/psyai-net/EmoTalk_release",
       "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VALIDATION.md",
-      "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md",
+      "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md",
       "https://huggingface.co/nvidia/Audio2Emotion-v2.2",
       "https://huggingface.co/nvidia/Audio2Face-3D-v3.0",
       "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-speech-synthesis-viseme",
@@ -57,10 +57,10 @@
   },
   "bakedClips": {
     "slug": "baked-clips",
-    "reviewedOn": "2026-09-28",
+    "reviewedOn": "2026-09-30",
     "pluginCommit": "1f06ac858413090f00c3f5bb955e1d73653ef74e",
     "demoCommit": "f3b6f13e98d75d6e23933669adee79319ef3363f",
-    "availability": "Published source only; not included in v0.2.0 release ZIPs.",
+    "availability": "Included in v0.3.0 release ZIPs.",
     "validation": "Published test record; no UE tests rerun for the documentation update.",
     "sources": [
       "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md",
@@ -74,6 +74,18 @@
     "demoCommit": "9dee71de2b60058e3434478f4f78b080cee9ca93",
     "manifest": "guide-images.json",
     "policy": "Raw English-UI captures in an isolated clone. CSS framing and numbered boxes only. Public-API example Blueprints prepared for documentation. No microphone recording or performance benchmark.",
-    "compatibility": "Common operations checked against v0.2.0 public headers; baked-clip UI is source-only. Release links and earlier article snapshots are unchanged."
+    "compatibility": "Operations are included in v0.3.0. Capture commits remain unchanged; the captured source descriptor still reads 0.2.0, whereas release packaging sets it to 0.3.0."
+  },
+  "releaseBuild": {
+    "pluginCommit": "1f06ac858413090f00c3f5bb955e1d73653ef74e",
+    "demoCommit": "f3b6f13e98d75d6e23933669adee79319ef3363f",
+    "manifest": "https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json",
+    "validation": "https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/validation.json",
+    "packagingChanges": [
+      "Version=3; VersionName=0.3.0",
+      "BuildPlugin Installed=true",
+      "README-FIRST version label 0.3.0"
+    ],
+    "laterSourceChanges": "Lipsync search metadata and README; demo submodule reference update."
   }
 }

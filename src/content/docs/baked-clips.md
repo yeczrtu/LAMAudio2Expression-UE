@@ -2,8 +2,8 @@
 title: "SoundWaveを事前解析して表情Clipを保存する"
 description: "Unreal EngineのSoundWaveからARKit 52カーブを事前生成・保存し、Blueprintで解析待ちなしに再生する手順。再生成、先読み、Cook、検証範囲も解説します。"
 sidebar: {"label":"SoundWaveの事前解析"}
-appliesTo: "公開ソース 1f06ac8 / Demo f3b6f13 · UE 5.8.2 / Win64 · v0.2.0には未収録"
-sourceSummary: "2026-09-28に公開ソースを確認。事前解析機能はPlugin 1f06ac8、サンプルと検証記録はDemo f3b6f13に基づきます。v0.2.0の配布ZIPには含まれません。"
+appliesTo: "v0.3.0 · UE 5.8.2 / Win64"
+sourceSummary: "2026-09-30にv0.3.0の配布情報を確認。事前解析はPlugin 1f06ac8 / Demo f3b6f13をビルドしたv0.3.0に含まれます。配布前のソース検証記録は区別して記載しています。"
 sources:
   - label: "Plugin / Docs/BAKED_CLIPS.md · 1f06ac8"
     url: "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"
@@ -19,8 +19,8 @@ sources:
 
 収録済みの台詞は、エディタで一度解析し、ARKit 52表情カーブをアセットとして保存できます。ゲームでは保存済みClipを既存の`Play Expression Clip`へ渡すため、再生時のモデルロード・解析用デコード・推論を省けます。
 
-:::note[公開ソース版の機能です]
-このページは**プラグイン1f06ac8 / デモf3b6f13**を対象とします。2026-09-28時点の**v0.2.0配布ZIPには含まれません**。このコミットを含むソースでUE 5.8.2のEditorをビルドし、再起動して利用してください。モデルの準備は[開発手順](/LAMAudio2Expression-UE/development/)を参照してください。
+:::note[v0.3.0の配布版に含まれます]
+[モデル入りv0.3.0プラグイン](/LAMAudio2Expression-UE/installation/)またはUEプロジェクトを導入し、プラグインを有効にしてUE 5.8.2を再起動してください。配布対象の構成ではソースビルドは不要です。ZIPのビルド元は**Plugin 1f06ac8 / Demo f3b6f13**です。[リリースマニフェスト](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json)
 :::
 
 <span id="choose-a-workflow-and-check-support" class="comparison-anchor" aria-hidden="true"></span>
@@ -66,7 +66,7 @@ Styleは0〜11のスタイル番号で、12種類の感情ラベルではあり�
 <ol>
 <li>Content BrowserでSoundWaveを選択し、この項目を開きます。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:bake-generate-menu:end -->
@@ -88,8 +88,8 @@ Styleは0〜11のスタイル番号で、12種類の感情ラベルではあり�
 <li>SmoothとSuppress Silent Mouthは有効、Symmetrizeは無効の例です。</li>
 <li>Auto Blinkは無効。Blink Seed 1234は自動瞬き用のシードです。</li>
 </ol>
-<p>設定後、ダイアログ下部のGenerateを押します。解析設定はv0.2.0にもありますが、この生成ダイアログは公開ソース版の機能です。</p>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+<p>設定後、ダイアログ下部のGenerateを押します。この生成ダイアログはv0.3.0に含まれます。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:bake-settings:end -->
@@ -108,7 +108,7 @@ Styleは0〜11のスタイル番号で、12種類の感情ラベルではあり�
 <li>この撮影では1件成功、失敗0件でした。完了後も保存が必要です。</li>
 </ol>
 <p>1音声を生成した操作例です。新しい性能測定や網羅的な検証結果ではありません。</p>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:bake-complete:end -->
@@ -128,7 +128,7 @@ Styleは0〜11のスタイル番号で、12種類の感情ラベルではあり�
 <li>Save Allを押し、生成されたspeech_stream_LAMClipが選択されていることを確認します。</li>
 <li>Save Selectedで保存を確定します。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:bake-save:end -->
@@ -177,7 +177,7 @@ Clipのハード参照は元SoundWaveもロード対象にします。**Soft Obj
 <li>Play Expression ClipのClipには保存済みのspeech_stream_LAMClipを指定します。</li>
 </ol>
 <p>ノードのアセット名は欄幅によって省略されています。Prime Soundは読込完了通知ではありません。キー入力を使うActorには入力の受け取り設定が必要です。</p>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:baked-blueprint:end -->
@@ -205,7 +205,7 @@ Clipには音声の更新GUID、入力PCMのSHA-1、モデルGUID、モデルの
 <ol>
 <li>Clipを右クリックしてRegenerateを選び、記録済み設定で再生成します。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:bake-regenerate:end -->
@@ -261,7 +261,7 @@ Editor Utility Blueprint / Pythonからエディタサブシステム`LAMBakeSub
 
 | 症状 | 確認すること |
 | --- | --- |
-| 生成メニューがない | v0.2.0 ZIPでは利用不可。対応ソースのEditorビルド・再起動、選択対象がSoundWaveであることを確認 |
+| 生成メニューがない | v0.3.0の導入・有効化・Editor再起動、選択対象がSoundWaveであることを確認 |
 | 生成できない | PIEを終了し、他のバッチ完了を待つ。モデル設定とOutput Logを確認 |
 | 再起動するとClipがない | 生成後にSave Allを実行したか確認 |
 | 音声を変更しても表情が変わらない | Validate Assets → Regenerate → Save All。設定を変えるなら元音声から生成 |

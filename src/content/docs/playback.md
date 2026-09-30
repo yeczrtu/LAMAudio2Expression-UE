@@ -2,8 +2,8 @@
 title: "音声・表情の再生制御とイベント"
 description: "LAM Audio2Expressionの再生、一時停止、シーク、音量、Submix、3D音声、終了イベントをBlueprintで制御する方法。"
 sidebar: {"label":"再生制御"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 `LAMAudio2ExpressionComponent`は音声と表情の同期を担当します。既定のPlayback Settingsを設定して`Play Expression Clip`を呼ぶか、呼び出しごとに`Play Expression Clip With Settings`へ設定を渡します。
@@ -38,7 +38,7 @@ sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https:
 <li>SからSeekを呼び、1.0秒の位置へ移動する例です。</li>
 </ol>
 <p>撮影用Blueprintのキー割り当てです。Actorが入力を受け取る設定にし、同じLAMでClipを再生してから操作します。デモのキー割り当てとは異なります。</p>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:playback-controls:end -->
@@ -66,7 +66,7 @@ sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https:
 <li>Output Submixと追加送信を設定します。Noneは元音声・エンジンの設定を継承します。</li>
 <li>撮影例のVolumeは1.0、Mutedは無効です。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:playback-settings:end -->
@@ -92,7 +92,7 @@ Playback Modeは既定でTwo Dimensionalです。Three DimensionalではAttachme
 <li>Playback ModeでThree Dimensionalを選択します。撮影時は選択肢を開いた状態です。</li>
 <li>TransformとAttenuation Settingsも用途に合わせて設定します。AttachmentとSocketはメニューを閉じると確認できます。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:playback-3d:end -->
@@ -111,6 +111,6 @@ Playback Modeは既定でTwo Dimensionalです。Three DimensionalではAttachme
 
 事前検証で拒否された要求はFailedだけを通知し、既存の再生を維持します。再生開始後はState Changed → Ended → Finished（自然終了）またはFailedの順です。Actor破棄・PIE終了中は通知を抑止します。自然終了は元音声の終端で、リバーブなどの残響終了は待ちません。
 
-## 事前解析したClipの再生（公開ソース版）
+## 事前解析したClipの再生（v0.3.0）
 
-プラグイン1f06ac8では、[保存済みClip](/LAMAudio2Expression-UE/baked-clips/)を同じ再生ノードに指定できます。先にClipと音声をロードし、ストリーミング音声にはPrime Soundを早めに呼びます。解析待ちは省けますが、音声出力までの遅延をゼロにするものではありません。v0.2.0のZIPには未収録です。
+プラグイン1f06ac8では、[保存済みClip](/LAMAudio2Expression-UE/baked-clips/)を同じ再生ノードに指定できます。先にClipと音声をロードし、ストリーミング音声にはPrime Soundを早めに呼びます。解析待ちは省けますが、音声出力までの遅延をゼロにするものではありません。v0.3.0の配布ZIPに含まれます。

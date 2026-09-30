@@ -2,11 +2,11 @@
 title: "ソースからのビルドとリリース手順"
 description: "LAM Audio2Expressionの公開ソースを固定コミットで取得し、UE 5.8.2向けモデル生成、テスト、WindowsパッケージとRelease ZIPを作成する手順。"
 sidebar: {"label":"開発・リリース"}
-appliesTo: "公開ソースのスナップショット · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/DEVELOPMENT.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/DEVELOPMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+appliesTo: "v0.3.0 / Plugin 1860d0e / Demo 9dee71d · UE 5.8.2 / Windows x64"
+sources: [{"label":"Demo / Docs/DEVELOPMENT.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/DEVELOPMENT.md"},{"label":"Demo / Docs/RELEASE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/RELEASE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
-このページは**公開ソースのスナップショット**を対象とします。すぐに使う場合は[モデル入りv0.2.0](/LAMAudio2Expression-UE/installation/)を利用してください。Blueprint版の顔デモはv0.2.0 ZIPより新しい実装です。
+このページは**公開ソースのスナップショット**を対象とします。すぐに使う場合は[モデル入りv0.3.0](/LAMAudio2Expression-UE/installation/)を利用してください。Blueprint版の顔デモ・事前解析・Visemeはv0.3.0に含まれます。
 
 ## 開発環境
 
@@ -17,7 +17,7 @@ UE 5.8.2、Visual Studio 2022のC++開発環境、Python 3.10、Gitを用意し�
 ```powershell
 git clone --recurse-submodules https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo.git
 cd LAMAudio2Expression-UE-Demo
-git checkout 275a683a530254451efae8409e6ec2d2f57af6bb
+git checkout 9dee71de2b60058e3434478f4f78b080cee9ca93
 git submodule update --init --recursive
 ./Tools/setup.ps1 -Engine D:\Unreal\UE_5.8
 ```
@@ -46,6 +46,8 @@ setupは`/Game/LAMDemo`と`/Game/Audio`のテストデータを再生成しま�
 
 再生制御と顔デモのテストはEditor / Development / Shippingそれぞれで実行できます。Shippingの実行ファイルは`Artifacts/Shipping/Windows/LAMDemo.exe`です。配布にはWindowsフォルダー全体を使います。
 
+上のcheckoutは最新公開Demo `9dee71d`とPlugin `1860d0e`を固定します。v0.3.0の配布元を再現する場合はDemo `f3b6f13e98d75d6e23933669adee79319ef3363f`へcheckoutしてから`git submodule update --init --recursive`を実行してください。プラグインは`1f06ac858413090f00c3f5bb955e1d73653ef74e`です。後続プラグインではLipsync検索キーワードとREADMEが更新されています。
+
 ## Release ZIPの作成
 
 1. モデルを生成し、`Docs/model-manifest.json`とハッシュを照合します。
@@ -54,14 +56,17 @@ setupは`/Game/LAMDemo`と`/Game/Audio`のテストデータを再生成しま�
 4. 次のコマンドで配布物をまとめます。山括弧部分は実際のパスに置き換えます。
 
 ```powershell
-python Tools/assemble_release.py --plugin <BuildPlugin-output> --project <disposable-project-directory> --shipping <Shipping-archive>/Windows --output <new-output-directory>
+python Tools/assemble_release.py --version 0.3.0 --plugin <BuildPlugin-output> --project <disposable-project-directory> --shipping <Shipping-archive>/Windows --output <new-output-directory>
 ```
+
+公開ソースのスクリプトの既定値は0.2.0のため、`--version 0.3.0`を明示します。[配布マニフェスト](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json)には配布用コピーだけの変更として`Version=3`、`VersionName=0.3.0`、BuildPluginによる`Installed=true`、README-FIRSTの版表記が記録されています。スクリプト内で固定されたREADME-FIRST本文・URLも含め、配布用コピーで反映・確認してください。C++ソースは変更されていません。生成後のZIPを点検し、元コミット・検証結果・SHA-256を記録します。version引数だけでは配布時の加工をすべて再現できません。
+
 
 新規出力先に、プラグイン・編集用プロジェクト・Windows実行版のZIP、マニフェスト、チェックサムを作成します。各ZIPを別の短いパスへ展開してモデル・顔デモ・再生制御を検証してから、両リポジトリの同じバージョンタグへ公開します。詳細な配布用コピーの条件はページ末尾のRelease原文を参照してください。
 
-## 事前解析Clipの開発・検証（公開ソース版）
+## 事前解析Clipの開発・検証（v0.3.0）
 
-プラグイン1f06ac8 / デモf3b6f13に追加された機能です。Editorをビルドしてから、専用テストで生成・再生成・保存・別プロセス再生を確認します。Development / Shippingにも検証マップを含める`-IncludeBaked`が追加されています。[コマンドと生成対象](/LAMAudio2Expression-UE/baked-clips/#examples-and-validation-commands)を確認してください。v0.2.0の配布ZIPには含まれません。
+プラグイン1f06ac8 / デモf3b6f13に追加された機能です。Editorをビルドしてから、専用テストで生成・再生成・保存・別プロセス再生を確認します。Development / Shippingにも検証マップを含める`-IncludeBaked`が追加されています。[コマンドと生成対象](/LAMAudio2Expression-UE/baked-clips/#examples-and-validation-commands)を確認してください。v0.3.0の配布ZIPに含まれます。
 
 <!-- guide:baked-blueprint:start -->
 <figure class="guide-figure" id="figure-baked-blueprint" data-guide="baked-blueprint">
@@ -79,7 +84,7 @@ python Tools/assemble_release.py --plugin <BuildPlugin-output> --project <dispos
 <li>Play Expression ClipのClipには保存済みのspeech_stream_LAMClipを指定します。</li>
 </ol>
 <p>ノードのアセット名は欄幅によって省略されています。Prime Soundは読込完了通知ではありません。キー入力を使うActorには入力の受け取り設定が必要です。</p>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · 公開ソース版の画面・v0.2.0 ZIPには未収録。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:baked-blueprint:end -->

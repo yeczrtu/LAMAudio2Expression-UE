@@ -2,8 +2,8 @@
 title: "Models and Windows packaging"
 description: "Configure Unreal Engine cooking for the LAM Audio2Expression model. Understand CPU and DirectML data, model provenance, release checksums, and redistribution notices."
 sidebar: {"label":"Models & packaging"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/RELEASE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/RELEASE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / Docs/MODEL_MANAGEMENT.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/MODEL_MANAGEMENT.md"},{"label":"Demo / Docs/RELEASE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/RELEASE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## Model location
@@ -27,7 +27,7 @@ Models are not stored in the normal Git history. For a source checkout, follow [
 <li>Select /LAMAudio2Expression/Models/LAM_A2E in Model.</li>
 <li>The capture shows Prefer GPU enabled and Cache MiB 64.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:model-settings:end -->
@@ -45,7 +45,7 @@ Models are not stored in the normal Git history. For a source checkout, follow [
 <ol>
 <li>Open Settings at the top right of the Content Browser and enable Show Plugin Content.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:plugin-content:end -->
@@ -75,7 +75,7 @@ Distribute the entire folder, including cooked data, required DLLs, and licenses
 <li>Open Additional Asset Directories to Cook under Packaging.</li>
 <li>Add the model folder /LAMAudio2Expression/Models.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:cook-settings:end -->
@@ -86,7 +86,7 @@ DirectML is preferred, with CPU fallback when unavailable. Show model loading an
 
 ## Versions and checksums
 
-The [model manifest](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/model-manifest.json) records provenance, pinned revisions, shapes, and SHA-256 hashes. Releases attach `release-manifest.json` and `SHA256SUMS.txt`.
+The [model manifest](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/model-manifest.json) records provenance, pinned revisions, shapes, and SHA-256 hashes. Releases attach `release-manifest.json` and `SHA256SUMS.txt`.
 
 Record plugin, UE, and model versions together with hashes. Prefer a new release version over silently replacing a published ZIP.
 
@@ -94,6 +94,6 @@ Record plugin, UE, and model versions together with hashes. Prefer a new release
 
 MIT for original code and Apache-2.0 for upstream-derived code and model weights have different scopes. Preserve `LICENSE`, `THIRD_PARTY_NOTICES.md`, `Licenses`, model provenance, and conversion notes. Demo audio, visual presentation, and character assets have separate terms. See [licenses and credits](/LAMAudio2Expression-UE/en/licenses/).
 
-## Cook saved clips (published source)
+## Cook saved clips (v0.3.0)
 
-Save Plugin 1f06ac8 [baked clips](/LAMAudio2Expression-UE/en/baked-clips/) after generation and include both clips and source SoundWaves in the cook. Include soft-reference-only assets explicitly, for example through Asset Manager. Saved-clip playback does not load the model, but existing model packaging settings remain unchanged. This feature is not included in the v0.2.0 ZIPs.
+Save Plugin 1f06ac8 [baked clips](/LAMAudio2Expression-UE/en/baked-clips/) after generation and include both clips and source SoundWaves in the cook. Include soft-reference-only assets explicitly, for example through Asset Manager. Saved-clip playback does not load the model, but existing model packaging settings remain unchanged. This feature is included in the v0.3.0 ZIPs.

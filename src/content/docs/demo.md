@@ -1,14 +1,14 @@
 ---
 title: "WindowsデモとUEプロジェクトの使い方"
-description: "LAM Audio2Expressionの日本語6音声デモを起動する手順。操作キー、UEプロジェクト、v0.2.0配布版とBlueprintソース版の違いを説明します。"
+description: "LAM Audio2Expression v0.3.0のWindowsデモとUEプロジェクト。日本語6音声、操作キー、同梱BlueprintとVisemeサンプルの使い方。"
 sidebar: {"label":"デモを試す"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Demo / README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/README.md"},{"label":"Demo / Docs/FACE_DEMO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/FACE_DEMO.md"},{"label":"Demo / Docs/VIDEO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/VIDEO.md"}]
 ---
 
 ## Windows実行版を起動する
 
-1. [モデル入りWindowsデモ](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-Win64-Demo.zip)をダウンロードします。
+1. [モデル入りWindowsデモ](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-Win64-Demo.zip)をダウンロードします。
 2. `C:\LAMDemo`など短いパスへ**すべて展開**し、`LAMDemo.exe`を起動します。
 3. 画面左の音声ボタン、または**1〜6**キーで音声を選びます。解析完了後に表情と音声が再生されます。
 
@@ -53,17 +53,17 @@ sources: [{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczr
 
 ## UEで編集する
 
-[モデル入りUEプロジェクト](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Project-Model.zip)をすべて展開し、UE 5.8.2で`LAMDemo.uproject`を開きます。`/Game/LAMFaceDemo/Maps/LAM_FaceDemo`を開いてPlayします。
+[モデル入りUEプロジェクト](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-UE5.8.2-Project-Model.zip)をすべて展開し、UE 5.8.2で`LAMDemo.uproject`を開きます。`/Game/LAMFaceDemo/Maps/LAM_FaceDemo`を開いてPlayします。
 
 画像・デモ素材の[出典と利用条件](/LAMAudio2Expression-UE/licenses/)も確認してください。
 
 ## 配布版とBlueprint版の違い
 
-:::note[v0.2.0のZIP・動画とソース版]
-v0.2.0の配布物と紹介動画は、デモ処理をBlueprintへ移行する前の版です。以下のBlueprint構成は、公開ソースのコミット`275a683`を対象とします。入手・ビルドは[開発手順](/LAMAudio2Expression-UE/development/)を参照してください。
+:::note[v0.3.0にはBlueprintデモを同梱]
+v0.3.0 ZIPはDemo `f3b6f13`を使用し、以下のBlueprint UIと解析処理を含みます。旧v0.2.0の紹介録画はBlueprint移行前です。最新公開Demo `9dee71d`ではプラグイン参照が更新されています。[リリースマニフェスト](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json)で版を確認できます。
 :::
 
-ソース版の入口は`BP_FaceDemo`の`02_Analyze_And_Play`です。`SelectSample` → 前の処理をキャンセル → `Analyze SoundWave Async` → `Completed` → `Play Expression Clip`という接続になっています。
+Blueprintの入口は`BP_FaceDemo`の`02_Analyze_And_Play`です。`SelectSample` → 前の処理をキャンセル → `Analyze SoundWave Async` → `Completed` → `Play Expression Clip`という接続になっています。
 
 | Blueprint | 役割 |
 | --- | --- |
@@ -73,3 +73,9 @@ v0.2.0の配布物と紹介動画は、デモ処理をBlueprintへ移行する�
 | ABP_Face52 | Apply LAM ARKit Curvesで表情を適用 |
 
 これらは`Content/LAMFaceDemo`以下にあります。別プロジェクトへ移す場合はプラグインを導入し、Content BrowserのMigrateを使います。素材の出典・ライセンスを保持してください。通常の自作キャラクターへの導入では、デモ素材をコピーする必要はありません。
+
+## Viseme・事前解析のサンプル
+
+v0.3.0には5母音・Oculusテンプレートのサンプルと事前解析Clipのサンプルも含まれます。通常起動の顔デモはARKit 52のままです。5母音では`/Game/LAMVisemeExamples/ABP_LAMVisemes`と`Fcl_MTH_A/I/U/E/O`の接続を確認してください。同フォルダーにOpenFaceFX用`ABP_OpenFaceFX`とTalkingHead用`ABP_TalkingHead`があります。テスト用フラグを指定したときだけメッシュ・AnimBPを切り替える構成で、通常HUDの追加キー操作ではありません。
+
+[Viseme設定](/LAMAudio2Expression-UE/expression-curves/#visemes)、[保存済みClipのサンプル](/LAMAudio2Expression-UE/baked-clips/#examples-and-validation-commands)、[v0.3.0の検証記録](/LAMAudio2Expression-UE/validation/#release-validation)を参照してください。

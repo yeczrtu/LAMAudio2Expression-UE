@@ -3,7 +3,7 @@ title: "Inference, synchronization, and AnimGraph architecture"
 description: "Understand LAM Audio2Expression modules, dedicated inference worker, audio-clock synchronization, expression snapshots, cache ownership, and live processing."
 sidebar: {"label":"Architecture"}
 appliesTo: "Published source snapshot · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/ARCHITECTURE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/ARCHITECTURE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+sources: [{"label":"Demo / Docs/ARCHITECTURE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/ARCHITECTURE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## Processing flow
@@ -48,6 +48,6 @@ The analysis cache defaults to 64 MiB. Its key includes the 16 kHz PCM SHA-1, mo
 
 The pending input queue is capped at two seconds, with separate historical context for inference. Old-generation results are discarded, and delayed processing catches up to the latest position. Version 0.2 supports adjustable live intervals; see [live input](/LAMAudio2Expression-UE/en/live-input/). Audio routing, concurrency, and event behavior are documented in [playback controls](/LAMAudio2Expression-UE/en/playback/).
 
-## Saved-clip path (published source)
+## Saved-clip path (v0.3.0)
 
-Plugin 1f06ac8 adds `ULAMBakedExpressionClip`, an asset containing analyzed ARKit 52 curves. Playback shares its array and interpolates 52 values, skipping model loading, analysis decoding, inference, and a full-array copy per play. Viseme conversion remains a runtime operation. This path is separate from the v0.2.0 analysis cache above. See [generation and load validation](/LAMAudio2Expression-UE/en/baked-clips/).
+Plugin 1f06ac8 adds `ULAMBakedExpressionClip`, an asset containing analyzed ARKit 52 curves. Playback shares its array and interpolates 52 values, skipping model loading, analysis decoding, inference, and a full-array copy per play. Viseme conversion remains a runtime operation. This v0.3.0 path is separate from the dynamic analysis cache above. See [generation and load validation](/LAMAudio2Expression-UE/en/baked-clips/).

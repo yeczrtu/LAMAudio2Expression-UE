@@ -3,7 +3,7 @@ title: "推論・同期・AnimGraphの実装構成"
 description: "LAM Audio2ExpressionのUEモジュール構成、専用ワーカー、音声時刻との同期、表情カーブのスナップショットと解析キャッシュを説明します。"
 sidebar: {"label":"アーキテクチャ"}
 appliesTo: "公開ソースのスナップショット · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/ARCHITECTURE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/ARCHITECTURE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+sources: [{"label":"Demo / Docs/ARCHITECTURE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/ARCHITECTURE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## 処理の流れ
@@ -48,6 +48,6 @@ AnimNodeはPreUpdateでカーブ配列とProfileをコピーし、Evaluate_AnyTh
 
 入力キューは最大2秒で、推論用の過去文脈を別に保持します。古い世代の結果は破棄し、遅延時には最新位置へ復帰します。0.2のライブ間隔は可変で、詳細は[ライブ入力](/LAMAudio2Expression-UE/live-input/)にまとめています。音声のルーティング・Concurrency・イベントは[再生制御](/LAMAudio2Expression-UE/playback/)を参照してください。
 
-## 保存済みClipの経路（公開ソース版）
+## 保存済みClipの経路（v0.3.0）
 
-プラグイン1f06ac8の`ULAMBakedExpressionClip`は、解析済みのARKit 52カーブをアセットに保持します。再生では配列を共有して52値を補間し、モデルロード・解析用デコード・推論・再生ごとの全配列コピーを省きます。Viseme変換は実行時に残ります。上記v0.2.0の解析キャッシュとは別の経路です。[生成とロード時の検証](/LAMAudio2Expression-UE/baked-clips/)を参照してください。
+プラグイン1f06ac8の`ULAMBakedExpressionClip`は、解析済みのARKit 52カーブをアセットに保持します。再生では配列を共有して52値を補間し、モデルロード・解析用デコード・推論・再生ごとの全配列コピーを省きます。Viseme変換は実行時に残ります。上記の動的解析キャッシュとは別の経路で、v0.3.0に含まれます。[生成とロード時の検証](/LAMAudio2Expression-UE/baked-clips/)を参照してください。

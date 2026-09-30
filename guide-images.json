@@ -56,10 +56,10 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": {
-        "ja": "表示のVersion 0.2.0はプラグイン記述子の値です。撮影したソースのコミットは下記を参照してください。",
-        "en": "Version 0.2.0 is the descriptor label. The actual captured source commit is recorded below."
+        "ja": "画面のVersion 0.2.0は撮影した公開ソースの記述子の値です。v0.3.0配布ZIPでは0.3.0へ更新されています。撮影コミットは下記を参照してください。",
+        "en": "Version 0.2.0 is the captured public-source descriptor label. The v0.3.0 release ZIP updates it to 0.3.0. The capture commit is recorded below."
       },
       "sha256": "8b506fcbe8c0f711b8c3cf69b24fe5c1e1ddfb5a48ca71f9292b93d6e14a94e4"
     },
@@ -127,7 +127,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "7f066bdd89d05945ff33efc9e30c3baae2b888389bb7493c8a74bfb0e604cc50"
     },
@@ -171,7 +171,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "80d12117537c73f29c5be83434c80a2d459fc9feb59f2d614f3ed8a771818e5d"
     },
@@ -232,7 +232,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "0bc53b43983e8ba60109bb12368472a414935540c10460b0d98186fe4a045706"
     },
@@ -293,7 +293,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "35cbeab5e4b50a708caf1e523672aa3b09947c494610982b364ca99dad70d015"
     },
@@ -347,7 +347,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": {
         "ja": "接続の最小例です。製品ではFailed・Cancelled・Progressも処理してください。",
         "en": "This is a minimal wiring example. Handle Failed, Cancelled and Progress in your application."
@@ -421,7 +421,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "4c205263044bc3366e6c25b0c60b69ac4b58e0493795eda71e2971e23885ca6d"
     },
@@ -465,7 +465,7 @@
           }
         }
       ],
-      "availability": "source-only",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "6e65852e53643e044fedea22bb4a2c621989c215cc32210e65a6e36c5ef71bb3"
     },
@@ -536,10 +536,10 @@
           }
         }
       ],
-      "availability": "source-only",
+      "availability": "release-0.3.0",
       "note": {
-        "ja": "設定後、ダイアログ下部のGenerateを押します。解析設定はv0.2.0にもありますが、この生成ダイアログは公開ソース版の機能です。",
-        "en": "After setting the options, click Generate at the bottom of the dialog. The analysis options also exist in v0.2.0, but this generation dialog is a published-source feature."
+        "ja": "設定後、ダイアログ下部のGenerateを押します。この生成ダイアログはv0.3.0に含まれます。",
+        "en": "After setting the options, click Generate at the bottom of the dialog. This generation dialog is included in v0.3.0."
       },
       "sha256": "082c866a5b3ec19d4f4df66e82c67f940a7c54b5b3e6b03acf5cf557c6ec1561"
     },
@@ -583,7 +583,7 @@
           }
         }
       ],
-      "availability": "source-only",
+      "availability": "release-0.3.0",
       "note": {
         "ja": "1音声を生成した操作例です。新しい性能測定や網羅的な検証結果ではありません。",
         "en": "This illustrates generation of one audio asset, not a new benchmark or comprehensive validation result."
@@ -640,7 +640,7 @@
           }
         }
       ],
-      "availability": "source-only",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "3b4d9622b9e7390fcf9ff9054dbcc3ed8e8dfe7d22479c08e2031f4d9474c3a1"
     },
@@ -696,12 +696,12 @@
         {
           "slug": "development",
           "section": {
-            "ja": "事前解析Clipの開発・検証（公開ソース版）",
-            "en": "Develop and validate baked clips (published source)"
+            "ja": "事前解析Clipの開発・検証（v0.3.0）",
+            "en": "Develop and validate baked clips (v0.3.0)"
           }
         }
       ],
-      "availability": "source-only",
+      "availability": "release-0.3.0",
       "note": {
         "ja": "ノードのアセット名は欄幅によって省略されています。Prime Soundは読込完了通知ではありません。キー入力を使うActorには入力の受け取り設定が必要です。",
         "en": "Asset names are truncated by the field width. Prime Sound does not signal completion. An Actor using keyboard events must be configured to receive input."
@@ -750,12 +750,12 @@
         {
           "slug": "troubleshooting",
           "section": {
-            "ja": "事前解析Clipの問題（公開ソース版）",
-            "en": "Baked-clip issues (published source)"
+            "ja": "事前解析Clipの問題（v0.3.0）",
+            "en": "Baked-clip issues (v0.3.0)"
           }
         }
       ],
-      "availability": "source-only",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "be9f22b2067ca06261b3c63247b23e22a2c5fd424a99ac7cbc5bfcf76af64440"
     },
@@ -809,7 +809,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": {
         "ja": "0.8は撮影用の調整例で、すべてのキャラクターに共通の推奨値ではありません。作成したProfileをAnimGraphノードへ指定してください。",
         "en": "0.8 is an illustrative adjustment, not a universal recommended value. Assign the created profile to the AnimGraph node."
@@ -876,7 +876,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": {
         "ja": "撮影用Blueprintのキー割り当てです。Actorが入力を受け取る設定にし、同じLAMでClipを再生してから操作します。デモのキー割り当てとは異なります。",
         "en": "These keys belong to the documentation example. Configure the Actor to receive input and first play a clip on the same LAM component. These are not the demo key bindings."
@@ -933,7 +933,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "35cbeab5e4b50a708caf1e523672aa3b09947c494610982b364ca99dad70d015"
     },
@@ -987,7 +987,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": null,
       "sha256": "17eaaf3e1cf488dbc12905f61bb327c0a723cb5c0cdb05aa0b0b8b602089ef9a"
     },
@@ -1041,7 +1041,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": {
         "ja": "接続だけの撮影例です。実マイクの録音・動作試験は行っていません。キーイベントを使う場合はActorの入力を有効にしてください。",
         "en": "This capture illustrates wiring only; no microphone recording or runtime test was performed. Enable Actor input when using keyboard events."
@@ -1108,7 +1108,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": {
         "ja": "OnPCMBlockReceivedは説明用のカスタムイベントで、自動では呼ばれません。実データに合わせてSample RateとChannelsを指定してください。",
         "en": "OnPCMBlockReceived is an illustrative custom event and is not called automatically. Match Sample Rate and Channels to the actual data."
@@ -1165,7 +1165,7 @@
           }
         }
       ],
-      "availability": "common",
+      "availability": "release-0.3.0",
       "note": {
         "ja": "取得先をUIやログへ接続すると値を評価できます。この図は値の出力先を省略した接続例です。Iキーを使う場合はActorの入力を有効にしてください。",
         "en": "Connect the outputs to UI or logging to evaluate the values. Those consumers are omitted here. Enable Actor input if using the I key."

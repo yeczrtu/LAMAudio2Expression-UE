@@ -2,8 +2,8 @@
 title: "Audio-driven facial animation in Unreal Engine"
 description: "Generate ARKit 52 facial curves from audio with LAM Audio2Expression for Unreal Engine. Install the plugin, try the Windows demo, and connect lip sync in Blueprint."
 sidebar: {"label":"Overview"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"},{"label":"Demo / README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/README.md"},{"label":"Demo / Docs/VIDEO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/VIDEO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 <p class="lead">Turn a SoundWave into synchronized facial animation. LAM Audio2Expression is an Unreal Engine runtime plugin that runs inference locally on your PC.</p>
@@ -18,19 +18,19 @@ sources: [{"label":"Plugin / README.md · 3a04219","url":"https://github.com/yec
 
 ## Downloads
 
-:::note[New in the published source: baked SoundWave clips]
-Analyze and save recorded dialogue in the editor, then play it with existing Blueprint nodes. See the new [generation, preloading, and regeneration guide](/LAMAudio2Expression-UE/en/baked-clips/). This requires source containing Plugin 1f06ac8 and is not included in the v0.2.0 ZIPs below.
+:::note[Available in v0.3.0]
+The model-included ZIPs include [saved SoundWave clips](/LAMAudio2Expression-UE/en/baked-clips/), [five-vowel / Oculus-compatible Viseme conversion](/LAMAudio2Expression-UE/en/expression-curves/#visemes), and the Blueprint face demo. Analyze recorded dialogue once in the editor, save it, and play the loaded clip without runtime inference.
 :::
 
 Choosing an approach? [Compare audio lip-sync methods](/LAMAudio2Expression-UE/en/lip-sync-comparison/) for the output, emotion controls and integration requirements of LAM, Audio2Face, MetaHuman and other candidates.
 
 <div class="download-grid">
-  <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Win64-Model.zip"><strong>Plugin</strong><span>For your Unreal project<br/>Model included · ~376 MiB</span></a>
-  <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-Win64-Demo.zip"><strong>Windows demo</strong><span>No UE editor required<br/>Standalone ZIP · ~968 MiB</span></a>
-  <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Project-Model.zip"><strong>UE project</strong><span>Edit the character and audio<br/>Model included · ~401 MiB</span></a>
+  <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-UE5.8.2-Win64-Model.zip"><strong>Plugin</strong><span>For your Unreal project<br/>Model included · ~391 MiB</span></a>
+  <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-Win64-Demo.zip"><strong>Windows demo</strong><span>No UE editor required<br/>Standalone ZIP · ~971 MiB</span></a>
+  <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-UE5.8.2-Project-Model.zip"><strong>UE project</strong><span>Edit the character and audio<br/>Model included · ~427 MiB</span></a>
 </div>
 
-All downloads above are **v0.2.0**. GitHub's automatically generated “Source code” archives do not include the model; the demo source archive also omits the plugin submodule. Checksums are available in the [plugin release](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/tag/v0.2.0) and [demo release](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/tag/v0.2.0).
+All downloads above are **v0.3.0**. GitHub's automatically generated “Source code” archives do not include the model; the demo source archive also omits the plugin submodule. Checksums are available in the [plugin release](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/tag/v0.3.0) and [demo release](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/tag/v0.3.0).
 
 ## Six Japanese speech samples
 
@@ -45,7 +45,7 @@ The original video host is currently unavailable. Follow the [Windows demo guide
 | Area | Supported |
 | --- | --- |
 | Engine / OS | Unreal Engine 5.8.2 / Windows x64 |
-| Character | ARKit 52 morph targets, or a rig driven by animation curves |
+| Character | ARKit 52, five-vowel / Oculus-compatible morph targets, or a curve-driven rig |
 | Offline analysis | Standard SoundWave, mono / stereo, 8–192 kHz, up to 5 minutes |
 | Playback | Synchronized audio and expressions, pause, resume, seek, volume, submixes, 2D / 3D |
 | Live input | Microphone or external PCM; inference interval about 33.3–1000 ms |
@@ -55,6 +55,8 @@ Python and an external inference server are not required at runtime. SoundCue, M
 
 ## Documentation versions
 
-The basic workflow targets the published v0.2.0 release. The Blueprint-based demo UI and analysis flow are changes in the published source and are **not included in the v0.2.0 ZIPs**. The [demo guide](/LAMAudio2Expression-UE/en/demo/) and [development guide](/LAMAudio2Expression-UE/en/development/) identify that distinction.
+Reviewed on **September 30, 2026**, against **v0.3.0** and public source Plugin `1860d0e` / Demo `9dee71d`. The release ZIPs were built from Plugin `1f06ac8` / Demo `f3b6f13`, as recorded in the [release manifest](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json). Baked clips, Viseme conversion, and the Blueprint demo are included.
 
-This site uses pinned public source snapshots. Each page links to the exact documents used.
+The later source adds **Lipsync** search keywords to Blueprint and animation nodes. In the v0.3.0 ZIP, search for **LAM** or the node's display name. Runtime behavior is unchanged by that metadata update. Source descriptors and older screenshots may still show 0.2.0; the release ZIP descriptor is 0.3.0. Check the release manifest and source commit to identify a build.
+
+The preview above is the older v0.2.0 recording, not a new v0.3.0 capture. Each page links to its source evidence.

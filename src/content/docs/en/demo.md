@@ -1,14 +1,14 @@
 ---
 title: "Run the Windows demo or open the UE project"
-description: "Try six Japanese speech samples in the LAM Audio2Expression Windows demo. Learn the controls and the differences between v0.2.0 and the Blueprint source demo."
+description: "Use the v0.3.0 Windows demo and UE project: six Japanese samples, playback controls, the included Blueprint face demo, and Viseme examples."
 sidebar: {"label":"Try the demo"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Demo / Docs/VIDEO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VIDEO.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Demo / README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/README.md"},{"label":"Demo / Docs/FACE_DEMO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/FACE_DEMO.md"},{"label":"Demo / Docs/VIDEO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/VIDEO.md"}]
 ---
 
 ## Run the Windows application
 
-1. Download the [model-included Windows demo](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-Win64-Demo.zip).
+1. Download the [model-included Windows demo](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-Win64-Demo.zip).
 2. Extract **the entire archive** to a short path such as `C:\LAMDemo` and launch `LAMDemo.exe`.
 3. Choose a speech button on the left, or press **1–6**. Expressions and audio play after analysis completes.
 
@@ -53,14 +53,14 @@ Microphone input needs Windows microphone permission. The plugin does not monito
 
 ## Edit the UE project
 
-Extract the entire [model-included UE project](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.2.0/LAMAudio2Expression-0.2.0-UE5.8.2-Project-Model.zip). Open `LAMDemo.uproject` in UE 5.8.2, load `/Game/LAMFaceDemo/Maps/LAM_FaceDemo`, and press Play.
+Extract the entire [model-included UE project](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/releases/download/v0.3.0/LAMAudio2Expression-0.3.0-UE5.8.2-Project-Model.zip). Open `LAMDemo.uproject` in UE 5.8.2, load `/Game/LAMFaceDemo/Maps/LAM_FaceDemo`, and press Play.
 
 See the [credits and terms](/LAMAudio2Expression-UE/en/licenses/) for the screenshot and demo assets.
 
 ## Release demo versus Blueprint source demo
 
-:::note[The v0.2.0 ZIPs and video]
-The release archives and recording predate the migration of the demo logic to Blueprint. The following Blueprint structure describes public source commit `275a683`. Follow the [development guide](/LAMAudio2Expression-UE/en/development/) to obtain and build that source.
+:::note[v0.3.0 includes the Blueprint demo]
+The v0.3.0 ZIPs use Demo `f3b6f13` and include the Blueprint UI and analysis flow below. The older v0.2.0 recording predates this migration. Latest public Demo `9dee71d` only advances the plugin reference. See the [release manifest](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json).
 :::
 
 Start with `02_Analyze_And_Play` in `BP_FaceDemo`: `SelectSample` → cancel previous work → `Analyze SoundWave Async` → `Completed` → `Play Expression Clip`.
@@ -73,3 +73,9 @@ Start with `02_Analyze_And_Play` in `BP_FaceDemo`: `SelectSample` → cancel pre
 | ABP_Face52 | Applies expressions with Apply LAM ARKit Curves |
 
 These assets live under `Content/LAMFaceDemo`. To move the demo to another project, install the plugin and use Content Browser's Migrate command. Keep the asset attribution and licenses. You do not need the demo assets when integrating your own character.
+
+## Viseme and baked-clip examples
+
+v0.3.0 also includes five-vowel / Oculus template examples and baked-clip examples. Normal face-demo startup still uses ARKit 52. For a vowel rig, inspect `/Game/LAMVisemeExamples/ABP_LAMVisemes` and its `Fcl_MTH_A/I/U/E/O` targets. OpenFaceFX and TalkingHead examples use `ABP_OpenFaceFX` and `ABP_TalkingHead` in that folder. The test script switches the mesh and AnimBP only when the relevant test flag is supplied; these are not extra keyboard modes in the normal HUD.
+
+See [Viseme setup](/LAMAudio2Expression-UE/en/expression-curves/#visemes), [saved-clip examples](/LAMAudio2Expression-UE/en/baked-clips/#examples-and-validation-commands), and the [v0.3.0 validation record](/LAMAudio2Expression-UE/en/validation/#release-validation).

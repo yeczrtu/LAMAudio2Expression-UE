@@ -2,11 +2,11 @@
 title: "音声リップシンク手法の比較：LAM・Audio2Face・MetaHuman"
 description: "Unreal Engineの音声リップシンクをLAM、Audio2Face、MetaHuman Animator、OVRLipsync、SG Comで比較。ARKit 52、感情制御、ライブ入力、Unity・Web向け候補の違いを解説します。"
 sidebar: {"label":"リップシンク手法の比較"}
-appliesTo: "2026年9月28日確認 · 公開仕様による比較"
-sourceSummary: "本文の公式資料・公式リポジトリ・原論文を2026年9月28日に確認しました。LAMはサイトで固定した公開ソースとv0.2.0を対象とします。他製品との実機比較は行っていません。"
+appliesTo: "LAM: 2026-09-30更新 · 他製品: 2026-09-28確認"
+sourceSummary: "第三者の公式仕様・研究は2026-09-28確認。LAMの配布情報は2026-09-30にv0.3.0へ更新し、旧測定は当時の出典を保持しています。他製品との実機比較は行っていません。"
 sources:
-  - label: "LAM Plugin / README · 3a04219"
-    url: "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md"
+  - label: "LAM Plugin / README · 1860d0e"
+    url: "https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"
   - label: "LAM Demo / 検証記録 · 275a683"
     url: "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/VALIDATION.md"
   - label: "NVIDIA Audio2Face-3D / 公式製品・モデル一覧"
@@ -82,7 +82,7 @@ Unity・Web・制作向け候補は[その他の候補](#その他の候補)、�
 
 | 手法 | 実行環境・配置 | 導入・利用条件 | 保守・対応範囲 |
 | --- | --- | --- | --- |
-| [LAM UE版](#lam-audio2expression) | UE 5.8.2、Windows x64。CPU／DirectML、ローカル | 独自統合MIT、上流由来コード・モデルApache-2.0 | v0.2.0と固定公開ソース。実マイク長時間運転は未検証 |
+| [LAM UE版](#lam-audio2expression) | UE 5.8.2、Windows x64。CPU／DirectML、ローカル | 独自統合MIT、上流由来コード・モデルApache-2.0 | v0.3.0と固定公開ソース。実マイク長時間運転は未検証 |
 | [Audio2Face-3D](#audio2face-3d) | SDKはWindows／Linux、CUDA・TensorRT。ローカル／クラウド構成 | SDKはMIT、顔モデルとAudio2Emotionは別条件。リグへの適合が必要 | SDK・モデル・UEプラグインの対応版を個別確認 |
 | [MetaHuman Animator](#metahuman-animator) | Unreal EngineとMetaHuman。UE内の処理／Live Link | MetaHumanの組み立てとリグを使用。Epicの利用条件 | オフライン音声はUE 5.6以降。使用UE版の要件を確認 |
 | [OVRLipsync](#ovrlipsync) | UE／Unityプラグイン、CPUによる音声解析 | 15 VisemeへのマッピングとSDKの利用条件を確認 | サポート終了段階。QuestではMovement SDKへの移行案あり |
@@ -92,11 +92,13 @@ Unity・Web・制作向け候補は[その他の候補](#その他の候補)、�
 
 ### LAM Audio2Expression
 
-このUE版は音声を16 kHzへ変換し、ARKit 52カーブを30 fpsで生成します。**12種類のStyleは話者スタイルで、12種類の感情ではありません。** 喜びや怒りを直接指定する入力はありません。実行時にPythonや外部推論サーバーを必要とせず、汎用ARKitリグに接続したい場合の候補です。[公開仕様](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/README.md)
+このUE版は音声を16 kHzへ変換し、ARKit 52カーブを30 fpsで生成します。**12種類のStyleは話者スタイルで、12種類の感情ではありません。** 喜びや怒りを直接指定する入力はありません。実行時にPythonや外部推論サーバーを必要とせず、汎用ARKitリグに接続したい場合の候補です。[公開仕様](https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md)
 
 顔への適合にはカーブ名、倍率、マスクの調整が必要です。任意のリグを自動で変換する機能ではありません。[導入](/LAMAudio2Expression-UE/installation/) → [Blueprint接続](/LAMAudio2Expression-UE/blueprint/) → [表情カーブ設定](/LAMAudio2Expression-UE/expression-curves/)の順で確認できます。
 
 既定のライブ推論間隔は約333.3 ms、希望する提示遅延は0.75秒です。固定窓の高速な推論値を、そのまま会話の応答遅延として扱えません。[ライブ設定と制約](/LAMAudio2Expression-UE/live-input/)
+
+**LAM更新・2026-09-30：** v0.3.0には保存済みSoundWave Clipと[5母音・Oculus互換変換](/LAMAudio2Expression-UE/expression-curves/#visemes)が含まれます。FiveVowelRulesの子音枠は0、TemplateFitはARKitカーブから15枠の口形状を近似する方式で、音素認識ではありません。[配布マニフェスト](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json)で収録を確認できます。感情ラベル指定や新しい音声推論モデルの追加ではありません。
 
 ### Audio2Face-3D
 
@@ -123,6 +125,7 @@ ACE UEプラグイン2.5のアニメーションノードはARKit互換カーブ
 CPUで音声ストリームから顔全体・頭部・視線を生成する商用候補です。SDKにUE連携があり、キャラクター設定とライセンスの導入が必要です。5.0資料の**50 msはメーカー公称の入力から出力までの処理遅延**で、本サイトのLAM測定と同条件の値ではありません。[SG Com 5.0仕様](https://docs.speech-graphics.com/en/sg-com/5.0/what-is-sg-com)、[CPU使用量](https://docs.speech-graphics.com/en/sg-com/5.0/sg-com-compute-resource-usage)
 
 SDKの対象OSは[プラットフォーム一覧](https://docs.speech-graphics.com/en/sg-com/5.0/sg-com-platform-support)で確認できます。音声処理の配置とライセンス認証を分けて検討してください。クラウド認証方式にはネット接続が必要なため、完全オフライン運用は契約・認証方式まで確認します。
+
 
 <span id="other-candidates" class="comparison-anchor" aria-hidden="true"></span>
 

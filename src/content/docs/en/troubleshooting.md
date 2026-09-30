@@ -2,8 +2,8 @@
 title: "Troubleshoot setup and lip sync"
 description: "Resolve missing models, silent or motionless characters, rejected audio, slow startup, and delayed live input in LAM Audio2Expression for Unreal Engine."
 sidebar: {"label":"Troubleshooting"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/RELEASE_INSTALL.md"},{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / README.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/README.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/RELEASE_INSTALL.md"},{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/README.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 ## The model cannot be found
@@ -27,7 +27,7 @@ If it works in the editor but fails in a packaged build, add `/LAMAudio2Expressi
 <li>Select /LAMAudio2Expression/Models/LAM_A2E in Model.</li>
 <li>The capture shows Prefer GPU enabled and Cache MiB 64.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:model-settings:end -->
@@ -58,7 +58,7 @@ Custom bone-driven rigs are not converted automatically. See [expression curves]
 <li>Assign the analysis/playback LAM to Source Component. If empty, the owning Actor is searched.</li>
 <li>Connect the output to Output Pose.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation shared with v0.2.0.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:animgraph:end -->
@@ -87,9 +87,9 @@ Use `On Playback Finished`. `On Playback Ended` also fires for stops and replace
 
 Open a [plugin issue](https://github.com/yeczrtu/LAMAudio2Expression-UE/issues) or a [demo issue](https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/issues). Include the plugin version, UE version, Editor / Shipping configuration, CPU / GPU, reproduction steps, and Error.Code / Error.Message. State whether you are using a release archive or a source build.
 
-## Baked-clip issues (published source)
+## Baked-clip issues (v0.3.0)
 
-If the generation menu is missing, build the Editor target from source containing Plugin 1f06ac8; the v0.2.0 ZIP does not include it. See [baked-clip troubleshooting](/LAMAudio2Expression-UE/en/baked-clips/#troubleshooting) for `InvalidBakedClip`, saving generated assets, regeneration, and missing cooked assets.
+If the generation menu is missing, check that v0.3.0 is installed and enabled, then restart the editor. See [baked-clip troubleshooting](/LAMAudio2Expression-UE/en/baked-clips/#troubleshooting) for `InvalidBakedClip`, saving generated assets, regeneration, and missing cooked assets.
 
 <!-- guide:bake-regenerate:start -->
 <figure class="guide-figure" id="figure-bake-regenerate" data-guide="bake-regenerate">
@@ -104,7 +104,11 @@ If the generation menu is missing, build the Editor target from source containin
 <ol>
 <li>Right-click the clip and choose Regenerate to use its stored settings.</li>
 </ol>
-<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Published-source UI; not included in v0.2.0 ZIPs.</p>
+<p class="guide-provenance">Captured 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · Operation included in v0.3.0.</p>
 </figcaption>
 </figure>
 <!-- guide:bake-regenerate:end -->
+
+## Viseme curves do not move the mouth
+
+Check Profile Target Names against the mesh's actual morph names. FiveVowelRules outputs zero for the nine consonant slots; use TemplateFit for a compatible 15-slot rig. Avoid applying full ARKit mouth curves and Viseme curves to the same mouth. For missing input channels in TemplateFit use FitWeight=0, not Scale=0. See [Viseme setup and limitations](/LAMAudio2Expression-UE/en/expression-curves/#visemes).

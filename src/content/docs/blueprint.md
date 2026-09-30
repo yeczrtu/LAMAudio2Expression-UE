@@ -2,8 +2,8 @@
 title: "Blueprintで音声と表情を接続する"
 description: "Analyze SoundWave AsyncからPlay Expression Clip、AnimGraphのApply LAM ARKit Curvesまで、Unreal Engineで音声リップシンクを組み立てる手順。"
 sidebar: {"label":"Blueprintの接続"}
-appliesTo: "v0.2.0 · UE 5.8.2 / Windows x64"
-sources: [{"label":"Demo / Docs/USAGE.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/USAGE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 275a683","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/275a683a530254451efae8409e6ec2d2f57af6bb/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 3a04219","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/3a042193a98f54400dccda3d2cc8a8adc4d70815/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
+appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
+sources: [{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
 音声の解析と、解析結果の再生を分けて接続します。Actorには`LAMAudio2ExpressionComponent`、表示するメッシュにはAnimation Blueprintが必要です。
@@ -38,7 +38,7 @@ BeginPlay または任意のイベント
 <li>AddでLAM Audio2Expression Componentを検索して追加します。</li>
 <li>追加したコンポーネントをLAMという名前で使用した例です。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:add-component:end -->
@@ -59,7 +59,7 @@ BeginPlay または任意のイベント
 <li>Completedの実行線とClip出力を再生ノードへ接続します。</li>
 </ol>
 <p>接続の最小例です。製品ではFailed・Cancelled・Progressも処理してください。</p>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:blueprint-analysis:end -->
@@ -96,7 +96,7 @@ Source Componentが空欄なら、SkeletalMeshを所有するActorから検索�
 <li>Source Componentに解析・再生用LAMを指定します。空欄なら所有Actorから検索されます。</li>
 <li>出力をOutput Poseへ接続します。</li>
 </ol>
-<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.2.0と共通の操作。</p>
+<p class="guide-provenance">撮影 2026-09-30 · UE 5.8.2 · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE/tree/1860d0e2b28ea120a804361d3c9f5c19622f05e4">Plugin 1860d0e</a> · <a href="https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/tree/9dee71de2b60058e3434478f4f78b080cee9ca93">Demo 9dee71d</a> · v0.3.0に含まれる操作。</p>
 </figcaption>
 </figure>
 <!-- guide:animgraph:end -->
@@ -112,8 +112,10 @@ Source Componentが空欄なら、SkeletalMeshを所有するActorから検索�
 
 配布プロジェクトの`/Game/Examples/BP_LAMPlayback`は非同期解析と再生の例、`/Game/Examples/ABP_LAMCurves`はAnimGraphの例です。後者はテスト用スケルトンで作られているため、自分のAnimBPへノード構成をコピーします。
 
-公開ソースのBlueprint顔デモでは、`BP_FaceDemo`の`02_Analyze_And_Play`から接続を確認できます。このデモ実装はv0.2.0 ZIPより新しい版です。[デモのバージョン差](/LAMAudio2Expression-UE/demo/)
+公開ソースのBlueprint顔デモでは、`BP_FaceDemo`の`02_Analyze_And_Play`から接続を確認できます。v0.3.0 ZIPにこのデモ実装が含まれます。[デモのバージョン差](/LAMAudio2Expression-UE/demo/)
 
-## 保存済みClipを使う（公開ソース版）
+## 保存済みClipを使う（v0.3.0）
 
-収録済み音声は[SoundWaveの事前解析](/LAMAudio2Expression-UE/baked-clips/)でClipアセットを生成・保存できます。ロード済みClipをそのまま再生ノードへ渡し、実行時の解析を省きます。プラグイン1f06ac8の機能で、v0.2.0のZIPには未収録です。
+収録済み音声は[SoundWaveの事前解析](/LAMAudio2Expression-UE/baked-clips/)でClipアセットを生成・保存できます。ロード済みClipをそのまま再生ノードへ渡し、実行時の解析を省きます。v0.3.0の配布ZIPに含まれる機能です。
+
+最新ソースPlugin `1860d0e`では**Lipsync**でもノードを検索できます。v0.3.0 ZIPでは**LAM**または表示名を使ってください。5母音・Oculusリグには[Apply LAM Viseme Curves](/LAMAudio2Expression-UE/expression-curves/#visemes)で口のカーブを適用します。
