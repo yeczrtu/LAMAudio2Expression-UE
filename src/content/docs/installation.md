@@ -1,12 +1,12 @@
 ---
-title: "Unreal Engineプラグインの導入"
-description: "UE 5.8.2にLAM Audio2Expression v0.3.0を導入する手順。モデル入りZIP、プラグイン有効化、Cook設定、最初のBlueprint接続を説明します。"
+title: "UE5リップシンクプラグインの導入方法"
+description: "UE5にLAM Audio2Expressionを導入する手順。モデル入りZIPの配置、プラグイン有効化、Cook設定から最初のBlueprint再生まで。v0.3.0の配布対象はUE 5.8.2／Windows x64。"
 sidebar: {"label":"プラグインの導入"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
 sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"}]
 ---
 
-自分のUnreal Engineプロジェクトへ音声リップシンクを追加する手順です。動作だけを試す場合は[Windowsデモ](/LAMAudio2Expression-UE/demo/)を利用できます。
+**Unreal Engine 5（UE5）**へLAM Audio2Expressionのリップシンクプラグインを導入する手順です。v0.3.0の配布対象はUE 5.8.2／Windows x64です。有効化後は[Blueprintのリップシンク接続](/LAMAudio2Expression-UE/blueprint/)へ進みます。動作だけを先に試す場合は[Windowsデモ](/LAMAudio2Expression-UE/demo/)を利用できます。
 
 ## 事前に用意するもの
 

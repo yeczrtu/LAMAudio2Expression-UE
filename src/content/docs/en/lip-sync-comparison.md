@@ -1,6 +1,6 @@
 ---
-title: "Audio lip-sync compared: LAM, Audio2Face and MetaHuman"
-description: "Compare LAM, Audio2Face, MetaHuman Animator, OVRLipsync and SG Com for Unreal Engine lip sync. Understand ARKit 52, emotion control, live input, and alternatives for Unity and the web."
+title: "UE5 lip-sync comparison: LAM, Audio2Face and MetaHuman"
+description: "Compare LAM, Audio2Face, MetaHuman Animator, OVRLipsync, and SG Com for UE5 lip sync. Choose by ARKit / Viseme output, emotion control, live input, and integration requirements."
 sidebar: {"label":"Lip-sync comparison"}
 appliesTo: "LAM updated 2026-09-30 · Other products reviewed 2026-09-28"
 sourceSummary: "Third-party specifications and research were reviewed on 2026-09-28. LAM release availability was updated to v0.3.0 on 2026-09-30; historical benchmarks retain their original sources. No competitive benchmark was performed."
@@ -19,7 +19,7 @@ sources:
     url: "https://docs.speech-graphics.com/en/sg-com/5.0/what-is-sg-com"
 ---
 
-Audio-driven animation ranges from estimating mouth shapes to generating an entire facial performance with emotion. Start with **your character, the performance you need, and the deployment environment** to narrow the choices before integration.
+Choosing lip sync for **Unreal Engine 5 (UE5)** starts with your character, performance requirements, and runtime environment. Audio-driven methods range from mouth-shape estimation to full facial animation with emotion controls. This guide compares the public specifications of LAM, Audio2Face, MetaHuman, and other candidates, with links to implementation guides.
 
 This guide uses public sources reviewed on **September 28, 2026**. Its recommendations are judgments based on specifications, not a controlled benchmark or quality ranking. Linked product versions, the LAM release and later public source snapshots are distinguished throughout.
 

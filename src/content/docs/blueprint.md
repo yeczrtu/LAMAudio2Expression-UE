@@ -1,12 +1,12 @@
 ---
-title: "Blueprintで音声と表情を接続する"
-description: "Analyze SoundWave AsyncからPlay Expression Clip、AnimGraphのApply LAM ARKit Curvesまで、Unreal Engineで音声リップシンクを組み立てる手順。"
+title: "UE5のBlueprintでリップシンクを実装する"
+description: "UE5のBlueprintで音声リップシンクを接続する方法。Analyze SoundWave Async、Play Expression Clip、AnimGraphのARKit表情カーブ適用と保存済みClipの再生を解説します。"
 sidebar: {"label":"Blueprintの接続"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
 sources: [{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"},{"label":"Demo / Docs/FACE_DEMO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/FACE_DEMO.md"},{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
-音声の解析と、解析結果の再生を分けて接続します。Actorには`LAMAudio2ExpressionComponent`、表示するメッシュにはAnimation Blueprintが必要です。
+**Unreal Engine 5（UE5）**のBlueprintで、音声解析・再生・表情カーブ適用を分けてリップシンクを接続します。先に[プラグインを導入](/LAMAudio2Expression-UE/installation/)してください。ActorにはLAMAudio2ExpressionComponent、キャラクターメッシュにはAnimation Blueprintを用意し、[ARKitカーブまたはViseme](/LAMAudio2Expression-UE/expression-curves/)をメッシュに合わせます。
 
 ## SoundWaveを解析する
 

@@ -1,6 +1,6 @@
 ---
-title: "SoundWaveを事前解析して表情Clipを保存する"
-description: "Unreal EngineのSoundWaveからARKit 52カーブを事前生成・保存し、Blueprintで解析待ちなしに再生する手順。再生成、先読み、Cook、検証範囲も解説します。"
+title: "UE5のSoundWaveを事前解析してリップシンクを再生する"
+description: "UE5のSoundWaveからARKit 52カーブを事前生成・保存し、Blueprintで解析待ちなしにリップシンクを再生する手順。v0.3.0の生成メニュー、再生成、先読み、Cookと遅延の制約を解説します。"
 sidebar: {"label":"SoundWaveの事前解析"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Win64"
 sourceSummary: "2026-09-30にv0.3.0の配布情報を確認。事前解析はPlugin 1f06ac8 / Demo f3b6f13をビルドしたv0.3.0に含まれます。配布前のソース検証記録は区別して記載しています。"
@@ -17,7 +17,7 @@ sources:
     url: "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/f3b6f13e98d75d6e23933669adee79319ef3363f/Docs/Validation/baked-clips-results.json"
 ---
 
-収録済みの台詞は、エディタで一度解析し、ARKit 52表情カーブをアセットとして保存できます。ゲームでは保存済みClipを既存の`Play Expression Clip`へ渡すため、再生時のモデルロード・解析用デコード・推論を省けます。
+**Unreal Engine 5（UE5）**で収録済みの台詞を使う場合は、SoundWaveをエディタで一度解析し、ARKit 52表情カーブをClipアセットに保存できます。ロード済みClipを既存のPlay Expression Clipノードへ渡せば、再生時のモデルロード・解析用デコード・推論を省けます。解析待ちを省く機能で、アセット読み込みや音声出力までの遅延は別に残ります。
 
 :::note[v0.3.0の配布版に含まれます]
 [モデル入りv0.3.0プラグイン](/LAMAudio2Expression-UE/installation/)またはUEプロジェクトを導入し、プラグインを有効にしてUE 5.8.2を再起動してください。配布対象の構成ではソースビルドは不要です。ZIPのビルド元は**Plugin 1f06ac8 / Demo f3b6f13**です。[リリースマニフェスト](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json)

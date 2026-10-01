@@ -7,7 +7,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [starlight({
     title: 'LAM Audio2Expression',
-    description: 'Unreal Engineで音声からARKit 52表情カーブを生成するプラグインのドキュメント。',
+    description: 'UE5の音声リップシンクプラグイン。Blueprint導入、SoundWave事前解析、マイク入力、ARKit 52・Viseme設定を解説。',
     defaultLocale: 'root',
     locales: {
       root: { label: '日本語', lang: 'ja' },

@@ -1,12 +1,12 @@
 ---
-title: "Audio-driven facial animation in Unreal Engine"
-description: "Generate ARKit 52 facial curves from audio with LAM Audio2Expression for Unreal Engine. Install the plugin, try the Windows demo, and connect lip sync in Blueprint."
+title: "Audio lip-sync plugin for UE5"
+description: "Add audio-driven lip sync and facial animation to Unreal Engine 5 with LAM Audio2Expression. Learn Blueprint setup, baked SoundWave clips, microphone input, and ARKit / Viseme mapping. Release tested on UE 5.8.2, Windows x64."
 sidebar: {"label":"Overview"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
 sources: [{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"},{"label":"Demo / README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/README.md"},{"label":"Demo / Docs/VIDEO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/VIDEO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
-<p class="lead">Turn a SoundWave into synchronized facial animation. LAM Audio2Expression is an Unreal Engine runtime plugin that runs inference locally on your PC.</p>
+<p class="lead">LAM Audio2Expression is a lip-sync plugin for Unreal Engine 5 (UE5). Generate mouth movements and facial animation from audio, then apply ARKit 52 curves or Viseme weights through Blueprint and AnimGraph. Inference runs locally on your PC.</p>
 
 <div class="signal-flow" aria-label="Audio to expression pipeline">
   <div><span>01 INPUT</span><strong>Audio</strong><small>SoundWave / microphone / PCM</small></div>
@@ -15,6 +15,23 @@ sources: [{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yec
 </div>
 
 [Install the plugin](/LAMAudio2Expression-UE/en/installation/) · [Try the Windows demo](/LAMAudio2Expression-UE/en/demo/) · [Connect Blueprint nodes](/LAMAudio2Expression-UE/en/blueprint/)
+
+<span id="getting-started" class="comparison-anchor" aria-hidden="true"></span>
+
+## Get started with UE5 lip sync
+
+The ready-to-use release targets **UE 5.8.2 / Windows x64**. Prepare an imported SoundWave and a character with ARKit 52, five-vowel, or Oculus-compatible morph targets, or a rig driven by animation curves. No Python or external inference service is required at runtime. Other UE versions require rebuilding and are outside the published validation scope.
+
+1. [Install the model-included plugin](/LAMAudio2Expression-UE/en/installation/) and enable it in your project. To try the animation first, use the [Windows demo](/LAMAudio2Expression-UE/en/demo/).
+2. [Connect audio analysis and playback in Blueprint](/LAMAudio2Expression-UE/en/blueprint/). The completed analysis produces a Clip for synchronized playback.
+3. [Map ARKit curves or Visemes to your character](/LAMAudio2Expression-UE/en/expression-curves/) and apply them in AnimGraph. Morph names and output settings must match the rig.
+
+| Your use case | Where to continue |
+| --- | --- |
+| Recorded dialogue you will reuse | [Bake SoundWave clips](/LAMAudio2Expression-UE/en/baked-clips/) in the editor, then preload and play them without runtime inference |
+| Microphone or external PCM stream | [Live-input setup](/LAMAudio2Expression-UE/en/live-input/), including update intervals, presentation delay, and testing limits |
+| Pause, seek, volume, or spatial audio | [Playback controls and events](/LAMAudio2Expression-UE/en/playback/) |
+| Choosing an audio-driven animation method | [Compare UE5 lip-sync approaches](/LAMAudio2Expression-UE/en/lip-sync-comparison/) by output, emotion controls, and integration requirements |
 
 ## Downloads
 

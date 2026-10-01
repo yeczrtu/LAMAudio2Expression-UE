@@ -1,6 +1,6 @@
 ---
-title: "音声リップシンク手法の比較：LAM・Audio2Face・MetaHuman"
-description: "Unreal Engineの音声リップシンクをLAM、Audio2Face、MetaHuman Animator、OVRLipsync、SG Comで比較。ARKit 52、感情制御、ライブ入力、Unity・Web向け候補の違いを解説します。"
+title: "UE5リップシンク手法の比較：LAM・Audio2Face・MetaHuman"
+description: "UE5の音声リップシンクをLAM、Audio2Face、MetaHuman Animator、OVRLipsync、SG Comで比較。ARKit 52・Viseme、感情制御、ライブ入力、導入条件から選ぶためのガイドです。"
 sidebar: {"label":"リップシンク手法の比較"}
 appliesTo: "LAM: 2026-09-30更新 · 他製品: 2026-09-28確認"
 sourceSummary: "第三者の公式仕様・研究は2026-09-28確認。LAMの配布情報は2026-09-30にv0.3.0へ更新し、旧測定は当時の出典を保持しています。他製品との実機比較は行っていません。"
@@ -19,7 +19,7 @@ sources:
     url: "https://docs.speech-graphics.com/en/sg-com/5.0/what-is-sg-com"
 ---
 
-音声からキャラクターを動かす方式は、口形状だけを推定するものから、感情を含む顔全体の動きを生成するものまであります。**使うキャラクター、必要な演技、実行環境**から候補を絞ると、導入後の作り直しを減らせます。
+**Unreal Engine 5（UE5）**のリップシンクは、キャラクター・必要な演技・実行環境から方式を選びます。音声から口形状を推定する方式、感情制御を含む顔全体のアニメーション、ライブ入力では導入条件が異なります。このページではLAM・Audio2Face・MetaHumanなどの公開仕様を比較し、実装ガイドへ案内します。
 
 この記事は**2026年9月28日**に確認した公開資料による選定ガイドです。以下の推奨は仕様からの判断で、同条件の実機比較や品質ランキングではありません。各リンク先の対象版と、LAMの配布版・公開ソース版を区別しています。
 

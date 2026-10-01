@@ -76,6 +76,13 @@ If adding this site to Search Console, verify the project URL-prefix property
 using the owner's account and submit the sitemap above. Search Console registration
 and search-engine indexing are external to deployment verification.
 
+The October 1, 2026 SEO update targets UE5 lip-sync searches through distinct
+page titles, descriptions, introductions, and task-specific links on the homepage.
+See [SEO.md](SEO.md) for ownership verification, sitemap submission, URL inspection,
+and performance review. Search Console steps remain unverified until the owner's
+actual verification tag is deployed and Google confirms each step. Do not add a
+placeholder tag or claim indexing from a successful Pages deployment.
+
 ## Sources and media
 
 See `content-sources.json` for the pinned public snapshots and release URLs.

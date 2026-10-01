@@ -1,12 +1,12 @@
 ---
-title: "Unreal Engineで音声から表情をつくる"
-description: "LAM Audio2Expressionは音声からARKit 52表情カーブを生成するUnreal Engineプラグイン。日本語デモ、導入、Blueprintによるリップシンクの手順を解説します。"
+title: "UE5の音声リップシンクプラグイン"
+description: "UE5で音声に合わせてキャラクターの口と表情を動かすLAM Audio2Expression。Blueprintによる導入、SoundWave事前解析、マイク入力、ARKit 52・Visemeの設定を解説。配布・検証対象はUE 5.8.2／Windows x64。"
 sidebar: {"label":"概要"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
 sources: [{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"},{"label":"Demo / README.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/README.md"},{"label":"Demo / Docs/VIDEO.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/VIDEO.md"},{"label":"Plugin / Docs/BAKED_CLIPS.md · 1f06ac8","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1f06ac858413090f00c3f5bb955e1d73653ef74e/Docs/BAKED_CLIPS.md"}]
 ---
 
-<p class="lead">SoundWaveを解析し、声に合わせてキャラクターの口と表情を動かす。LAM Audio2Expressionは、PC内で推論するUnreal Engine用ランタイムプラグインです。</p>
+<p class="lead">LAM Audio2Expressionは、Unreal Engine 5（UE5）で音声から口の動きと表情を生成するリップシンクプラグインです。PC内で解析したARKit 52カーブやVisemeの重みを、BlueprintとAnimGraphでキャラクターへ適用します。</p>
 
 <div class="signal-flow" aria-label="音声から表情への処理">
   <div><span>01 INPUT</span><strong>音声</strong><small>SoundWave / マイク / PCM</small></div>
@@ -15,6 +15,23 @@ sources: [{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yec
 </div>
 
 [プラグインを導入する](/LAMAudio2Expression-UE/installation/) · [Windowsデモを試す](/LAMAudio2Expression-UE/demo/) · [Blueprintの接続を見る](/LAMAudio2Expression-UE/blueprint/)
+
+<span id="getting-started" class="comparison-anchor" aria-hidden="true"></span>
+
+## UE5でリップシンクを始める
+
+そのまま使える配布版は**UE 5.8.2／Windows x64**向けです。UEへインポート済みのSoundWaveと、ARKit 52・5母音・Oculus互換のMorph Target、または表情カーブで動くリグを用意します。実行時にPythonや外部推論サービスは不要です。他のUE版は再ビルドが必要で、公開済みの検証対象には含まれません。
+
+1. [モデル入りプラグインを導入](/LAMAudio2Expression-UE/installation/)し、プロジェクトで有効にします。動作を先に見たい場合は[Windowsデモ](/LAMAudio2Expression-UE/demo/)を利用できます。
+2. [Blueprintで音声解析と再生を接続](/LAMAudio2Expression-UE/blueprint/)します。解析完了時に得られるClipで音声と表情を同期再生します。
+3. [ARKit表情カーブまたはVisemeを設定](/LAMAudio2Expression-UE/expression-curves/)し、AnimGraphで適用します。出力先の名前や設定をキャラクターのリグに合わせてください。
+
+| やりたいこと | 次に読むガイド |
+| --- | --- |
+| 収録済みの台詞を繰り返し使う | [SoundWaveの事前解析](/LAMAudio2Expression-UE/baked-clips/)で保存し、先読みして実行時の推論なしで再生 |
+| マイク・外部PCMで口を動かす | [ライブ入力の設定](/LAMAudio2Expression-UE/live-input/)で更新間隔・提示遅延・検証範囲を確認 |
+| 一時停止・シーク・音量・3D音声を制御する | [再生制御とイベント](/LAMAudio2Expression-UE/playback/) |
+| 使用する音声駆動方式から選ぶ | [UE5リップシンク手法の比較](/LAMAudio2Expression-UE/lip-sync-comparison/)で出力・感情制御・導入条件を確認 |
 
 ## ダウンロード
 

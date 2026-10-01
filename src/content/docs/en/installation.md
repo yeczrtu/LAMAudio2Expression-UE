@@ -1,12 +1,12 @@
 ---
-title: "Install the Unreal Engine plugin"
-description: "Install LAM Audio2Expression v0.3.0 in UE 5.8.2. Set up the model-included ZIP, enable dependencies, configure cooking, and connect your first Blueprint."
+title: "Install the UE5 lip-sync plugin"
+description: "Install LAM Audio2Expression v0.3.0 for UE5 lip sync: place the model-included ZIP, enable the plugin, configure cooking, and play your first SoundWave. Release target: UE 5.8.2, Windows x64."
 sidebar: {"label":"Install the plugin"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
 sources: [{"label":"Plugin / Docs/RELEASE_INSTALL.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/RELEASE_INSTALL.md"},{"label":"Plugin / README.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/README.md"}]
 ---
 
-Use this guide to add audio-driven lip sync to your own Unreal Engine project. To try the result first, use the [standalone Windows demo](/LAMAudio2Expression-UE/en/demo/).
+This guide installs the LAM Audio2Expression lip-sync plugin in **Unreal Engine 5 (UE5)**. The packaged v0.3.0 build targets UE 5.8.2 / Windows x64. After enabling the plugin, follow the [Blueprint lip-sync connections](/LAMAudio2Expression-UE/en/blueprint/). To try the animation first, use the [Windows demo](/LAMAudio2Expression-UE/en/demo/).
 
 ## Requirements
 

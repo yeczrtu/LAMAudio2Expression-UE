@@ -1,12 +1,12 @@
 ---
-title: "Generate live expressions from microphone or PCM"
-description: "Feed microphone or external PCM audio into Unreal Engine facial animation. Configure inference intervals, presentation delay, live states, and P95 metrics."
+title: "Microphone and PCM lip sync in UE5"
+description: "Drive live UE5 lip sync from microphone or external PCM input. Configure Blueprint start / stop controls, inference intervals, presentation delay, and P95 metrics, with explicit testing limits."
 sidebar: {"label":"Microphone & live input"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
 sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"}]
 ---
 
-Generate expressions continuously from a microphone or PCM stream instead of analyzing an entire SoundWave first. Live inference and offline analysis share one dedicated worker.
+Generate live lip sync in **UE5** from a microphone or external PCM stream. This page covers the Blueprint start / stop flow and timing settings; it does not analyze an entire SoundWave in advance. Live inference and offline analysis share one dedicated worker. For recorded dialogue, use [baked SoundWave clips](/LAMAudio2Expression-UE/en/baked-clips/).
 
 ## Microphone input
 

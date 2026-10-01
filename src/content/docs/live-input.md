@@ -1,12 +1,12 @@
 ---
-title: "マイク・PCMからライブ表情を生成する"
-description: "Unreal Engineのマイクと外部PCMをLAM Audio2Expressionへ入力。推論間隔、提示遅延、ライブ状態、P95メトリクスの設定と制約を解説します。"
+title: "UE5でマイク・PCM入力のリップシンクを動かす"
+description: "UE5でマイクや外部PCMからライブリップシンクを動かす手順。Blueprintの開始・停止、推論間隔、提示遅延、P95メトリクスと未検証範囲を解説します。"
 sidebar: {"label":"マイク・ライブ入力"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Windows x64"
 sources: [{"label":"Plugin / Docs/PLAYBACK_AND_LIVE.md · 1860d0e","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE/blob/1860d0e2b28ea120a804361d3c9f5c19622f05e4/Docs/PLAYBACK_AND_LIVE.md"},{"label":"Demo / Docs/USAGE.md · 9dee71d","url":"https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/9dee71de2b60058e3434478f4f78b080cee9ca93/Docs/USAGE.md"}]
 ---
 
-事前にSoundWave全体を解析する代わりに、マイクやPCMストリームから継続的に表情を生成できます。ライブ入力と通常解析は同じ専用ワーカーを使用します。
+**UE5**でマイクや外部PCMストリームからライブリップシンクを生成する手順です。SoundWave全体を事前解析する代わりに、Blueprintから入力の開始・停止と時間設定を制御します。ライブ入力と通常解析は同じ専用ワーカーを使用します。収録済みの台詞には[SoundWaveの事前解析](/LAMAudio2Expression-UE/baked-clips/)を利用できます。
 
 ## マイク入力
 

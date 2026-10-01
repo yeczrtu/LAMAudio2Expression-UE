@@ -1,6 +1,6 @@
 ---
-title: "Bake SoundWave analysis into saved expression clips"
-description: "Generate and save ARKit 52 curves from an Unreal Engine SoundWave, then play them in Blueprint without waiting for analysis. Covers regeneration, preloading, cooking, and validation."
+title: "Bake SoundWave lip sync for UE5 playback"
+description: "Bake a UE5 SoundWave into saved ARKit 52 curves and play lip sync in Blueprint without runtime analysis. Learn v0.3.0 generation, regeneration, preloading, cooking, and remaining latency limits."
 sidebar: {"label":"Bake SoundWave clips"}
 appliesTo: "v0.3.0 · UE 5.8.2 / Win64"
 sourceSummary: "Reviewed on 2026-09-30 against v0.3.0 release metadata. Baked clips ship in v0.3.0, built from Plugin 1f06ac8 and Demo f3b6f13. Earlier source-test results are labeled separately."
@@ -17,7 +17,7 @@ sources:
     url: "https://github.com/yeczrtu/LAMAudio2Expression-UE-Demo/blob/f3b6f13e98d75d6e23933669adee79319ef3363f/Docs/Validation/baked-clips-results.json"
 ---
 
-Analyze recorded dialogue once in the editor and save its ARKit 52 facial curves as an asset. Pass the saved clip to the existing `Play Expression Clip` node in your game to skip model loading, analysis decoding, and inference during playback.
+For recorded dialogue in **Unreal Engine 5 (UE5)**, analyze a SoundWave once in the editor and save its ARKit 52 facial curves as a Clip asset. Play the loaded clip with the existing Play Expression Clip node to skip model loading, analysis decoding, and inference during playback. This removes the analysis wait, while asset loading and audio output can still introduce latency.
 
 :::note[Included in v0.3.0]
 Install the [model-included v0.3.0 plugin](/LAMAudio2Expression-UE/en/installation/) or UE project, enable the plugin, and restart UE 5.8.2. A source build is not required for the supported release configuration. These ZIPs use **Plugin 1f06ac8 / Demo f3b6f13**. [Release manifest](https://github.com/yeczrtu/LAMAudio2Expression-UE/releases/download/v0.3.0/release-manifest.json)
